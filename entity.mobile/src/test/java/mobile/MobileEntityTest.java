@@ -33,15 +33,4 @@ public class MobileEntityTest {
         assertEquals("", this.mobileEntity.getFolder());
     }
 
-    @Test
-    public void testSetSprite() {
-        this.mobileEntity.setSprite('e');
-        assertEquals('e', this.mobileEntity.getSprite());
-    }
-
-    @Test
-    public void testGetSprite() {
-        assertEquals('f', this.mobileEntity.getSprite());
-    }
-
 }
