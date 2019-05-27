@@ -16,8 +16,6 @@ public class Map implements IMap {
      * @param map
      */
     public Map(char[][] map) {
-        // TODO - implement Map.Map
-        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -61,6 +59,7 @@ public class Map implements IMap {
      * @param x
      * @param y
      */
+    @Override
     public void setOnTheMapXY(IEntity entity, int x, int y) {
         // TODO - implement Map.setOnTheMapXY
         throw new UnsupportedOperationException();

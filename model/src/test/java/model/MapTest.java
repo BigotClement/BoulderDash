@@ -1,3 +1,6 @@
+/*
+ *
+ */
 package model;
 
 import static org.junit.Assert.*;
@@ -8,8 +11,12 @@ import org.junit.Test;
 
 public class MapTest {
 
+    private Map map;
+
     @Before
     public void setUp() throws Exception {
+        char[][] map = { { 'a' } };
+        this.map = new Map(map);
     }
 
     @After
@@ -18,27 +25,30 @@ public class MapTest {
 
     @Test
     public void testMap() {
-        fail("Not yet implemented");
+        Map map = new Map(null);
+        assertEquals(Map.class, map.getClass());
     }
 
     @Test
     public void testGetWidth() {
-        fail("Not yet implemented");
+        assertNotNull(this.map.getWidth());
     }
 
     @Test
     public void testSetWidth() {
-        fail("Not yet implemented");
+        this.map.setWidth(10);
+        assertEquals(10, this.map.getWidth());
     }
 
     @Test
     public void testGetHeight() {
-        fail("Not yet implemented");
+        assertNotNull(this.map.getWidth());
     }
 
     @Test
     public void testSetHeight() {
-        fail("Not yet implemented");
+        this.map.setHeight(10);
+        assertEquals(10, this.map.getHeight());
     }
 
     @Test
@@ -53,11 +63,6 @@ public class MapTest {
 
     @Test
     public void testSetMobileHasChanged() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testGetObservable() {
         fail("Not yet implemented");
     }
 
