@@ -9,9 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+public class MotionlessEntityFactoryTest {
 
-public class MotionlessTest {
-    
     private Star star = null;
     private Dirt dirt = null;
     private DestructibleBlock destructibleBlock = null;
@@ -29,53 +28,6 @@ public class MotionlessTest {
 
     @After
     public void tearDown() throws Exception {
-    }
-
-    @Test
-    public void testStar() {
-        assertEquals(Star.class, this.star.getClass());
-    }
-
-    @Test
-    public void testDirt() {
-        assertEquals(Dirt.class, this.dirt.getClass());
-    }
-
-    @Test
-    public void testDestructibleBlock() {
-        assertEquals(DestructibleBlock.class, this.destructibleBlock.getClass());
-    }
-
-    @Test
-    public void testBorder() {
-        assertEquals(Border.class, this.border.getClass());
-    }
-    
-    @Test
-    public void testExit() {
-        assertEquals(Exit.class, this.exit.getClass());
-    }
-
-    @Test
-    public void testGetImage() {
-        assertEquals("sprites\\Motionless\\border.png", this.border.getImage());
-    }
-
-    @Test
-    public void testSetImage() {
-        this.border.setImage("");
-        assertEquals("", this.border.getImage());
-    }
-
-    @Test
-    public void testSetSprite() {
-        this.border.setSprite('a');
-        assertEquals('a',this.border.getSprite());
-    }
-
-    @Test
-    public void testGetSprite() {
-        assertEquals('#',this.border.getSprite());
     }
 
     @Test
@@ -102,10 +54,14 @@ public class MotionlessTest {
     public void testCreateExit() {
         assertEquals(this.exit.getClass(), MotionlessEntityFactory.createExit().getClass());
     }
-    
+
     @Test
     public void testCreateEntity() {
         assertEquals(Star.class, MotionlessEntityFactory.createEntity('*').getClass());
+        assertEquals(Dirt.class, MotionlessEntityFactory.createEntity('-').getClass());
+        assertEquals(DestructibleBlock.class, MotionlessEntityFactory.createEntity('+').getClass());
+        assertEquals(Border.class, MotionlessEntityFactory.createEntity('#').getClass());
+        assertEquals(Exit.class, MotionlessEntityFactory.createEntity('|').getClass());
     }
 
 }
