@@ -30,6 +30,16 @@ public class MapTest {
     }
 
     @Test
+    public void testGetMap() {
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testSetMap() {
+        fail("Not yet implemented");
+    }
+
+    @Test
     public void testGetWidth() {
         assertNotNull(this.map.getWidth());
     }
@@ -57,7 +67,12 @@ public class MapTest {
     }
 
     @Test
-    public void testSetOnTheMapXY() {
+    public void testSetOnTheMapXYCharIntInt() {
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testSetOnTheMapXYIEntityIntInt() {
         fail("Not yet implemented");
     }
 

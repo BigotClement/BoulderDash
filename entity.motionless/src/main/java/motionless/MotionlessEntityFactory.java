@@ -35,21 +35,27 @@ public class MotionlessEntityFactory {
      * @param sprite
      */
     public static MotionlessEntity createEntity(char sprite) {
+        MotionlessEntity motionlessEntity;
         switch (sprite) {
             case '*':
-                return STAR;
+                motionlessEntity = createStar();
+                return motionlessEntity;
             case '-':
-                return DIRT;
+                motionlessEntity = createDirt();
+                return motionlessEntity;
             case '+':
-                return DESTRUCTIBLEBLOCK;
+                motionlessEntity = createDestructibleBlock();
+                return motionlessEntity;
             case '#':
-                return BORDER;
+                motionlessEntity = createBorder();
+                return motionlessEntity;
             case '|':
-                return EXIT;
+                motionlessEntity = createExit();
+                return motionlessEntity;
             default:
                 return null;
         }
 
     }
-        
+
 }

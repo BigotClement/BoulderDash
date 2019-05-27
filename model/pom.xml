@@ -23,5 +23,20 @@
   		<artifactId>model.database</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>jpublankproject</groupId>
+  		<artifactId>entity</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>jpublankproject</groupId>
+  		<artifactId>entity.motionless</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>jpublankproject</groupId>
+  		<artifactId>entity.mobile</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>

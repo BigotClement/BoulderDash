@@ -40,4 +40,15 @@ public class ModelTest {
         assertEquals(2, this.model.getMapID());
     }
 
+    @Test
+    public void testGetMap() {
+        assertEquals(Map.class, this.model.getMap().getClass());
+    }
+
+    @Test
+    public void testSetMap() {
+        this.model.setMap(new Map(null));
+        assertEquals(Map.class, this.model.getMap().getClass());
+    }
+
 }

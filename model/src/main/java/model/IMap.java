@@ -50,4 +50,6 @@ public interface IMap {
 
     void moveLeft();
 
+    void setOnTheMapXY(char c, int x, int y);
+
 }

@@ -30,15 +30,20 @@ public class MobileEntityFactory {
      * @param sprite
      */
     public static MobileEntity createEntity(char sprite) {
+        MobileEntity mobileEntity;
         switch (sprite) {
             case 'H':
-                return CHARACTER;
+                mobileEntity = createCharacter();
+                return mobileEntity;
             case 'X':
-                return ENEMY;
+                mobileEntity = createEnemy();
+                return mobileEntity;
             case 'O':
-                return ROCK;
+                mobileEntity = createRock();
+                return mobileEntity;
             case 'D':
-                return DIAMOND;
+                mobileEntity = createDiamond();
+                return mobileEntity;
             default:
                 return null;
         }

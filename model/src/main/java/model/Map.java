@@ -5,17 +5,30 @@ package model;
 
 import java.util.Observable;
 
+import entity.Entity;
 import entity.IEntity;
+import mobile.MobileEntityFactory;
+import motionless.MotionlessEntity;
+import motionless.MotionlessEntityFactory;
 
 public class Map implements IMap {
 
     private int width;
     private int height;
+    private IEntity[][] map;
 
     /**
      * @param map
      */
     public Map(char[][] map) {
+        this.setMap(new Entity[map.length][map[0].length]);
+        for (int y = 0; y < map.length; y++) {
+            for (int x = 0; x < map[y].length; x++) {
+                this.setOnTheMapXY(map[y][x], x, y);
+                System.out.print(map[y][x]);
+            }
+            System.out.println();
+        }
     }
 
     @Override
@@ -50,8 +63,28 @@ public class Map implements IMap {
      */
     @Override
     public IEntity getOnTheMapXY(int x, int y) {
-        // TODO - implement Map.getOnTheMapXY
-        throw new UnsupportedOperationException();
+
+        return null;
+    }
+
+    @Override
+    public void setOnTheMapXY(char c, int x, int y) {
+        if (MotionlessEntityFactory.createEntity(c) != null) {
+            this.getMap()[y][x] = MotionlessEntityFactory.createEntity(c);
+        } else if (MobileEntityFactory.createEntity(c) != null) {
+            this.getMap()[y][x] = MobileEntityFactory.createEntity(c);
+        } else {
+            NullPointerException e = new NullPointerException();
+            e.printStackTrace();
+        }
+    }
+
+    private IEntity[][] getMap() {
+        return this.map;
+    }
+
+    private void setMap(IEntity[][] map) {
+        this.map = map;
     }
 
     /**
@@ -61,50 +94,43 @@ public class Map implements IMap {
      */
     @Override
     public void setOnTheMapXY(IEntity entity, int x, int y) {
-        // TODO - implement Map.setOnTheMapXY
-        throw new UnsupportedOperationException();
+
     }
 
     @Override
     public void setMobileHasChanged() {
-        // TODO - implement Map.setMobileHasChanged
-        throw new UnsupportedOperationException();
+
     }
 
     @Override
     public Observable getObservable() {
-        // TODO - implement Map.getObservable
-        throw new UnsupportedOperationException();
+
+        return null;
     }
 
     @Override
     public void fillView() {
-        // TODO - implement Map.fillView
-        throw new UnsupportedOperationException();
+
     }
 
     @Override
     public void moveUp() {
-        // TODO - implement Map.moveUp
-        throw new UnsupportedOperationException();
+
     }
 
     @Override
     public void moveDown() {
-        // TODO - implement Map.moveDown
-        throw new UnsupportedOperationException();
+
     }
 
     @Override
     public void moveRight() {
-        // TODO - implement Map.moveRight
-        throw new UnsupportedOperationException();
+
     }
 
     @Override
     public void moveLeft() {
-        // TODO - implement Map.moveLeft
-        throw new UnsupportedOperationException();
+
     }
 
 }

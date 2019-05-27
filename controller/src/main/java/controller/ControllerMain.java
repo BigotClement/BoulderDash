@@ -20,24 +20,21 @@ public class ControllerMain implements IControllerMain {
 
     @Override
     public void control() {
-        // TODO - implement ControllerMain.control
-        throw new UnsupportedOperationException();
+
     }
 
     /**
      * @param view
      */
     public void setView(IView view) {
-        // TODO - implement ControllerMain.setView
-        throw new UnsupportedOperationException();
+
     }
 
     /**
      * @param model
      */
     public void setModel(IModel model) {
-        // TODO - implement ControllerMain.setModel
-        throw new UnsupportedOperationException();
+
     }
 
 }

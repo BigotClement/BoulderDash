@@ -3,9 +3,7 @@
  */
 package model;
 
-import java.sql.SQLException;
 import java.util.Observable;
-
 import contract.IModel;
 
 /**
@@ -17,14 +15,16 @@ public final class Model extends Observable implements IModel {
 
     private int mapID = 1;
 
+    private Map map;
+
     private ReadFile readFile = new ReadFile(this.getMapID());
 
     /**
      * Instantiates a new model.
      */
     public Model() {
-        this.readFile.deleteMapID(this.getMapID());
-        this.readFile.loadFile();
+        // this.readFile.deleteMapID(this.getMapID());
+        // this.readFile.loadFile();
         this.readFile.selectMapID(this.getMapID());
         for (char[] c : this.readFile.getMap()) {
             for (char c2 : c) {
@@ -32,6 +32,9 @@ public final class Model extends Observable implements IModel {
             }
             System.out.println();
         }
+        this.setMap(new Map(this.readFile.getMap()));
+        this.getMap().setWidth(this.readFile.getWidth());
+        this.getMap().setHeight(this.readFile.getHeight());
     }
 
     /**
@@ -56,6 +59,14 @@ public final class Model extends Observable implements IModel {
     @Override
     public void setMapID(int mapID) {
         this.mapID = mapID;
+    }
+
+    public Map getMap() {
+        return this.map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 
 }
