@@ -1,7 +1,7 @@
 /*
  *
  */
-package model;
+package contract;
 
 import java.util.Observable;
 

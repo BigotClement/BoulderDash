@@ -22,4 +22,8 @@ public interface IModel {
     int getMapID();
 
     void setMapID(int mapID);
+
+    IMap getMap();
+
+    void setMap(IMap map);
 }

@@ -4,6 +4,8 @@
 package model;
 
 import java.util.Observable;
+
+import contract.IMap;
 import contract.IModel;
 
 /**
@@ -15,7 +17,7 @@ public final class Model extends Observable implements IModel {
 
     private int mapID = 1;
 
-    private Map map;
+    private IMap map;
 
     private ReadFile readFile = new ReadFile(this.getMapID());
 
@@ -55,11 +57,13 @@ public final class Model extends Observable implements IModel {
         this.mapID = mapID;
     }
 
-    public Map getMap() {
+    @Override
+    public IMap getMap() {
         return this.map;
     }
 
-    public void setMap(Map map) {
+    @Override
+    public void setMap(IMap map) {
         this.map = map;
     }
 

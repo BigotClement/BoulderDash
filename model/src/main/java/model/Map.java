@@ -5,6 +5,7 @@ package model;
 
 import java.util.Observable;
 
+import contract.IMap;
 import entity.Entity;
 import entity.IEntity;
 import mobile.MobileEntityFactory;
