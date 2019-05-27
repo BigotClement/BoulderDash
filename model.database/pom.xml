@@ -5,22 +5,11 @@
     <artifactId>masterpom</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>model</artifactId>
-  <name>Model</name>
+  <artifactId>model.database</artifactId>
   <dependencies>
   	<dependency>
   		<groupId>jpublankproject</groupId>
-  		<artifactId>contract</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>mysql</groupId>
-  		<artifactId>mysql-connector-java</artifactId>
-  		<version>5.1.39</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>jpublankproject</groupId>
-  		<artifactId>model.database</artifactId>
+  		<artifactId>entity</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
