@@ -5,7 +5,7 @@ package mobile;
 
 import entity.Entity;
 
-public abstract class MobileEntity extends Entity implements IMobileEntity {
+public abstract class MobileEntity extends Entity {
 
     /**
      * @param sprite

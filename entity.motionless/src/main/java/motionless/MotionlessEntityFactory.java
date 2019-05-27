@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package motionless;
 
@@ -12,28 +12,23 @@ public class MotionlessEntityFactory {
     private static Exit EXIT = new Exit();
 
     public static MotionlessEntity createStar() {
-        // TODO - implement MotionlessEntityFactory.createStar
-        throw new UnsupportedOperationException();
+        return STAR;
     }
 
     public static MotionlessEntity createDirt() {
-        // TODO - implement MotionlessEntityFactory.createDirt
-        throw new UnsupportedOperationException();
+        return DIRT;
     }
 
     public static MotionlessEntity createDestructibleBlock() {
-        // TODO - implement MotionlessEntityFactory.createDestructibleBlock
-        throw new UnsupportedOperationException();
+        return DESTRUCTIBLEBLOCK;
     }
 
     public static MotionlessEntity createBorder() {
-        // TODO - implement MotionlessEntityFactory.createBorder
-        throw new UnsupportedOperationException();
+        return BORDER;
     }
 
     public static MotionlessEntity createExit() {
-        // TODO - implement MotionlessEntityFactory.createExit
-        throw new UnsupportedOperationException();
+        return EXIT;
     }
 
     /**
