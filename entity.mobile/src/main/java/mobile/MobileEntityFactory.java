@@ -30,8 +30,19 @@ public class MobileEntityFactory {
      * @param sprite
      */
     public static MobileEntity createEntity(char sprite) {
-        // TODO - implement MotionlessEntityFactory.createEntity
-        throw new UnsupportedOperationException();
+        switch (sprite) {
+            case 'H':
+                return CHARACTER;
+            case 'X':
+                return ENEMY;
+            case 'O':
+                return ROCK;
+            case 'D':
+                return DIAMOND;
+            default:
+                return null;
+        }
+
     }
 
 }

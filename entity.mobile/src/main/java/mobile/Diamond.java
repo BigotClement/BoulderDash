@@ -7,10 +7,10 @@ public class Diamond extends MobileEntity {
 
     private static char SPRITE = 'D';
 
+    private static String FOLDER = "sprites\\Mobile\\Diamond";
+
     public Diamond() {
-        super(SPRITE);
-        // TODO - implement Diamond.Diamond
-        throw new UnsupportedOperationException();
+        super(SPRITE, FOLDER);
     }
 
 }

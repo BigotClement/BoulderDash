@@ -7,10 +7,10 @@ public class Character extends MobileEntity {
 
     private static char SPRITE = 'H';
 
+    private static String FOLDER = "sprites\\Mobile\\Character\\Stand";
+
     public Character() {
-        super(SPRITE);
-        // TODO - implement Character.Character
-        throw new UnsupportedOperationException();
+        super(SPRITE, FOLDER);
     }
 
 }
