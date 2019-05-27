@@ -127,7 +127,9 @@ public class ReadFile {
             call.execute();
             final ResultSet resultSet = call.getResultSet();
             if (resultSet.first()) {
-                this.setMap(new char[resultSet.getInt("MapWidth")][resultSet.getInt("MapHeight")]);
+                this.setWidth(resultSet.getInt("MapWidth"));
+                this.setHeight(resultSet.getInt("MapHeight"));
+                this.setMap(new char[this.getWidth()][this.getHeight()]);
                 this.getMap()[resultSet.getInt("posY")][resultSet.getInt("posX")] = resultSet.getString("Sprite")
                         .charAt(0);
                 while (resultSet.next()) {

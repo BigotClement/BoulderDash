@@ -1,3 +1,6 @@
+/*
+ *
+ */
 package model;
 
 import static org.junit.Assert.*;
@@ -7,9 +10,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ReadFileTest {
+    private ReadFile readFile;
 
     @Before
     public void setUp() throws Exception {
+        this.readFile = new ReadFile(1);
     }
 
     @After
@@ -17,68 +22,58 @@ public class ReadFileTest {
     }
 
     @Test
-    public void testReadFile() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testLoadFile() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testInsertIntoDB() {
-        fail("Not yet implemented");
-    }
-
-    @Test
     public void testGetMapID() {
-        fail("Not yet implemented");
+        assertEquals(1, this.readFile.getMapID());
     }
 
     @Test
     public void testSetMapID() {
-        fail("Not yet implemented");
+        assertEquals(1, this.readFile.getMapID());
     }
 
     @Test
     public void testGetHeight() {
-        fail("Not yet implemented");
+        this.readFile.deleteMapID(1);
+        this.readFile.loadFile();
+        this.readFile.selectMapID(1);
+        assertEquals(10, this.readFile.getHeight());
     }
 
     @Test
     public void testGetWidth() {
-        fail("Not yet implemented");
+        this.readFile.deleteMapID(1);
+        this.readFile.loadFile();
+        this.readFile.selectMapID(1);
+        assertEquals(10, this.readFile.getWidth());
     }
 
     @Test
     public void testSelectMapID() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testDeleteMapID() {
-        fail("Not yet implemented");
+        this.readFile.selectMapID(1);
+        assertNotNull(this.readFile.getMap());
     }
 
     @Test
     public void testGetFilename() {
-        fail("Not yet implemented");
+        assertEquals("Map1.txt", this.readFile.getFilename());
     }
 
     @Test
     public void testSetFilename() {
-        fail("Not yet implemented");
+        assertEquals("Map1.txt", this.readFile.getFilename());
     }
 
     @Test
     public void testGetMap() {
-        fail("Not yet implemented");
+        char[][] map = { { 'a', 'z' }, { 'e', 'r' }, { 't', 'y' } };
+        this.readFile.setMap(map);
+        assertEquals(map, this.readFile.getMap());
     }
 
     @Test
     public void testSetMap() {
-        fail("Not yet implemented");
+        char[][] map = { { 'a', 'z' }, { 'e', 'r' }, { 't', 'y' } };
+        this.readFile.setMap(map);
+        assertEquals(map, this.readFile.getMap());
     }
-
 }
