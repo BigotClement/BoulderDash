@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package model;
 
@@ -29,18 +29,15 @@ public class ModelTest {
     }
 
     @Test
-    public void testGetObservable() {
-        fail("Not yet implemented");
-    }
-
-    @Test
     public void testGetMapID() {
-        fail("Not yet implemented");
+        this.model.setMapID(1);
+        assertEquals(1, this.model.getMapID());
     }
 
     @Test
     public void testSetMapID() {
-        fail("Not yet implemented");
+        this.model.setMapID(2);
+        assertEquals(2, this.model.getMapID());
     }
 
 }
