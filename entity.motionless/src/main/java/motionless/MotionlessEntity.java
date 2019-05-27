@@ -7,13 +7,22 @@ import entity.Entity;
 
 public abstract class MotionlessEntity extends Entity {
 
+    private String image;
+
     /**
      * @param sprite
      */
-    public MotionlessEntity(char sprite) {
+    public MotionlessEntity(char sprite, String image) {
         super(sprite);
-        // TODO - implement MotionlessEntity.MotionlessEntity
-        throw new UnsupportedOperationException();
+        this.setImage(image);
+    }
+
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }
