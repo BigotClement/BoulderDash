@@ -9,13 +9,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MotionlessTest {
 
-    private Border border = null;
-    private DestructibleBlock destructibleBlock = null;
-    private Dirt dirt = null;
-    private Exit exit = null;
+public class MotionlessTest {
+    
     private Star star = null;
+    private Dirt dirt = null;
+    private DestructibleBlock destructibleBlock = null;
+    private Border border = null;
+    private Exit exit = null;
 
     @Before
     public void setUp() throws Exception {
@@ -31,38 +32,13 @@ public class MotionlessTest {
     }
 
     @Test
-    public void testBorder() {
-        assertEquals(Border.class, this.border.getClass());
+    public void testStar() {
+        assertEquals(Star.class, this.star.getClass());
     }
 
     @Test
-    public void testCreateBorder() {
-        assertEquals(this.border.getClass(), MotionlessEntityFactory.createBorder().getClass());
-    }
-
-    @Test
-    public void testCreateDestructibleBlock() {
-        assertEquals(this.destructibleBlock.getClass(), MotionlessEntityFactory.createDestructibleBlock().getClass());
-    }
-
-    @Test
-    public void testCreateDirt() {
-        assertEquals(this.dirt.getClass(), MotionlessEntityFactory.createDirt().getClass());
-    }
-
-    @Test
-    public void testCreateEntity() {
-        assertEquals(Star.class, MotionlessEntityFactory.createEntity('*').getClass());
-    }
-
-    @Test
-    public void testCreateExit() {
-        assertEquals(this.exit.getClass(), MotionlessEntityFactory.createExit().getClass());
-    }
-
-    @Test
-    public void testCreateStar() {
-        assertEquals(this.star.getClass(), MotionlessEntityFactory.createStar().getClass());
+    public void testDirt() {
+        assertEquals(Dirt.class, this.dirt.getClass());
     }
 
     @Test
@@ -71,10 +47,10 @@ public class MotionlessTest {
     }
 
     @Test
-    public void testDirt() {
-        assertEquals(Dirt.class, this.dirt.getClass());
+    public void testBorder() {
+        assertEquals(Border.class, this.border.getClass());
     }
-
+    
     @Test
     public void testExit() {
         assertEquals(Exit.class, this.exit.getClass());
@@ -86,11 +62,6 @@ public class MotionlessTest {
     }
 
     @Test
-    public void testGetSprite() {
-        assertEquals('#', this.border.getSprite());
-    }
-
-    @Test
     public void testSetImage() {
         this.border.setImage("");
         assertEquals("", this.border.getImage());
@@ -99,12 +70,42 @@ public class MotionlessTest {
     @Test
     public void testSetSprite() {
         this.border.setSprite('a');
-        assertEquals('a', this.border.getSprite());
+        assertEquals('a',this.border.getSprite());
     }
 
     @Test
-    public void testStar() {
-        assertEquals(Star.class, this.star.getClass());
+    public void testGetSprite() {
+        assertEquals('#',this.border.getSprite());
+    }
+
+    @Test
+    public void testCreateStar() {
+        assertEquals(this.star.getClass(), MotionlessEntityFactory.createStar().getClass());
+    }
+
+    @Test
+    public void testCreateDirt() {
+        assertEquals(this.dirt.getClass(), MotionlessEntityFactory.createDirt().getClass());
+    }
+
+    @Test
+    public void testCreateDestructibleBlock() {
+        assertEquals(this.destructibleBlock.getClass(), MotionlessEntityFactory.createDestructibleBlock().getClass());
+    }
+
+    @Test
+    public void testCreateBorder() {
+        assertEquals(this.border.getClass(), MotionlessEntityFactory.createBorder().getClass());
+    }
+
+    @Test
+    public void testCreateExit() {
+        assertEquals(this.exit.getClass(), MotionlessEntityFactory.createExit().getClass());
+    }
+    
+    @Test
+    public void testCreateEntity() {
+        assertEquals(Star.class, MotionlessEntityFactory.createEntity('*').getClass());
     }
 
 }
