@@ -41,7 +41,7 @@ public class ReadFile {
      *                         Signals that an I/O exception has occurred.
      */
     public ReadFile(int mapID) {
-        this.setFilename("map" + mapID + ".txt");
+        this.setFilename("Map" + mapID + ".txt");
         this.setMapID(mapID);
     }
 
