@@ -8,14 +8,14 @@ import java.util.Observable;
 import entity.Entity;
 import entity.IEntity;
 import mobile.MobileEntityFactory;
-import motionless.MotionlessEntity;
 import motionless.MotionlessEntityFactory;
 
 public class Map implements IMap {
 
     private int width;
     private int height;
-    private IEntity[][] map;
+    private int viewWidth = 15, viewHeight = 15;
+    private IEntity[][] map, viewMap = new Entity[this.getViewHeight()][this.getViewWidth()];
 
     /**
      * @param map
@@ -25,10 +25,9 @@ public class Map implements IMap {
         for (int y = 0; y < map.length; y++) {
             for (int x = 0; x < map[y].length; x++) {
                 this.setOnTheMapXY(map[y][x], x, y);
-                System.out.print(map[y][x]);
             }
-            System.out.println();
         }
+        this.fillView();
     }
 
     @Override
@@ -110,7 +109,13 @@ public class Map implements IMap {
 
     @Override
     public void fillView() {
-
+        for (int y = 0; y < this.getViewMap().length; y++) {
+            for (int x = 0; x < this.getViewMap()[y].length; x++) {
+                this.getViewMap()[y][x] = MotionlessEntityFactory.createDestructibleBlock();
+                System.out.print(this.getViewMap()[y][x].getSprite());
+            }
+            System.out.println();
+        }
     }
 
     @Override
@@ -131,6 +136,30 @@ public class Map implements IMap {
     @Override
     public void moveLeft() {
 
+    }
+
+    public int getViewWidth() {
+        return this.viewWidth;
+    }
+
+    public void setViewWidth(int viewWidth) {
+        this.viewWidth = viewWidth;
+    }
+
+    public int getViewHeight() {
+        return this.viewHeight;
+    }
+
+    public void setViewHeight(int viewHeight) {
+        this.viewHeight = viewHeight;
+    }
+
+    public IEntity[][] getViewMap() {
+        return this.viewMap;
+    }
+
+    public void setViewMap(IEntity[][] viewMap) {
+        this.viewMap = viewMap;
     }
 
 }

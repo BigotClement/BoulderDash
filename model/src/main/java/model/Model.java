@@ -26,12 +26,6 @@ public final class Model extends Observable implements IModel {
         // this.readFile.deleteMapID(this.getMapID());
         // this.readFile.loadFile();
         this.readFile.selectMapID(this.getMapID());
-        for (char[] c : this.readFile.getMap()) {
-            for (char c2 : c) {
-                System.out.print(c2);
-            }
-            System.out.println();
-        }
         this.setMap(new Map(this.readFile.getMap()));
         this.getMap().setWidth(this.readFile.getWidth());
         this.getMap().setHeight(this.readFile.getHeight());

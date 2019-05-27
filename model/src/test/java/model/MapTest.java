@@ -40,6 +40,16 @@ public class MapTest {
     }
 
     @Test
+    public void testGetViewMap() {
+        fail("Not yet implemented");
+    }
+
+    @Test
+    public void testSetViewMap() {
+        fail("Not yet implemented");
+    }
+
+    @Test
     public void testGetWidth() {
         assertNotNull(this.map.getWidth());
     }
@@ -59,6 +69,28 @@ public class MapTest {
     public void testSetHeight() {
         this.map.setHeight(10);
         assertEquals(10, this.map.getHeight());
+    }
+
+    @Test
+    public void testGetViewWidth() {
+        assertNotNull(this.map.getViewWidth());
+    }
+
+    @Test
+    public void testSetViewWidth() {
+        this.map.setViewWidth(10);
+        assertEquals(10, this.map.getViewWidth());
+    }
+
+    @Test
+    public void testGetViewHeight() {
+        assertNotNull(this.map.getViewHeight());
+    }
+
+    @Test
+    public void testSetViewHeight() {
+        this.map.setViewHeight(10);
+        assertEquals(10, this.map.getViewHeight());
     }
 
     @Test
