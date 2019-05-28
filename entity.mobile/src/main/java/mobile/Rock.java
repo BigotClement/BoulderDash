@@ -30,4 +30,10 @@ public class Rock extends MobileEntity {
         this.animateGif = new AnimateGif(folder, 200);
     }
 
+    @Override
+    public void setHasMoved() {
+        // TODO Auto-generated method stub
+
+    }
+
 }

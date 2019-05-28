@@ -4,7 +4,6 @@
 package contract;
 
 import java.util.Observable;
-
 import entity.IEntity;
 
 public interface IMap {

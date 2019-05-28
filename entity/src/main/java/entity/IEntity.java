@@ -22,4 +22,10 @@ public interface IEntity {
 
     void setFolder(String folder);
 
+    int getY();
+
+    void setY(int i);
+
+    void setHasMoved();
+
 }

@@ -8,6 +8,7 @@ import java.util.Observable;
 import contract.IMap;
 import entity.Entity;
 import entity.IEntity;
+import mobile.MobileEntity;
 import mobile.MobileEntityFactory;
 import motionless.MotionlessEntityFactory;
 
@@ -100,26 +101,26 @@ public class Map extends Observable implements IMap {
 
     @Override
     public void moveDown(IEntity mobileEntity) {
-        // *mobileEntity.setX(this.getX() - 1);
-        // *mobileEntity.setHasMoved();
+        mobileEntity.setY(mobileEntity.getY() - 1);
+        mobileEntity.setHasMoved();
     }
 
     @Override
     public void moveLeft(IEntity mobileEntity) {
-        // *mobileEntity.setX(this.getX() - 1);
-        // *mobileEntity.setHasMoved();
+        mobileEntity.setY(mobileEntity.getY() - 1);
+        mobileEntity.setHasMoved();
     }
 
     @Override
     public void moveRight(IEntity mobileEntity) {
-        // *mobileEntity.setX(this.getX() - 1);
-        // *mobileEntity.setHasMoved();
+        mobileEntity.setY(mobileEntity.getY() + 1);
+        mobileEntity.setHasMoved();
     }
 
     @Override
     public void moveUp(IEntity mobileEntity) {
-        // *mobileEntity.setX(this.getX() - 1);
-        // *mobileEntity.setHasMoved();
+        mobileEntity.setY(mobileEntity.getY() + 1);
+        mobileEntity.setHasMoved();
     }
 
     /**
