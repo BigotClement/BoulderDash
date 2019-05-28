@@ -35,7 +35,12 @@ class ViewPanel extends JPanel implements Observer {
      */
     public ViewPanel(final ViewFrame viewFrame) {
         this.setViewFrame(viewFrame);
-        viewFrame.getModel().getObservable().addObserver(this);
+        try {
+            viewFrame.getModel().getObservable().addObserver(this);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -43,7 +48,7 @@ class ViewPanel extends JPanel implements Observer {
      *
      * @return the view frame
      */
-    private ViewFrame getViewFrame() {
+    public ViewFrame getViewFrame() {
         return this.viewFrame;
     }
 
@@ -84,7 +89,7 @@ class ViewPanel extends JPanel implements Observer {
      * @param viewFrame
      *                      the new view frame
      */
-    private void setViewFrame(final ViewFrame viewFrame) {
+    void setViewFrame(final ViewFrame viewFrame) {
         this.viewFrame = viewFrame;
     }
 
