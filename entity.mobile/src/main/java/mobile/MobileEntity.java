@@ -4,15 +4,11 @@
 package mobile;
 
 import java.awt.Point;
-
 import entity.Entity;
-import entity.IEntity;
 
 public abstract class MobileEntity extends Entity {
 
     private String folder;
-
-    private int x, y;
 
     private Point position;
 
@@ -25,24 +21,24 @@ public abstract class MobileEntity extends Entity {
         this.position = new Point();
     }
 
-    public void moveDown(IEntity mobileEntity) {
-        mobileEntity.setY(mobileEntity.getY() - 1);
-        mobileEntity.setHasMoved();
+    public void moveDown() {
+        this.setY(this.getY() - 1);
+        this.setHasMoved();
     }
 
-    public void moveLeft(IEntity mobileEntity) {
-        mobileEntity.setY(mobileEntity.getY() - 1);
-        mobileEntity.setHasMoved();
+    public void moveLeft() {
+        this.setY(this.getY() - 1);
+        this.setHasMoved();
     }
 
-    public void moveRight(IEntity mobileEntity) {
-        mobileEntity.setY(mobileEntity.getY() + 1);
-        mobileEntity.setHasMoved();
+    public void moveRight() {
+        this.setY(this.getY() + 1);
+        this.setHasMoved();
     }
 
-    public void moveUp(IEntity mobileEntity) {
-        mobileEntity.setY(mobileEntity.getY() + 1);
-        mobileEntity.setHasMoved();
+    public void moveUp() {
+        this.setY(this.getY() + 1);
+        this.setHasMoved();
     }
 
     @Override
