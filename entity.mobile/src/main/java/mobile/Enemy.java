@@ -3,7 +3,10 @@
  */
 package mobile;
 
+import java.awt.Image;
 import java.util.Random;
+
+import entity.AnimateGif;
 
 public class Enemy extends MobileEntity {
 
@@ -12,20 +15,20 @@ public class Enemy extends MobileEntity {
     private static Random ran = new Random();
     private static String s_ran = folderArray[ran.nextInt(folderArray.length)];
 
+    private AnimateGif animateGif;
+
     public Enemy() {
         super(SPRITE, s_ran);
     }
 
     @Override
-    public String getImage() {
-        // TODO Auto-generated method stub
-        return null;
+    public Image getImage() {
+        return this.animateGif.getImage();
     }
 
     @Override
     public void setImage(String image) {
-        // TODO Auto-generated method stub
-
+        this.animateGif = new AnimateGif(s_ran, 200);
     }
 
 }
