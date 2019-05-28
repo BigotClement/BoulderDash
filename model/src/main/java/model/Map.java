@@ -86,26 +86,26 @@ public class Map implements IMap {
 
     @Override
     public void moveDown(IEntity mobileEntity) {
-        // *this.setY(this.getY() + 1);
-        // *this.setHasMoved();
+        // *mobileEntity.setX(this.getX() - 1);
+        // *mobileEntity.setHasMoved();
     }
 
     @Override
     public void moveLeft(IEntity mobileEntity) {
-        // *this.setX(this.getX() - 1);
-        // *this.setHasMoved();
+        // *mobileEntity.setX(this.getX() - 1);
+        // *mobileEntity.setHasMoved();
     }
 
     @Override
     public void moveRight(IEntity mobileEntity) {
-        // *this.setX(this.getX() + 1);
-        // *this.setHasMoved();
+        // *mobileEntity.setX(this.getX() - 1);
+        // *mobileEntity.setHasMoved();
     }
 
     @Override
     public void moveUp(IEntity mobileEntity) {
-        // *this.setY(this.getY() - 1);
-        // *this.setHasMoved();
+        // *mobileEntity.setX(this.getX() - 1);
+        // *mobileEntity.setHasMoved();
     }
 
     /**
