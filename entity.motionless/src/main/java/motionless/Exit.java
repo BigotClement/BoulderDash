@@ -6,17 +6,19 @@ package motionless;
 import java.awt.Image;
 
 import entity.AnimateGif;
+import entity.Permeability;
 
 public class Exit extends MotionlessEntity {
 
     private static String FOLDER = "sprites\\Motionless\\Exit";
     private static String IMAGE = "sprites\\Motionless\\Exit\\exit1.png";
+    private static Permeability PERMEABILITY = Permeability.BLOCKING;
     private static char SPRITE = '|';
 
     private AnimateGif animateGif;
 
     public Exit() {
-        super(SPRITE, IMAGE);
+        super(SPRITE, IMAGE, PERMEABILITY);
         this.setImage(IMAGE);
         this.setFolder(FOLDER);
     }

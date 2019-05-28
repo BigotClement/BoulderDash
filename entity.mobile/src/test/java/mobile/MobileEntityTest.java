@@ -16,7 +16,7 @@ public class MobileEntityTest {
 
     @Before
     public void setUp() throws Exception {
-        this.mobileEntity = new MobileEntity('f', "sprites\\") {
+        this.mobileEntity = new MobileEntity('f', "sprites\\", null) {
 
             @Override
             public Image getImage() {

@@ -15,7 +15,7 @@ public class MotionlessEntityTest {
 
     @Before
     public void setUp() throws Exception {
-        this.motionlessEntity = new MotionlessEntity('e', "string") {
+        this.motionlessEntity = new MotionlessEntity('e', "tenor.gif", null) {
 
             @Override
             public String getFolder() {
@@ -67,12 +67,12 @@ public class MotionlessEntityTest {
 
     @Test
     public void testGetImage() {
-        assertEquals("string", this.motionlessEntity.getImage());
+        assertNotNull(this.motionlessEntity.getImage());
     }
 
     @Test
     public void testSetImage() {
-        this.motionlessEntity.setImage("");
-        assertEquals("", this.motionlessEntity.getImage());
+        this.motionlessEntity.setImage("gif-nyan.gif");
+        assertNotNull(this.motionlessEntity.getImage());
     }
 }

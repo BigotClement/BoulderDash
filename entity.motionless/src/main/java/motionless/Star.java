@@ -6,17 +6,19 @@ package motionless;
 import java.awt.Image;
 
 import entity.AnimateGif;
+import entity.Permeability;
 
 public class Star extends MotionlessEntity {
 
     private static String FOLDER = "sprites\\Motionless\\Star";
     private static String IMAGE = "sprites\\Motionless\\Star\\star1.png";
+    private static Permeability PERMEABILITY = Permeability.BLOCKING;
     private static char SPRITE = '*';
 
     private AnimateGif animateGif;
 
     public Star() {
-        super(SPRITE, IMAGE);
+        super(SPRITE, IMAGE, PERMEABILITY);
 
     }
 

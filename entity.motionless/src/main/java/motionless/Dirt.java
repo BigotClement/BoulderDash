@@ -3,13 +3,16 @@
  */
 package motionless;
 
+import entity.Permeability;
+
 public class Dirt extends MotionlessEntity {
 
     private static String IMAGE = "sprites\\Motionless\\dirt.png";
     private static char SPRITE = '-';
+    private static Permeability PERMEABILITY = Permeability.PENETRABLE;
 
     public Dirt() {
-        super(SPRITE, IMAGE);
+        super(SPRITE, IMAGE, PERMEABILITY);
 
     }
 

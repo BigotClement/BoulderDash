@@ -6,6 +6,7 @@ package mobile;
 import java.awt.Image;
 
 import entity.AnimateGif;
+import entity.Permeability;
 
 public class Character extends MobileEntity {
 
@@ -13,10 +14,12 @@ public class Character extends MobileEntity {
 
     private static String FOLDER = "sprites\\Mobile\\Character\\Stand";
 
+    private static Permeability PERMEABILITY = Permeability.BLOCKING;
+
     private AnimateGif animateGif;
 
     public Character() {
-        super(SPRITE, FOLDER);
+        super(SPRITE, FOLDER, PERMEABILITY);
         this.setImage(FOLDER);
     }
 

@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import entity.Entity;
+import entity.Permeability;
 
 public abstract class MotionlessEntity extends Entity {
 
@@ -18,8 +19,8 @@ public abstract class MotionlessEntity extends Entity {
     /**
      * @param sprite
      */
-    public MotionlessEntity(char sprite, String image) {
-        super(sprite);
+    public MotionlessEntity(char sprite, String image, final Permeability permeability) {
+        super(sprite, permeability);
         this.setImage(image);
     }
 
