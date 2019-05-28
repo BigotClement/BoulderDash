@@ -25,13 +25,13 @@ public interface IMap {
 
     int getWidth();
 
-    void moveDown();
+    void moveDown(IEntity mobileEntity);
 
-    void moveLeft();
+    void moveLeft(IEntity mobileEntity);
 
-    void moveRight();
+    void moveRight(IEntity mobileEntity);
 
-    void moveUp();
+    void moveUp(IEntity mobileEntity);
 
     /**
      * @param height

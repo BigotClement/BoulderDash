@@ -8,6 +8,7 @@ import java.util.Observable;
 import contract.IMap;
 import entity.Entity;
 import entity.IEntity;
+import mobile.MobileEntity;
 import mobile.MobileEntityFactory;
 import motionless.MotionlessEntityFactory;
 
@@ -84,23 +85,27 @@ public class Map implements IMap {
     }
 
     @Override
-    public void moveDown() {
-
+    public void moveDown(IEntity mobileEntity) {
+        // *this.setY(this.getY() + 1);
+        // *this.setHasMoved();
     }
 
     @Override
-    public void moveLeft() {
-
+    public void moveLeft(IEntity mobileEntity) {
+        // *this.setX(this.getX() - 1);
+        // *this.setHasMoved();
     }
 
     @Override
-    public void moveRight() {
-
+    public void moveRight(IEntity mobileEntity) {
+        // *this.setX(this.getX() + 1);
+        // *this.setHasMoved();
     }
 
     @Override
-    public void moveUp() {
-
+    public void moveUp(IEntity mobileEntity) {
+        // *this.setY(this.getY() - 1);
+        // *this.setHasMoved();
     }
 
     /**
