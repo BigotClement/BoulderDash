@@ -5,6 +5,8 @@ package mobile;
 
 import static org.junit.Assert.*;
 
+import java.awt.Image;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +19,7 @@ public class MobileEntityTest {
         this.mobileEntity = new MobileEntity('f', "sprites\\") {
 
             @Override
-            public String getImage() {
+            public Image getImage() {
                 // TODO Auto-generated method stub
                 return null;
             }

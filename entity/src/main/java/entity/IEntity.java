@@ -3,6 +3,8 @@
  */
 package entity;
 
+import java.awt.Image;
+
 public interface IEntity {
 
     char getSprite();
@@ -12,7 +14,7 @@ public interface IEntity {
      */
     void setSprite(char sprite);
 
-    String getImage();
+    Image getImage();
 
     void setImage(String image);
 

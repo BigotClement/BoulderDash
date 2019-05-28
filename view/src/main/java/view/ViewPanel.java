@@ -5,15 +5,9 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
-
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-
-import entity.IEntity;
 
 /**
  * The Class ViewPanel.
@@ -64,12 +58,7 @@ class ViewPanel extends JPanel implements Observer {
                 // (this.getViewFrame().getWidth()/this.getViewFrame().getModel().getMap().getViewMap()[y].length)
                 // (this.getViewFrame().getHeight()/this.getViewFrame().getModel().getMap().getViewMap().length)
                 Image image = null;
-                try {
-                    image = ImageIO
-                            .read(new File(this.getViewFrame().getModel().getMap().getViewMap()[y][x].getImage()));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                image = this.getViewFrame().getModel().getMap().getViewMap()[y][x].getImage();
                 graphics.drawImage(image,
                         x * (this.getViewFrame().getWidth()
                                 / this.getViewFrame().getModel().getMap().getViewMap()[y].length),

@@ -3,11 +3,17 @@
  */
 package motionless;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import entity.Entity;
 
 public abstract class MotionlessEntity extends Entity {
 
-    private String image;
+    private Image image;
 
     /**
      * @param sprite
@@ -17,12 +23,19 @@ public abstract class MotionlessEntity extends Entity {
         this.setImage(image);
     }
 
-    public String getImage() {
+    @Override
+    public Image getImage() {
         return this.image;
     }
 
+    @Override
     public void setImage(String image) {
-        this.image = image;
+        try {
+            this.image = ImageIO.read(new File(image));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
 }
