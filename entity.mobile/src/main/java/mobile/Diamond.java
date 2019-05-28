@@ -6,6 +6,7 @@ package mobile;
 import java.awt.Image;
 
 import entity.AnimateGif;
+import entity.Permeability;
 
 public class Diamond extends MobileEntity {
 
@@ -13,10 +14,12 @@ public class Diamond extends MobileEntity {
 
     private static String FOLDER = "sprites\\Mobile\\Diamond";
 
+    private static Permeability PERMEABILITY = Permeability.SEMIPENETRABLE;
+
     private AnimateGif animateGif;
 
     public Diamond() {
-        super(SPRITE, FOLDER);
+        super(SPRITE, FOLDER, PERMEABILITY);
         this.setImage(FOLDER);
     }
 

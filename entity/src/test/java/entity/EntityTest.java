@@ -18,7 +18,7 @@ public class EntityTest {
 
     @Before
     public void setUp() throws Exception {
-        this.entity = new Entity('e') {
+        this.entity = new Entity('e', null) {
 
             @Override
             public Image getImage() {

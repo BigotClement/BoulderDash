@@ -3,13 +3,16 @@
  */
 package motionless;
 
+import entity.Permeability;
+
 public class DestructibleBlock extends MotionlessEntity {
 
     private static String IMAGE = "sprites\\Motionless\\destructiblebloc.png";
     private static char SPRITE = '+';
+    private static Permeability PERMEABILITY = Permeability.SEMIPENETRABLE;
 
     public DestructibleBlock() {
-        super(SPRITE, IMAGE);
+        super(SPRITE, IMAGE, PERMEABILITY);
 
     }
 

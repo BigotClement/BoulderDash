@@ -6,6 +6,7 @@ package mobile;
 import java.awt.Image;
 
 import entity.AnimateGif;
+import entity.Permeability;
 
 public class Rock extends MobileEntity {
 
@@ -13,10 +14,12 @@ public class Rock extends MobileEntity {
 
     private static String FOLDER = "sprites\\Mobile\\Rock";
 
+    private static Permeability PERMEABILITY = Permeability.BLOCKING;
+
     private AnimateGif animateGif;
 
     public Rock() {
-        super(SPRITE, FOLDER);
+        super(SPRITE, FOLDER, PERMEABILITY);
         this.setImage(FOLDER);
     }
 

@@ -5,6 +5,7 @@ package mobile;
 
 import java.awt.Point;
 import entity.Entity;
+import entity.Permeability;
 
 public abstract class MobileEntity extends Entity {
 
@@ -15,8 +16,8 @@ public abstract class MobileEntity extends Entity {
     /**
      * @param sprite
      */
-    public MobileEntity(char sprite, String folder) {
-        super(sprite);
+    public MobileEntity(char sprite, String folder, final Permeability permeability) {
+        super(sprite, permeability);
         this.setFolder(folder);
         this.position = new Point();
     }

@@ -5,12 +5,14 @@ package entity;
 
 public abstract class Entity implements IEntity {
     private char sprite;
+    private Permeability permeability;
 
     /**
      * @param sprite
      */
-    public Entity(char sprite) {
+    public Entity(char sprite, final Permeability permeability) {
         this.setSprite(sprite);
+        this.setPermeability(permeability);
     }
 
     /**
@@ -24,6 +26,14 @@ public abstract class Entity implements IEntity {
     @Override
     public char getSprite() {
         return this.sprite;
+    }
+
+    public Permeability getPermeability() {
+        return this.permeability;
+    }
+
+    public void setPermeability(Permeability permeability) {
+        this.permeability = permeability;
     }
 
 }

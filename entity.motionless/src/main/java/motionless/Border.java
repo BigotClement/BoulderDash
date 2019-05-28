@@ -3,13 +3,16 @@
  */
 package motionless;
 
+import entity.Permeability;
+
 public class Border extends MotionlessEntity {
 
     private static String IMAGE = "sprites\\Motionless\\border.png";
     private static char SPRITE = '#';
+    private static Permeability PERMEABILITY = Permeability.BLOCKING;
 
     public Border() {
-        super(SPRITE, IMAGE);
+        super(SPRITE, IMAGE, PERMEABILITY);
     }
 
     @Override
