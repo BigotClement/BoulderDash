@@ -27,7 +27,7 @@ public class Character extends MobileEntity {
 
     @Override
     public void setImage(String folder) {
-        this.animateGif = new AnimateGif(folder, 200);
+        this.animateGif = new AnimateGif(folder, 500);
     }
 
     @Override

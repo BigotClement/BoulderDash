@@ -24,7 +24,11 @@ public interface IEntity {
 
     int getY();
 
-    void setY(int i);
+    void setY(int y);
+
+    int getX();
+
+    void setX(int x);
 
     void setHasMoved();
 

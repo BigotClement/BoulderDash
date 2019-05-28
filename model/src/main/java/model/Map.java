@@ -4,11 +4,9 @@
 package model;
 
 import java.util.Observable;
-
 import contract.IMap;
 import entity.Entity;
 import entity.IEntity;
-import mobile.MobileEntity;
 import mobile.MobileEntityFactory;
 import motionless.MotionlessEntityFactory;
 
@@ -61,6 +59,46 @@ public class Map extends Observable implements IMap {
         return this.height;
     }
 
+    @Override
+    public void moveDown(IEntity mobile) {
+        if ((mobile.getY() + 1) < this.getMap().length) {
+            this.getMap()[mobile.getY() + 1][mobile.getX()] = this.getMap()[mobile.getY()][mobile.getX()];
+            this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
+            mobile.setY(mobile.getY() + 1);
+            this.fillView();
+        }
+    }
+
+    @Override
+    public void moveLeft(IEntity mobile) {
+        if ((mobile.getX() - 1) >= 0) {
+            this.getMap()[mobile.getY()][mobile.getX() - 1] = this.getMap()[mobile.getY()][mobile.getX()];
+            this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
+            mobile.setX(mobile.getX() - 1);
+            this.fillView();
+        }
+    }
+
+    @Override
+    public void moveRight(IEntity mobile) {
+        if ((mobile.getX() + 1) < this.getMap()[0].length) {
+            this.getMap()[mobile.getY()][mobile.getX() + 1] = this.getMap()[mobile.getY()][mobile.getX()];
+            this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
+            mobile.setX(mobile.getX() + 1);
+            this.fillView();
+        }
+    }
+
+    @Override
+    public void moveUp(IEntity mobile) {
+        if ((mobile.getY() - 1) >= 0) {
+            this.getMap()[mobile.getY() - 1][mobile.getX()] = this.getMap()[mobile.getY()][mobile.getX()];
+            this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
+            mobile.setY(mobile.getY() - 1);
+            this.fillView();
+        }
+    }
+
     private IEntity[][] getMap() {
         return this.map;
     }
@@ -69,6 +107,19 @@ public class Map extends Observable implements IMap {
     public Observable getObservable() {
 
         return this;
+    }
+
+    @Override
+    public IEntity findCharacter() {
+        int x = 0, y = 0;
+        for (y = 0; y < this.getMap().length; y++) {
+            for (x = 0; x < this.getMap()[y].length; x++) {
+                if (this.getMap()[y][x].getClass() == MobileEntityFactory.createCharacter().getClass()) {
+                    return this.getMap()[y][x];
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -122,6 +173,8 @@ public class Map extends Observable implements IMap {
             this.getMap()[y][x] = MotionlessEntityFactory.createEntity(c);
         } else if (MobileEntityFactory.createEntity(c) != null) {
             this.getMap()[y][x] = MobileEntityFactory.createEntity(c);
+            this.getMap()[y][x].setY(y);
+            this.getMap()[y][x].setX(x);
         } else {
             NullPointerException e = new NullPointerException();
             e.printStackTrace();

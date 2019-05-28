@@ -32,7 +32,6 @@ public class Rock extends MobileEntity {
 
     @Override
     public void setHasMoved() {
-        // TODO Auto-generated method stub
 
     }
 

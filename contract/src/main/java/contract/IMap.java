@@ -47,4 +47,14 @@ public interface IMap {
      */
     void setWidth(int width);
 
+    void moveDown(IEntity mobile);
+
+    void moveLeft(IEntity mobile);
+
+    void moveRight(IEntity mobile);
+
+    void moveUp(IEntity mobile);
+
+    IEntity findCharacter();
+
 }

@@ -10,7 +10,7 @@ public abstract class MobileEntity extends Entity {
 
     private String folder;
 
-    private Point position;
+    protected Point position;
 
     /**
      * @param sprite
@@ -19,26 +19,6 @@ public abstract class MobileEntity extends Entity {
         super(sprite);
         this.setFolder(folder);
         this.position = new Point();
-    }
-
-    public void moveDown() {
-        this.setY(this.getY() - 1);
-        this.setHasMoved();
-    }
-
-    public void moveLeft() {
-        this.setY(this.getY() - 1);
-        this.setHasMoved();
-    }
-
-    public void moveRight() {
-        this.setY(this.getY() + 1);
-        this.setHasMoved();
-    }
-
-    public void moveUp() {
-        this.setY(this.getY() + 1);
-        this.setHasMoved();
     }
 
     @Override
@@ -51,10 +31,12 @@ public abstract class MobileEntity extends Entity {
         this.folder = folder;
     }
 
+    @Override
     public final int getX() {
         return this.getPosition().x;
     }
 
+    @Override
     public final void setX(int x) {
         this.getPosition().x = x;
     }

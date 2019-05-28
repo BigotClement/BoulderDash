@@ -44,7 +44,19 @@ public class Exit extends MotionlessEntity {
     }
 
     @Override
-    public void setY(int i) {
+    public void setY(int y) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public int getX() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public void setX(int x) {
         // TODO Auto-generated method stub
 
     }
@@ -54,5 +66,4 @@ public class Exit extends MotionlessEntity {
         // TODO Auto-generated method stub
 
     }
-
 }
