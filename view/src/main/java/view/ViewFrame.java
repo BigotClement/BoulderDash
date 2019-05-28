@@ -134,7 +134,7 @@ class ViewFrame extends JFrame implements IViewFrame, KeyListener {
         this.setResizable(true);
         this.addKeyListener(this);
         this.setContentPane(new ViewPanel(this));
-        this.setSize(500, 500);
+        this.setSize(1000, 1000);
         this.setLocationRelativeTo(null);
     }
 

@@ -15,7 +15,7 @@ import contract.IModel;
  */
 public final class Model extends Observable implements IModel {
 
-    private int mapID = 1;
+    private int mapID = 2;
 
     private IMap map;
 
