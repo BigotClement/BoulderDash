@@ -51,7 +51,6 @@ public final class View implements IView, Runnable {
     }
 
     public Object getController() {
-        // TODO Auto-generated method stub
         return null;
     }
 

@@ -5,6 +5,7 @@ package view;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
@@ -32,6 +33,11 @@ public class ViewTest {
     @Test
     public void testView() {
         assertNotNull(this.view);
+    }
+
+    @Test
+    public void testGetViewFrame() {
+        assertNull(this.view.getController());
     }
 
 }
