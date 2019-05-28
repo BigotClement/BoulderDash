@@ -32,4 +32,8 @@ public interface IEntity {
 
     void setHasMoved();
 
+    Permeability getPermeability();
+
+    void setPermeability(Permeability permeability);
+
 }

@@ -14,10 +14,6 @@ public class ControllerCharacter extends Controller {
         super(view, model);
     }
 
-    public void checkMove() {
-
-    }
-
     @Override
     public void moveSet(KeyEvent key) {
         switch (key.getKeyChar()) {

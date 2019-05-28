@@ -28,10 +28,12 @@ public abstract class Entity implements IEntity {
         return this.sprite;
     }
 
+    @Override
     public Permeability getPermeability() {
         return this.permeability;
     }
 
+    @Override
     public void setPermeability(Permeability permeability) {
         this.permeability = permeability;
     }

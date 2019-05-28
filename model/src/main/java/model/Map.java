@@ -7,6 +7,7 @@ import java.util.Observable;
 import contract.IMap;
 import entity.Entity;
 import entity.IEntity;
+import entity.Permeability;
 import mobile.MobileEntityFactory;
 import motionless.MotionlessEntityFactory;
 
@@ -60,8 +61,19 @@ public class Map extends Observable implements IMap {
     }
 
     @Override
+    public boolean checkMove(IEntity mobile, int x, int y) {
+        if (mobile.getClass() == MobileEntityFactory.createCharacter().getClass()) {
+            if (this.getMap()[y][x].getPermeability() != Permeability.BLOCKING) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
+    @Override
     public void moveDown(IEntity mobile) {
-        if ((mobile.getY() + 1) < this.getMap().length) {
+        if (this.checkMove(mobile, mobile.getX(), mobile.getY() + 1) && ((mobile.getY() + 1) < this.getMap().length)) {
             this.getMap()[mobile.getY() + 1][mobile.getX()] = this.getMap()[mobile.getY()][mobile.getX()];
             this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
             mobile.setY(mobile.getY() + 1);
@@ -71,7 +83,7 @@ public class Map extends Observable implements IMap {
 
     @Override
     public void moveLeft(IEntity mobile) {
-        if ((mobile.getX() - 1) >= 0) {
+        if (this.checkMove(mobile, mobile.getX() - 1, mobile.getY()) && ((mobile.getX() - 1) >= 0)) {
             this.getMap()[mobile.getY()][mobile.getX() - 1] = this.getMap()[mobile.getY()][mobile.getX()];
             this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
             mobile.setX(mobile.getX() - 1);
@@ -81,7 +93,7 @@ public class Map extends Observable implements IMap {
 
     @Override
     public void moveRight(IEntity mobile) {
-        if ((mobile.getX() + 1) < this.getMap()[0].length) {
+        if (this.checkMove(mobile, mobile.getX() + 1, mobile.getY()) && ((mobile.getX() + 1) < this.getMap()[0].length)) {
             this.getMap()[mobile.getY()][mobile.getX() + 1] = this.getMap()[mobile.getY()][mobile.getX()];
             this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
             mobile.setX(mobile.getX() + 1);
@@ -91,7 +103,7 @@ public class Map extends Observable implements IMap {
 
     @Override
     public void moveUp(IEntity mobile) {
-        if ((mobile.getY() - 1) >= 0) {
+        if (this.checkMove(mobile, mobile.getX(), mobile.getY() - 1) && ((mobile.getY() - 1) >= 0)) {
             this.getMap()[mobile.getY() - 1][mobile.getX()] = this.getMap()[mobile.getY()][mobile.getX()];
             this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
             mobile.setY(mobile.getY() - 1);

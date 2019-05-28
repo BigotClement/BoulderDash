@@ -57,4 +57,6 @@ public interface IMap {
 
     IEntity findCharacter();
 
+    boolean checkMove(IEntity mobile, int x, int y);
+
 }
