@@ -8,6 +8,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
+import java.awt.Image;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +22,7 @@ public class AnimateGifTest {
 
     @Before
     public void setUp() throws Exception {
-        this.animateGif = new AnimateGif("", 150);
+        this.animateGif = new AnimateGif("frames_gif", 150);
     }
 
     @After
@@ -34,12 +36,12 @@ public class AnimateGifTest {
 
     @Test
     public void testGetFolder() {
-        assertEquals("", this.animateGif.getFolder());
+        assertEquals("frames_gif", this.animateGif.getFolder());
     }
 
     @Test
     public void testGetGif() {
-        assertNull(this.animateGif.getGif());
+        assertEquals(Image[].class, this.animateGif.getGif().getClass());
     }
 
     @Test
@@ -54,7 +56,7 @@ public class AnimateGifTest {
 
     @Test
     public void testLoadSprites() {
-        fail("Not yet implemented");
+        assertNotNull(this.animateGif.getGif());
     }
 
     @Test
