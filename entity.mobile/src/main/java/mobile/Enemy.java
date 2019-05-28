@@ -19,6 +19,7 @@ public class Enemy extends MobileEntity {
 
     public Enemy() {
         super(SPRITE, s_ran);
+        this.setImage(s_ran);
     }
 
     @Override
@@ -27,8 +28,8 @@ public class Enemy extends MobileEntity {
     }
 
     @Override
-    public void setImage(String image) {
-        this.animateGif = new AnimateGif(s_ran, 200);
+    public void setImage(String folder) {
+        this.animateGif = new AnimateGif(folder, 200);
     }
 
 }

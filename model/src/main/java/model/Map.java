@@ -39,6 +39,21 @@ public class Map implements IMap {
                 this.getViewMap()[y][x] = MotionlessEntityFactory.createDestructibleBlock();
             }
         }
+        for (int y = 0; y < this.getViewMap().length; y++) {
+            for (int x = 0; x < this.getViewMap()[y].length; x++) {
+                try {
+                    if ((y < this.getMap().length) && (x < this.getMap()[y].length)
+                            && (MotionlessEntityFactory.createEntity(this.getMap()[y][x].getSprite()) != null)) {
+                        this.getViewMap()[y][x] = MotionlessEntityFactory.createEntity(this.getMap()[y][x].getSprite());
+                    } else if ((y < this.getMap().length) && (x < this.getMap()[y].length)
+                            && (MobileEntityFactory.createEntity(this.getMap()[y][x].getSprite()) != null)) {
+                        this.getViewMap()[y][x] = MobileEntityFactory.createEntity(this.getMap()[y][x].getSprite());
+                    }
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @Override

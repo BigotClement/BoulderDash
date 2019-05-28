@@ -17,7 +17,8 @@ public class Exit extends MotionlessEntity {
 
     public Exit() {
         super(SPRITE, IMAGE);
-
+        this.setImage(IMAGE);
+        this.setFolder(FOLDER);
     }
 
     @Override
@@ -27,7 +28,7 @@ public class Exit extends MotionlessEntity {
 
     @Override
     public void setFolder(String folder) {
-        this.animateGif = new AnimateGif(FOLDER, 200);
+        this.animateGif = new AnimateGif(folder, 200);
     }
 
     @Override

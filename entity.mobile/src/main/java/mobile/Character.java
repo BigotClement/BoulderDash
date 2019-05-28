@@ -17,6 +17,7 @@ public class Character extends MobileEntity {
 
     public Character() {
         super(SPRITE, FOLDER);
+        this.setImage(FOLDER);
     }
 
     @Override
@@ -25,8 +26,8 @@ public class Character extends MobileEntity {
     }
 
     @Override
-    public void setImage(String image) {
-        this.animateGif = new AnimateGif(FOLDER, 200);
+    public void setImage(String folder) {
+        this.animateGif = new AnimateGif(folder, 200);
     }
 
 }
