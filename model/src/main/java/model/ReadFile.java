@@ -61,24 +61,22 @@ public class ReadFile {
             char[] tmp = this.lines.get(i).toCharArray(); // on ajoute dans un tableau temporaire la ligne suivante
             for (int j = 0; j < this.getWidth(); j++) {
                 System.out.print(tmp[j]);
-                this.insertIntoDB(this.getMapID(), "test", "" + tmp[j], i, j, this.getWidth(), this.getHeight());
+                this.insertIntoDB(this.getMapID(), "" + tmp[j], i, j, this.getWidth(), this.getHeight());
             }
             System.out.println();
         }
     }
 
-    public void insertIntoDB(int p_MapID, String p_Name, String p_Sprite, int p_posY, int p_posX, int p_MapWidth,
-            int p_MapHeight) {
+    public void insertIntoDB(int p_MapID, String p_Sprite, int p_posY, int p_posX, int p_MapWidth, int p_MapHeight) {
         try {
-            final String sql = "{call Insert_Map(?,?,?,?,?,?,?)}";
+            final String sql = "{call Insert_Map(?,?,?,?,?,?)}";
             CallableStatement call = DBConnection.getInstance().getConnection().prepareCall(sql);
             call.setInt(1, p_MapID);
-            call.setString(2, p_Name);
-            call.setString(3, p_Sprite);
-            call.setInt(4, p_posY);
-            call.setInt(5, p_posX);
-            call.setInt(6, p_MapWidth);
-            call.setInt(7, p_MapHeight);
+            call.setString(2, p_Sprite);
+            call.setInt(3, p_posY);
+            call.setInt(4, p_posX);
+            call.setInt(5, p_MapWidth);
+            call.setInt(6, p_MapHeight);
             call.execute();
         } catch (final SQLException e) {
             e.printStackTrace();
@@ -129,7 +127,7 @@ public class ReadFile {
             if (resultSet.first()) {
                 this.setWidth(resultSet.getInt("MapWidth"));
                 this.setHeight(resultSet.getInt("MapHeight"));
-                this.setMap(new char[this.getWidth()][this.getHeight()]);
+                this.setMap(new char[this.getHeight()][this.getWidth()]);
                 this.getMap()[resultSet.getInt("posY")][resultSet.getInt("posX")] = resultSet.getString("Sprite")
                         .charAt(0);
                 while (resultSet.next()) {
