@@ -23,7 +23,7 @@ public class ControllerCharacter extends Controller {
         switch (key.getKeyChar()) {
             case 'z':
                 System.out.println(key.getKeyChar());
-                // this.getModel().getMap().moveUp(this.character);
+                this.getModel().getMap().moveUp();
                 break;
             case 'q':
                 // this.getModel().getMap().moveRight(this.character);
