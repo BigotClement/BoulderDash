@@ -24,14 +24,6 @@ public interface IMap {
 
     int getWidth();
 
-    void moveDown(IEntity mobileEntity);
-
-    void moveLeft(IEntity mobileEntity);
-
-    void moveRight(IEntity mobileEntity);
-
-    void moveUp(IEntity mobileEntity);
-
     /**
      * @param height
      */

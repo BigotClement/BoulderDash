@@ -6,6 +6,7 @@ package mobile;
 import java.awt.Point;
 
 import entity.Entity;
+import entity.IEntity;
 
 public abstract class MobileEntity extends Entity {
 
@@ -22,6 +23,26 @@ public abstract class MobileEntity extends Entity {
         super(sprite);
         this.setFolder(folder);
         this.position = new Point();
+    }
+
+    public void moveDown(IEntity mobileEntity) {
+        mobileEntity.setY(mobileEntity.getY() - 1);
+        mobileEntity.setHasMoved();
+    }
+
+    public void moveLeft(IEntity mobileEntity) {
+        mobileEntity.setY(mobileEntity.getY() - 1);
+        mobileEntity.setHasMoved();
+    }
+
+    public void moveRight(IEntity mobileEntity) {
+        mobileEntity.setY(mobileEntity.getY() + 1);
+        mobileEntity.setHasMoved();
+    }
+
+    public void moveUp(IEntity mobileEntity) {
+        mobileEntity.setY(mobileEntity.getY() + 1);
+        mobileEntity.setHasMoved();
     }
 
     @Override
@@ -42,10 +63,12 @@ public abstract class MobileEntity extends Entity {
         this.getPosition().x = x;
     }
 
+    @Override
     public final int getY() {
         return this.getPosition().y;
     }
 
+    @Override
     public final void setY(int y) {
         this.getPosition().y = y;
     }

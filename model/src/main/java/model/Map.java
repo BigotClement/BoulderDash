@@ -99,30 +99,6 @@ public class Map extends Observable implements IMap {
         return this.width;
     }
 
-    @Override
-    public void moveDown(IEntity mobileEntity) {
-        mobileEntity.setY(mobileEntity.getY() - 1);
-        mobileEntity.setHasMoved();
-    }
-
-    @Override
-    public void moveLeft(IEntity mobileEntity) {
-        mobileEntity.setY(mobileEntity.getY() - 1);
-        mobileEntity.setHasMoved();
-    }
-
-    @Override
-    public void moveRight(IEntity mobileEntity) {
-        mobileEntity.setY(mobileEntity.getY() + 1);
-        mobileEntity.setHasMoved();
-    }
-
-    @Override
-    public void moveUp(IEntity mobileEntity) {
-        mobileEntity.setY(mobileEntity.getY() + 1);
-        mobileEntity.setHasMoved();
-    }
-
     /**
      * @param height
      */
