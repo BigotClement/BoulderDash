@@ -4,10 +4,6 @@
 package model.database;
 
 import static org.junit.Assert.*;
-
-import java.awt.image.DataBufferInt;
-import java.sql.Connection;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

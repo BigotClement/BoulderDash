@@ -63,6 +63,7 @@ public class ReadFileTest {
         assertEquals("Map1.txt", this.readFile.getFilename());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void testGetMap() {
         char[][] map = { { 'a', 'z' }, { 'e', 'r' }, { 't', 'y' } };
@@ -70,6 +71,7 @@ public class ReadFileTest {
         assertEquals(map, this.readFile.getMap());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void testSetMap() {
         char[][] map = { { 'a', 'z' }, { 'e', 'r' }, { 't', 'y' } };
