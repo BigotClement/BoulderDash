@@ -14,6 +14,7 @@ import org.junit.Test;
 public class EntityTest {
 
     private Entity entity = null;
+    private char letter;
 
     @Before
     public void setUp() throws Exception {
@@ -76,6 +77,11 @@ public class EntityTest {
     @Test
     public void testGetSprite() {
         assertEquals('e', this.entity.getSprite());
+    }
+
+    @Test
+    public void TestEntity() {
+        assertNotNull(this.letter);
     }
 
 }

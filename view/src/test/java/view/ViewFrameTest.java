@@ -71,6 +71,46 @@ public class ViewFrameTest extends TestCase {
         assertEquals(this.model.getClass(), this.viewFrame.getModel().getClass());
     }
 
+    public void testSetModel() {
+        // fail("Not yet implemented");
+        IModel model = new IModel() {
+
+            @Override
+            public Observable getObservable() {
+                // TODO Auto-generated method stub
+                return null;
+            }
+
+            @Override
+            public int getMapID() {
+                // TODO Auto-generated method stub
+                return 0;
+            }
+
+            @Override
+            public void setMapID(int mapID) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public IMap getMap() {
+                // TODO Auto-generated method stub
+                return null;
+            }
+
+            @Override
+            public void setMap(IMap map) {
+                // TODO Auto-generated method stub
+
+            }
+
+        };
+
+        this.viewFrame.setModel(model);
+        assertEquals(model.getClass(), this.viewFrame.getModel().getClass());
+    }
+
     @Test
     public void testKeyPressed() {
         KeyEvent key = new KeyEvent(new Component() {
