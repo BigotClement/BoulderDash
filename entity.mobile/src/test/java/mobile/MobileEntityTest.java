@@ -45,4 +45,24 @@ public class MobileEntityTest {
         assertEquals("", this.mobileEntity.getFolder());
     }
 
+    @Test
+    public void testGetX() {
+
+    }
+
+    @Test
+    public void testGetY() {
+
+    }
+
+    @Test
+    public void testSetX() {
+
+    }
+
+    @Test
+    public void testSetY() {
+
+    }
+
 }
