@@ -1,7 +1,9 @@
 /*
- * 
+ *
  */
 package controller;
+
+import java.awt.event.KeyEvent;
 
 import contract.IModel;
 import contract.IView;
@@ -10,12 +12,30 @@ public class ControllerCharacter extends Controller {
 
     public ControllerCharacter(IView view, IModel model) {
         super(view, model);
-        // TODO Auto-generated constructor stub
     }
 
     public void checkMove() {
-        // TODO - implement ControllerCharacter.checkMove
-        throw new UnsupportedOperationException();
+
     }
 
+    @Override
+    public void moveSet(KeyEvent key) {
+        switch (key.getKeyChar()) {
+            case 'z':
+                System.out.println(key.getKeyChar());
+                // this.getModel().getMap().moveUp(this.character);
+                break;
+            case 'q':
+                // this.getModel().getMap().moveRight(this.character);
+                break;
+            case 's':
+                // this.getModel().getMap().moveDown(this.character);
+                break;
+            case 'd':
+                // this.getModel().getMap().moveLeft(this.character);
+                break;
+            default:
+                break;
+        }
+    }
 }

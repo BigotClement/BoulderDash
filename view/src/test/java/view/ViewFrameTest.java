@@ -74,6 +74,11 @@ public class ViewFrameTest extends TestCase {
     @Test
     public void testKeyPressed() {
         KeyEvent key = new KeyEvent(new Component() {
+
+            /**
+             *
+             */
+            private static final long serialVersionUID = -6634727246253104738L;
         }, 0, 0, 0, 0, 'z');
         assertEquals('z', key.getKeyChar());
     }
@@ -81,6 +86,11 @@ public class ViewFrameTest extends TestCase {
     @Test
     public void testKeyReleased() {
         KeyEvent key = new KeyEvent(new Component() {
+
+            /**
+             *
+             */
+            private static final long serialVersionUID = -2862155375209402760L;
         }, 0, 0, 0, 0, 'z');
         assertEquals('z', key.getKeyChar());
     }
@@ -88,6 +98,11 @@ public class ViewFrameTest extends TestCase {
     @Test
     public void testKeyTyped() {
         KeyEvent key = new KeyEvent(new Component() {
+
+            /**
+             *
+             */
+            private static final long serialVersionUID = -374023924530956150L;
         }, 0, 0, 0, 0, 'z');
         assertEquals('z', key.getKeyChar());
     }
@@ -100,6 +115,18 @@ public class ViewFrameTest extends TestCase {
             public void control() {
                 // TODO Auto-generated method stub
 
+            }
+
+            @Override
+            public void moveSet(KeyEvent key) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public IControllerMain getControllerCharacter() {
+                // TODO Auto-generated method stub
+                return null;
             }
         };
         this.viewFrame.setController(controller);

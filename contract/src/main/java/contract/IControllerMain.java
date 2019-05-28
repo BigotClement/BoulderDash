@@ -1,4 +1,9 @@
+/*
+ *
+ */
 package contract;
+
+import java.awt.event.KeyEvent;
 
 /**
  * The Interface IController.
@@ -7,9 +12,13 @@ package contract;
  */
 public interface IControllerMain {
 
-	/**
-	 * Control.
-	 */
-	public void control();
+    /**
+     * Control.
+     */
+    void control();
+
+    void moveSet(KeyEvent key);
+
+    IControllerMain getControllerCharacter();
 
 }

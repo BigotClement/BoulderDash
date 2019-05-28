@@ -3,6 +3,8 @@
  */
 package controller;
 
+import java.awt.event.KeyEvent;
+
 import contract.IControllerMain;
 import contract.IModel;
 import contract.IView;
@@ -13,10 +15,10 @@ import contract.IView;
 public class Controller implements IControllerMain {
 
     /** The view. */
-    private IView view;
+    protected IView view;
 
     /** The model. */
-    private IModel model;
+    protected IModel model;
 
     /**
      * Instantiates a new controller.
@@ -29,6 +31,7 @@ public class Controller implements IControllerMain {
     public Controller(final IView view, final IModel model) {
         this.setView(view);
         this.setModel(model);
+
     }
 
     @Override
@@ -56,4 +59,19 @@ public class Controller implements IControllerMain {
         this.model = model;
     }
 
+    protected IModel getModel() {
+        return this.model;
+    }
+
+    @Override
+    public void moveSet(KeyEvent key) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public IControllerMain getControllerCharacter() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

@@ -3,8 +3,7 @@
  */
 package contract;
 
-public interface IView {
+public interface IViewFrame {
     void setController(IControllerMain controller);
 
-    IViewFrame getViewFrame();
 }

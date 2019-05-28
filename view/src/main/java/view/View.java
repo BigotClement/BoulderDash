@@ -3,11 +3,11 @@
  */
 package view;
 
-import java.awt.event.KeyEvent;
 import javax.swing.SwingUtilities;
 import contract.IControllerMain;
 import contract.IModel;
 import contract.IView;
+import contract.IViewFrame;
 
 /**
  * The Class View.
@@ -48,5 +48,15 @@ public final class View implements IView, Runnable {
     @Override
     public void setController(final IControllerMain controller) {
         this.viewFrame.setController(controller);
+    }
+
+    public Object getController() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public IViewFrame getViewFrame() {
+        return this.viewFrame;
     }
 }
