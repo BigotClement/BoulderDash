@@ -34,7 +34,6 @@ class ViewPanel extends JPanel implements Observer {
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -52,7 +51,7 @@ class ViewPanel extends JPanel implements Observer {
      */
     @Override
     protected void paintComponent(final Graphics graphics) {
-        graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+        // graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
         for (int y = 0; y < this.getViewFrame().getModel().getMap().getViewMap().length; y++) {
             for (int x = 0; x < this.getViewFrame().getModel().getMap().getViewMap()[y].length; x++) {
                 // (this.getViewFrame().getWidth()/this.getViewFrame().getModel().getMap().getViewMap()[y].length)

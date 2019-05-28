@@ -31,6 +31,17 @@ public final class Model extends Observable implements IModel {
         this.setMap(new Map(this.readFile.getMap()));
         this.getMap().setWidth(this.readFile.getWidth());
         this.getMap().setHeight(this.readFile.getHeight());
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    Model.this.notifyObservers();
+                    Model.this.setChanged();
+                }
+            }
+        };
+        thread.setDaemon(true);
+        thread.start();
     }
 
     /**

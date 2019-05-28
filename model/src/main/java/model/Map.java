@@ -8,11 +8,10 @@ import java.util.Observable;
 import contract.IMap;
 import entity.Entity;
 import entity.IEntity;
-import mobile.MobileEntity;
 import mobile.MobileEntityFactory;
 import motionless.MotionlessEntityFactory;
 
-public class Map implements IMap {
+public class Map extends Observable implements IMap {
 
     private int height;
     private int viewWidth = 15, viewHeight = 15;
@@ -68,7 +67,7 @@ public class Map implements IMap {
     @Override
     public Observable getObservable() {
 
-        return null;
+        return this;
     }
 
     /**
