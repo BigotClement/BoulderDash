@@ -15,6 +15,18 @@ public class MobileEntityTest {
     @Before
     public void setUp() throws Exception {
         this.mobileEntity = new MobileEntity('f', "sprites\\") {
+
+            @Override
+            public String getImage() {
+                // TODO Auto-generated method stub
+                return null;
+            }
+
+            @Override
+            public void setImage(String image) {
+                // TODO Auto-generated method stub
+
+            }
         };
     }
 

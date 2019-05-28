@@ -9,9 +9,11 @@ import entity.IEntity;
 
 public interface IMap {
 
-    int getWidth();
+    void fillView();
 
     int getHeight();
+
+    Observable getObservable();
 
     /**
      * @param x
@@ -19,19 +21,26 @@ public interface IMap {
      */
     IEntity getOnTheMapXY(int x, int y);
 
-    void setMobileHasChanged();
+    IEntity[][] getViewMap();
 
-    Observable getObservable();
+    int getWidth();
 
-    /**
-     * @param width
-     */
-    void setWidth(int width);
+    void moveDown();
+
+    void moveLeft();
+
+    void moveRight();
+
+    void moveUp();
 
     /**
      * @param height
      */
     void setHeight(int height);
+
+    void setMobileHasChanged();
+
+    void setOnTheMapXY(char c, int x, int y);
 
     /**
      * @param entity
@@ -40,16 +49,11 @@ public interface IMap {
      */
     void setOnTheMapXY(IEntity entity, int x, int y);
 
-    void fillView();
+    void setViewMap(IEntity[][] viewMap);
 
-    void moveUp();
-
-    void moveDown();
-
-    void moveRight();
-
-    void moveLeft();
-
-    void setOnTheMapXY(char c, int x, int y);
+    /**
+     * @param width
+     */
+    void setWidth(int width);
 
 }

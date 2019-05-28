@@ -13,4 +13,16 @@ public class Character extends MobileEntity {
         super(SPRITE, FOLDER);
     }
 
+    @Override
+    public String getImage() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setImage(String image) {
+        // TODO Auto-generated method stub
+
+    }
+
 }

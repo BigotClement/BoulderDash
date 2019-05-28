@@ -12,4 +12,16 @@ public class Border extends MotionlessEntity {
         super(SPRITE, IMAGE);
     }
 
+    @Override
+    public String getFolder() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void setFolder(String folder) {
+        // TODO Auto-generated method stub
+
+    }
+
 }

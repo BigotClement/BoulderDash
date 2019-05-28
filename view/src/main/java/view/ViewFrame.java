@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import contract.IControllerMain;
 import contract.IModel;
@@ -21,13 +20,13 @@ import contract.IModel;
  */
 class ViewFrame extends JFrame implements KeyListener {
 
-    /** The model. */
-    private IModel model;
+    /** The Constant serialVersionUID. */
+    private static final long serialVersionUID = -697358409737458175L;
 
     /** The controller. */
     private IControllerMain controller;
-    /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = -697358409737458175L;
+    /** The model. */
+    private IModel model;
 
     /**
      * Instantiates a new view frame.
@@ -85,44 +84,6 @@ class ViewFrame extends JFrame implements KeyListener {
     }
 
     /**
-     * Gets the controller.
-     *
-     * @return the controller
-     */
-    private IControllerMain getController() {
-        return this.controller;
-    }
-
-    /**
-     * Sets the controller.
-     *
-     * @param controller
-     *                       the new controller
-     */
-    protected void setController(final IControllerMain controller) {
-        this.controller = controller;
-    }
-
-    /**
-     * Gets the model.
-     *
-     * @return the model
-     */
-    protected IModel getModel() {
-        return this.model;
-    }
-
-    /**
-     * Sets the model.
-     *
-     * @param model
-     *                  the new model
-     */
-    private void setModel(final IModel model) {
-        this.model = model;
-    }
-
-    /**
      * Builds the view frame.
      *
      * @param model
@@ -134,18 +95,26 @@ class ViewFrame extends JFrame implements KeyListener {
         this.setResizable(false);
         this.addKeyListener(this);
         this.setContentPane(new ViewPanel(this));
-        this.setSize(400 + this.getInsets().left + this.getInsets().right,
-                60 + this.getInsets().top + this.getInsets().bottom);
+        this.setSize(500, 500);
         this.setLocationRelativeTo(null);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+    /**
+     * Gets the controller.
+     *
+     * @return the controller
      */
-    @Override
-    public void keyTyped(final KeyEvent e) {
+    private IControllerMain getController() {
+        return this.controller;
+    }
 
+    /**
+     * Gets the model.
+     *
+     * @return the model
+     */
+    protected IModel getModel() {
+        return this.model;
     }
 
     /*
@@ -164,5 +133,34 @@ class ViewFrame extends JFrame implements KeyListener {
     @Override
     public void keyReleased(final KeyEvent e) {
 
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+     */
+    @Override
+    public void keyTyped(final KeyEvent e) {
+
+    }
+
+    /**
+     * Sets the controller.
+     *
+     * @param controller
+     *                       the new controller
+     */
+    protected void setController(final IControllerMain controller) {
+        this.controller = controller;
+    }
+
+    /**
+     * Sets the model.
+     *
+     * @param model
+     *                  the new model
+     */
+    private void setModel(final IModel model) {
+        this.model = model;
     }
 }

@@ -16,6 +16,18 @@ public class MotionlessEntityTest {
     @Before
     public void setUp() throws Exception {
         this.motionlessEntity = new MotionlessEntity('e', "string") {
+
+            @Override
+            public String getFolder() {
+                // TODO Auto-generated method stub
+                return null;
+            }
+
+            @Override
+            public void setFolder(String folder) {
+                // TODO Auto-generated method stub
+
+            }
         };
     }
 

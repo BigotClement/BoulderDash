@@ -9,6 +9,8 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import entity.IEntity;
+
 /**
  * The Class ViewPanel.
  *
@@ -16,10 +18,10 @@ import javax.swing.JPanel;
  */
 class ViewPanel extends JPanel implements Observer {
 
-    /** The view frame. */
-    private ViewFrame viewFrame;
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -998294702363713521L;
+    /** The view frame. */
+    private ViewFrame viewFrame;
 
     /**
      * Instantiates a new view panel.
@@ -41,6 +43,22 @@ class ViewPanel extends JPanel implements Observer {
         return this.viewFrame;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+     */
+    @Override
+    protected void paintComponent(final Graphics graphics) {
+        graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+        for (int y = 0; y < this.getViewFrame().getModel().getMap().getViewMap().length; y++) {
+            for (int x = 0; x < this.getViewFrame().getModel().getMap().getViewMap()[y].length; x++) {
+                System.out.print(this.getViewFrame().getModel().getMap().getViewMap()[y][x].getImage());
+            }
+            System.out.println();
+        }
+
+    }
+
     /**
      * Sets the view frame.
      *
@@ -58,14 +76,5 @@ class ViewPanel extends JPanel implements Observer {
     @Override
     public void update(final Observable arg0, final Object arg1) {
         this.repaint();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
-     */
-    @Override
-    protected void paintComponent(final Graphics graphics) {
-        graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
     }
 }

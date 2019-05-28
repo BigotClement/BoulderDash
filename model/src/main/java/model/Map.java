@@ -13,10 +13,10 @@ import motionless.MotionlessEntityFactory;
 
 public class Map implements IMap {
 
-    private int width;
     private int height;
     private int viewWidth = 15, viewHeight = 15;
     private IEntity[][] map, viewMap = new Entity[this.getViewHeight()][this.getViewWidth()];
+    private int width;
 
     /**
      * @param map
@@ -32,16 +32,12 @@ public class Map implements IMap {
     }
 
     @Override
-    public int getWidth() {
-        return this.width;
-    }
-
-    /**
-     * @param width
-     */
-    @Override
-    public void setWidth(int width) {
-        this.width = width;
+    public void fillView() {
+        for (int y = 0; y < this.getViewMap().length; y++) {
+            for (int x = 0; x < this.getViewMap()[y].length; x++) {
+                this.getViewMap()[y][x] = MotionlessEntityFactory.createDestructibleBlock();
+            }
+        }
     }
 
     @Override
@@ -49,12 +45,14 @@ public class Map implements IMap {
         return this.height;
     }
 
-    /**
-     * @param height
-     */
+    private IEntity[][] getMap() {
+        return this.map;
+    }
+
     @Override
-    public void setHeight(int height) {
-        this.height = height;
+    public Observable getObservable() {
+
+        return null;
     }
 
     /**
@@ -65,6 +63,61 @@ public class Map implements IMap {
     public IEntity getOnTheMapXY(int x, int y) {
 
         return null;
+    }
+
+    public int getViewHeight() {
+        return this.viewHeight;
+    }
+
+    @Override
+    public IEntity[][] getViewMap() {
+        return this.viewMap;
+    }
+
+    public int getViewWidth() {
+        return this.viewWidth;
+    }
+
+    @Override
+    public int getWidth() {
+        return this.width;
+    }
+
+    @Override
+    public void moveDown() {
+
+    }
+
+    @Override
+    public void moveLeft() {
+
+    }
+
+    @Override
+    public void moveRight() {
+
+    }
+
+    @Override
+    public void moveUp() {
+
+    }
+
+    /**
+     * @param height
+     */
+    @Override
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    private void setMap(IEntity[][] map) {
+        this.map = map;
+    }
+
+    @Override
+    public void setMobileHasChanged() {
+
     }
 
     @Override
@@ -79,14 +132,6 @@ public class Map implements IMap {
         }
     }
 
-    private IEntity[][] getMap() {
-        return this.map;
-    }
-
-    private void setMap(IEntity[][] map) {
-        this.map = map;
-    }
-
     /**
      * @param entity
      * @param x
@@ -97,70 +142,25 @@ public class Map implements IMap {
 
     }
 
-    @Override
-    public void setMobileHasChanged() {
-
+    public void setViewHeight(int viewHeight) {
+        this.viewHeight = viewHeight;
     }
 
     @Override
-    public Observable getObservable() {
-
-        return null;
-    }
-
-    @Override
-    public void fillView() {
-        for (int y = 0; y < this.getViewMap().length; y++) {
-            for (int x = 0; x < this.getViewMap()[y].length; x++) {
-                this.getViewMap()[y][x] = MotionlessEntityFactory.createDestructibleBlock();
-                System.out.print(this.getViewMap()[y][x].getSprite());
-            }
-            System.out.println();
-        }
-    }
-
-    @Override
-    public void moveUp() {
-
-    }
-
-    @Override
-    public void moveDown() {
-
-    }
-
-    @Override
-    public void moveRight() {
-
-    }
-
-    @Override
-    public void moveLeft() {
-
-    }
-
-    public int getViewWidth() {
-        return this.viewWidth;
+    public void setViewMap(IEntity[][] viewMap) {
+        this.viewMap = viewMap;
     }
 
     public void setViewWidth(int viewWidth) {
         this.viewWidth = viewWidth;
     }
 
-    public int getViewHeight() {
-        return this.viewHeight;
-    }
-
-    public void setViewHeight(int viewHeight) {
-        this.viewHeight = viewHeight;
-    }
-
-    public IEntity[][] getViewMap() {
-        return this.viewMap;
-    }
-
-    public void setViewMap(IEntity[][] viewMap) {
-        this.viewMap = viewMap;
+    /**
+     * @param width
+     */
+    @Override
+    public void setWidth(int width) {
+        this.width = width;
     }
 
 }
