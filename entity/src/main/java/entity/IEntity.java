@@ -36,4 +36,6 @@ public interface IEntity {
 
     void setPermeability(Permeability permeability);
 
+    void setSpriteFolder(String string);
+
 }

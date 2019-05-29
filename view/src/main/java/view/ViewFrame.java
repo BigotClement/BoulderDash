@@ -153,7 +153,6 @@ class ViewFrame extends JFrame implements IViewFrame, KeyListener {
      */
     @Override
     public void keyPressed(final KeyEvent key) {
-
     }
 
     /*

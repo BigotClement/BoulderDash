@@ -30,13 +30,18 @@ public class Character extends MobileEntity {
 
     @Override
     public void setImage(String folder) {
-        this.animateGif = new AnimateGif(folder, 500);
+        this.animateGif = new AnimateGif(folder, 200);
     }
 
     @Override
     public void setHasMoved() {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public void setSpriteFolder(String folder) {
+        this.animateGif.setFolder(folder);
     }
 
 }

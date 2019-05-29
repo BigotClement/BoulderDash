@@ -39,4 +39,9 @@ public abstract class MotionlessEntity extends Entity {
         }
     }
 
+    @Override
+    public void setSpriteFolder(String folder) {
+
+    }
+
 }

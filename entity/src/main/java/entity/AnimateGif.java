@@ -36,7 +36,6 @@ public class AnimateGif implements Runnable {
     public AnimateGif(String folder, int milliseconds) {
         this.setFolder(folder);// defini le dossier
         this.setMilliseconds(milliseconds);
-        this.loadSprites();// charge les sprites dans un tableau
         Thread thread = new Thread(this);
         thread.setDaemon(true);
         thread.start();
@@ -141,6 +140,7 @@ public class AnimateGif implements Runnable {
      */
     public void setFolder(String folder) {
         this.folder = folder;
+        this.loadSprites();
     }
 
     /**

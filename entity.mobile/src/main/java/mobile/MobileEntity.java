@@ -28,6 +28,11 @@ public abstract class MobileEntity extends Entity {
     }
 
     @Override
+    public void setSpriteFolder(String folder) {
+
+    }
+
+    @Override
     public void setFolder(String folder) {
         this.folder = folder;
     }
