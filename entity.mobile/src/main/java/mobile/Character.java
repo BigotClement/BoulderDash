@@ -41,20 +41,13 @@ public class Character extends MobileEntity {
     }
 
     @Override
-    public boolean isVerified() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public void setVerified(boolean b) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
     public void setObserver(Observer observer) {
         this.animateGif.addObserver(observer);
+    }
+
+    @Override
+    public void setSpriteFolder(String folder) {
+        this.animateGif.setFolder(folder);
     }
 
 }

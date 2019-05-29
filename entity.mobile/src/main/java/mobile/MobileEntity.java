@@ -15,6 +15,8 @@ public abstract class MobileEntity extends Entity {
 
     protected Point position;
 
+    private boolean verified = false;
+
     /**
      * @param sprite
      */
@@ -76,6 +78,16 @@ public abstract class MobileEntity extends Entity {
     @Override
     public void setObserver(Observer observer) {
 
+    }
+
+    @Override
+    public boolean isVerified() {
+        return this.verified;
+    }
+
+    @Override
+    public void setVerified(boolean b) {
+        this.verified = b;
     }
 
 }

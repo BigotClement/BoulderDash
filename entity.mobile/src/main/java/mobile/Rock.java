@@ -19,8 +19,6 @@ public class Rock extends MobileEntity {
 
     private AnimateGif animateGif;
 
-    private boolean verified = false;
-
     public Rock() {
         super(SPRITE, FOLDER, PERMEABILITY);
         this.setImage(FOLDER);
@@ -39,16 +37,6 @@ public class Rock extends MobileEntity {
     @Override
     public void setHasMoved() {
 
-    }
-
-    @Override
-    public boolean isVerified() {
-        return this.verified;
-    }
-
-    @Override
-    public void setVerified(boolean verified) {
-        this.verified = verified;
     }
 
     @Override

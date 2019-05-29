@@ -3,8 +3,6 @@
  */
 package model;
 
-import java.util.Observable;
-
 import contract.IMap;
 import contract.IModel;
 
