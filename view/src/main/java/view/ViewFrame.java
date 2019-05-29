@@ -161,6 +161,6 @@ class ViewFrame extends JFrame implements IViewFrame, KeyListener {
      */
     @Override
     public void keyReleased(final KeyEvent key) {
-
+        this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Stand");
     }
 }
