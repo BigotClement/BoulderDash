@@ -4,6 +4,7 @@
 package motionless;
 
 import java.awt.Image;
+import java.util.Observer;
 
 import entity.AnimateGif;
 import entity.Permeability;
@@ -66,5 +67,10 @@ public class Star extends MotionlessEntity {
     public void setHasMoved() {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public void setObserver(Observer observer) {
+        this.animateGif.addObserver(observer);
     }
 }

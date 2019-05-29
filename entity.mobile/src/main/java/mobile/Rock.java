@@ -4,6 +4,7 @@
 package mobile;
 
 import java.awt.Image;
+import java.util.Observer;
 
 import entity.AnimateGif;
 import entity.Permeability;
@@ -40,12 +41,19 @@ public class Rock extends MobileEntity {
 
     }
 
+    @Override
     public boolean isVerified() {
-        return verified;
+        return this.verified;
     }
 
+    @Override
     public void setVerified(boolean verified) {
         this.verified = verified;
+    }
+
+    @Override
+    public void setObserver(Observer observer) {
+        this.animateGif.addObserver(observer);
     }
 
 }

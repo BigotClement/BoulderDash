@@ -4,6 +4,8 @@
 package model;
 
 import java.util.Observable;
+import java.util.Observer;
+
 import contract.IMap;
 import entity.Entity;
 import entity.IEntity;
@@ -11,7 +13,7 @@ import entity.Permeability;
 import mobile.MobileEntityFactory;
 import motionless.MotionlessEntityFactory;
 
-public class Map extends Observable implements IMap {
+public class Map extends Observable implements IMap, Observer {
 
     private int height;
     private int viewWidth = 16, viewHeight = 16;
@@ -58,6 +60,8 @@ public class Map extends Observable implements IMap {
                 }
             }
         }
+        this.setChanged();
+        this.notifyObservers();
     }
 
     @Override
@@ -210,10 +214,12 @@ public class Map extends Observable implements IMap {
             this.getMap()[y][x] = MotionlessEntityFactory.createEntity(c);
             this.getMap()[y][x].setY(y);
             this.getMap()[y][x].setX(x);
+            this.getMap()[y][x].setObserver(this);
         } else if (MobileEntityFactory.createEntity(c) != null) {
             this.getMap()[y][x] = MobileEntityFactory.createEntity(c);
             this.getMap()[y][x].setY(y);
             this.getMap()[y][x].setX(x);
+            this.getMap()[y][x].setObserver(this);
         } else {
             NullPointerException e = new NullPointerException();
             e.printStackTrace();
@@ -239,6 +245,13 @@ public class Map extends Observable implements IMap {
     @Override
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        // TODO Auto-generated method stub
+        this.setChanged();
+        this.notifyObservers();
     }
 
 }

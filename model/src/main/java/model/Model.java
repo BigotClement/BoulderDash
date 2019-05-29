@@ -13,7 +13,7 @@ import contract.IModel;
  *
  * @author Jean-Aymeric Diet
  */
-public final class Model extends Observable implements IModel {
+public final class Model implements IModel {
 
     private int mapID = 2;
 
@@ -31,31 +31,6 @@ public final class Model extends Observable implements IModel {
         this.setMap(new Map(this.readFile.getMap()));
         this.getMap().setWidth(this.readFile.getWidth());
         this.getMap().setHeight(this.readFile.getHeight());
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                while (true) {
-                    Model.this.notifyObservers();
-                    Model.this.setChanged();
-                }
-            }
-        };
-        thread.setDaemon(true);
-        thread.start();
-    }
-
-    /**
-     * Gets the observable.
-     *
-     * @return the observable
-     */
-    /*
-     * (non-Javadoc)
-     * @see contract.IModel#getObservable()
-     */
-    @Override
-    public Observable getObservable() {
-        return this;
     }
 
     @Override

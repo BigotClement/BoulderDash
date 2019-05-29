@@ -4,6 +4,7 @@
 package mobile;
 
 import java.awt.Image;
+import java.util.Observer;
 
 import entity.AnimateGif;
 import entity.Permeability;
@@ -49,6 +50,11 @@ public class Character extends MobileEntity {
     public void setVerified(boolean b) {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public void setObserver(Observer observer) {
+        this.animateGif.addObserver(observer);
     }
 
 }

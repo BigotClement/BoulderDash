@@ -4,6 +4,7 @@
 package entity;
 
 import java.awt.Image;
+import java.util.Observer;
 
 public interface IEntity {
 
@@ -41,5 +42,7 @@ public interface IEntity {
     boolean isVerified();
 
     void setVerified(boolean b);
+
+    void setObserver(Observer observer);
 
 }

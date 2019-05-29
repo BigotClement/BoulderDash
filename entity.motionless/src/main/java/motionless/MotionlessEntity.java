@@ -6,6 +6,7 @@ package motionless;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.Observer;
 
 import javax.imageio.ImageIO;
 
@@ -58,6 +59,11 @@ public abstract class MotionlessEntity extends Entity {
 
     @Override
     public void setVerified(boolean b) {
+
+    }
+
+    @Override
+    public void setObserver(Observer observer) {
 
     }
 

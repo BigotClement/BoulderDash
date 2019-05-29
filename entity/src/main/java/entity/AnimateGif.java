@@ -6,12 +6,14 @@ package entity;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.Observable;
+
 import javax.imageio.ImageIO;
 
 /**
  * The Class AnimateGif.
  */
-public class AnimateGif implements Runnable {
+public class AnimateGif extends Observable implements Runnable {
 
     /** The gif. */
     private Image[] gif = null;
@@ -66,6 +68,8 @@ public class AnimateGif implements Runnable {
         while (true) {
             for (Image element : this.getGif()) {// for en fonction de la taille du tableau gif
                 this.setImage(element);// defini l'image pour l'image suivante
+                this.setChanged();
+                this.notifyObservers();
                 try {
                     Thread.currentThread();
                     Thread.sleep(this.getMilliseconds());// attente de x millisecondes
@@ -75,6 +79,8 @@ public class AnimateGif implements Runnable {
             }
             for (int i = this.getGif().length - 2; i > 0; i--) {
                 this.setImage(this.getGif()[i]);
+                this.setChanged();
+                this.notifyObservers();
                 try {
                     Thread.currentThread();
                     Thread.sleep(this.getMilliseconds());// attente de x millisecondes

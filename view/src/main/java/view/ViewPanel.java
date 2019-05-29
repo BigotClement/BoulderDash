@@ -30,7 +30,7 @@ class ViewPanel extends JPanel implements Observer {
     public ViewPanel(final ViewFrame viewFrame) {
         this.setViewFrame(viewFrame);
         try {
-            viewFrame.getModel().getObservable().addObserver(this);
+            viewFrame.getModel().getMap().getObservable().addObserver(this);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }

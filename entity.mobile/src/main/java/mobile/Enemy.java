@@ -4,6 +4,7 @@
 package mobile;
 
 import java.awt.Image;
+import java.util.Observer;
 import java.util.Random;
 
 import entity.AnimateGif;
@@ -44,6 +45,11 @@ public class Enemy extends MobileEntity {
     public void setVerified(boolean b) {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public void setObserver(Observer observer) {
+        this.animateGif.addObserver(observer);
     }
 
 }
