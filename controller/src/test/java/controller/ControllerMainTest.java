@@ -5,11 +5,8 @@ package controller;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 
 import java.util.Observable;
-
-import javax.lang.model.type.MirroredTypeException;
 
 import org.junit.After;
 import org.junit.Before;

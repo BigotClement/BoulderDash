@@ -66,7 +66,21 @@ public class Map extends Observable implements IMap {
             if (this.getMap()[y][x].getPermeability() != Permeability.BLOCKING) {
                 return true;
             }
-            return false;
+        }
+        if (mobile.getClass() == MobileEntityFactory.createRock().getClass()) {
+            if (this.getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
+                return true;
+            }
+        }
+        if (mobile.getClass() == MobileEntityFactory.createDiamond().getClass()) {
+            if (this.getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
+                return true;
+            }
+        }
+        if (mobile.getClass() == MobileEntityFactory.createEnemy().getClass()) {
+            if (this.getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
+                return true;
+            }
         }
         return false;
     }
