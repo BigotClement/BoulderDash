@@ -65,4 +65,10 @@ public abstract class MobileEntity extends Entity {
         this.position = position;
     }
 
+    @Override
+    public void setHasMoved() {
+        // TODO Auto-generated method stub
+
+    }
+
 }

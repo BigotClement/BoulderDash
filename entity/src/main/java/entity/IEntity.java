@@ -38,4 +38,8 @@ public interface IEntity {
 
     void setSpriteFolder(String string);
 
+    boolean isVerified();
+
+    void setVerified(boolean b);
+
 }

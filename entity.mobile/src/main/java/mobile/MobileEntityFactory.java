@@ -36,13 +36,13 @@ public class MobileEntityFactory {
                 mobileEntity = createCharacter();
                 return mobileEntity;
             case 'X':
-                mobileEntity = createEnemy();
+                mobileEntity = new Enemy();
                 return mobileEntity;
             case 'O':
-                mobileEntity = createRock();
+                mobileEntity = new Rock();
                 return mobileEntity;
             case 'D':
-                mobileEntity = createDiamond();
+                mobileEntity = new Diamond();
                 return mobileEntity;
             default:
                 return null;

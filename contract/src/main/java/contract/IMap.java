@@ -22,6 +22,8 @@ public interface IMap {
 
     IEntity[][] getViewMap();
 
+    IEntity[][] getMap();
+
     int getWidth();
 
     /**
@@ -49,5 +51,9 @@ public interface IMap {
     IEntity findCharacter();
 
     boolean checkMove(IEntity mobile, int x, int y);
+
+    void moveRightDown(IEntity mobile);
+
+    void moveLeftDown(IEntity mobile);
 
 }

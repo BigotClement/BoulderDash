@@ -15,7 +15,8 @@ public class Map extends Observable implements IMap {
 
     private int height;
     private int viewWidth = 16, viewHeight = 16;
-    private IEntity[][] map, viewMap = new Entity[this.getViewHeight()][this.getViewWidth()];
+    private volatile IEntity[][] map;
+    private IEntity[][] viewMap = new Entity[this.getViewHeight()][this.getViewWidth()];
     private int width;
 
     /**
@@ -34,11 +35,6 @@ public class Map extends Observable implements IMap {
     @Override
     public void fillView() {
         IEntity character = this.findCharacter();
-        for (int y = 0; y < this.getViewMap().length; y++) {
-            for (int x = 0; x < this.getViewMap()[y].length; x++) {
-                this.getViewMap()[y][x] = MotionlessEntityFactory.createDestructibleBlock();
-            }
-        }
         for (int y = character.getY() - (this.viewHeight / 2); y < (character.getY() + (this.viewHeight / 2)); y++) {
             for (int x = character.getX() - (this.viewWidth / 2); x < (character.getX() + (this.viewWidth / 2)); x++) {
                 try {
@@ -52,6 +48,10 @@ public class Map extends Observable implements IMap {
                         this.getViewMap()[y - (character.getY() - (this.getViewHeight() / 2))][x
                                 - (character.getX() - (this.getViewWidth() / 2))] = MobileEntityFactory
                                         .createEntity(this.getMap()[y][x].getSprite());
+                    } else {
+                        this.getViewMap()[y - (character.getY() - (this.getViewHeight() / 2))][x
+                                - (character.getX() - (this.getViewWidth() / 2))] = MotionlessEntityFactory
+                                        .createDestructibleBlock();
                     }
                 } catch (NullPointerException e) {
                     e.printStackTrace();
@@ -71,7 +71,18 @@ public class Map extends Observable implements IMap {
             if (this.getMap()[y][x].getPermeability() != Permeability.BLOCKING) {
                 return true;
             }
-            return false;
+        } else if (mobile.getClass() == MobileEntityFactory.createRock().getClass()) {
+            if (this.getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
+                return true;
+            }
+        } else if (mobile.getClass() == MobileEntityFactory.createDiamond().getClass()) {
+            if (this.getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
+                return true;
+            }
+        } else if (mobile.getClass() == MobileEntityFactory.createEnemy().getClass()) {
+            if (this.getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
+                return true;
+            }
         }
         return false;
     }
@@ -117,7 +128,20 @@ public class Map extends Observable implements IMap {
         }
     }
 
-    private IEntity[][] getMap() {
+    @Override
+    public void moveLeftDown(IEntity mobile) {
+        this.moveLeft(mobile);
+        this.moveDown(mobile);
+    }
+
+    @Override
+    public void moveRightDown(IEntity mobile) {
+        this.moveRight(mobile);
+        this.moveDown(mobile);
+    }
+
+    @Override
+    public IEntity[][] getMap() {
         return this.map;
     }
 
@@ -184,6 +208,8 @@ public class Map extends Observable implements IMap {
     public void setOnTheMapXY(char c, int x, int y) {
         if (MotionlessEntityFactory.createEntity(c) != null) {
             this.getMap()[y][x] = MotionlessEntityFactory.createEntity(c);
+            this.getMap()[y][x].setY(y);
+            this.getMap()[y][x].setX(x);
         } else if (MobileEntityFactory.createEntity(c) != null) {
             this.getMap()[y][x] = MobileEntityFactory.createEntity(c);
             this.getMap()[y][x].setY(y);

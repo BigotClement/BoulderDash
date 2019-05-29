@@ -35,7 +35,13 @@ public class Enemy extends MobileEntity {
     }
 
     @Override
-    public void setHasMoved() {
+    public boolean isVerified() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void setVerified(boolean b) {
         // TODO Auto-generated method stub
 
     }

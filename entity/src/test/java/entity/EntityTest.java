@@ -73,6 +73,12 @@ public class EntityTest {
                 // TODO Auto-generated method stub
 
             }
+
+            @Override
+            public void setSpriteFolder(String string) {
+                // TODO Auto-generated method stub
+
+            }
         };
     }
 

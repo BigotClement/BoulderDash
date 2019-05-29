@@ -44,4 +44,21 @@ public abstract class MotionlessEntity extends Entity {
 
     }
 
+    @Override
+    public void setHasMoved() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public boolean isVerified() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void setVerified(boolean b) {
+
+    }
+
 }

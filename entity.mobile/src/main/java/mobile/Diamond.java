@@ -18,6 +18,8 @@ public class Diamond extends MobileEntity {
 
     private AnimateGif animateGif;
 
+    private boolean verified = false;
+
     public Diamond() {
         super(SPRITE, FOLDER, PERMEABILITY);
         this.setImage(FOLDER);
@@ -37,6 +39,14 @@ public class Diamond extends MobileEntity {
     public void setHasMoved() {
         // TODO Auto-generated method stub
 
+    }
+
+    public boolean isVerified() {
+        return this.verified;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
     }
 
 }
