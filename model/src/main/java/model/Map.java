@@ -93,7 +93,8 @@ public class Map extends Observable implements IMap {
 
     @Override
     public void moveRight(IEntity mobile) {
-        if (this.checkMove(mobile, mobile.getX() + 1, mobile.getY()) && ((mobile.getX() + 1) < this.getMap()[0].length)) {
+        if (this.checkMove(mobile, mobile.getX() + 1, mobile.getY())
+                && ((mobile.getX() + 1) < this.getMap()[0].length)) {
             this.getMap()[mobile.getY()][mobile.getX() + 1] = this.getMap()[mobile.getY()][mobile.getX()];
             this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
             mobile.setX(mobile.getX() + 1);
@@ -111,7 +112,7 @@ public class Map extends Observable implements IMap {
         }
     }
 
-    private IEntity[][] getMap() {
+    public IEntity[][] getMap() {
         return this.map;
     }
 
@@ -141,7 +142,7 @@ public class Map extends Observable implements IMap {
     @Override
     public IEntity getOnTheMapXY(int x, int y) {
 
-        return null;
+        return this.getMap()[y][x];
     }
 
     public int getViewHeight() {
@@ -170,13 +171,8 @@ public class Map extends Observable implements IMap {
         this.height = height;
     }
 
-    private void setMap(IEntity[][] map) {
+    public void setMap(IEntity[][] map) {
         this.map = map;
-    }
-
-    @Override
-    public void setMobileHasChanged() {
-
     }
 
     @Override
@@ -191,16 +187,6 @@ public class Map extends Observable implements IMap {
             NullPointerException e = new NullPointerException();
             e.printStackTrace();
         }
-    }
-
-    /**
-     * @param entity
-     * @param x
-     * @param y
-     */
-    @Override
-    public void setOnTheMapXY(IEntity entity, int x, int y) {
-
     }
 
     public void setViewHeight(int viewHeight) {

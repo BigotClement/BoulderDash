@@ -47,7 +47,8 @@ public class ModelTest {
 
     @Test
     public void testSetMap() {
-        this.model.setMap(new Map(null));
+        char[][] map = { { 'D' } };
+        this.model.setMap(new Map(map));
         assertEquals(Map.class, this.model.getMap().getClass());
     }
 

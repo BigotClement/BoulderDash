@@ -9,13 +9,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import entity.Entity;
+import entity.IEntity;
+import mobile.MobileEntityFactory;
+import motionless.MotionlessEntityFactory;
+
 public class MapTest {
 
     private Map map;
 
     @Before
     public void setUp() throws Exception {
-        char[][] map = { { 'a' } };
+        char[][] map = { { 'H' } };
         this.map = new Map(map);
     }
 
@@ -25,28 +30,31 @@ public class MapTest {
 
     @Test
     public void testMap() {
-        Map map = new Map(null);
+        char[][] map1 = { { 'X' } };
+        Map map = new Map(map1);
         assertEquals(Map.class, map.getClass());
     }
 
     @Test
     public void testGetMap() {
-        fail("Not yet implemented");
+        assertNotNull(this.map.getMap());
     }
 
     @Test
     public void testSetMap() {
-        fail("Not yet implemented");
+        IEntity[][] map = { { MotionlessEntityFactory.createBorder() } };
+        this.map.setMap(map);
+        assertEquals(MotionlessEntityFactory.createBorder().getClass(), this.map.getMap()[0][0].getClass());
     }
 
     @Test
     public void testGetViewMap() {
-        fail("Not yet implemented");
+        assertEquals(Entity[][].class, this.map.getViewMap().getClass());
     }
 
     @Test
     public void testSetViewMap() {
-        fail("Not yet implemented");
+        assertNotNull(this.map.getViewMap());
     }
 
     @Test
@@ -95,47 +103,19 @@ public class MapTest {
 
     @Test
     public void testGetOnTheMapXY() {
-        fail("Not yet implemented");
+        assertNotNull(this.map.getOnTheMapXY(0, 0));
     }
 
     @Test
     public void testSetOnTheMapXYCharIntInt() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testSetOnTheMapXYIEntityIntInt() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testSetMobileHasChanged() {
-        fail("Not yet implemented");
+        this.map.setOnTheMapXY('O', 0, 0);
+        this.map.getOnTheMapXY(0, 0).getClass();
+        assertEquals(MobileEntityFactory.createRock().getClass(), this.map.getOnTheMapXY(0, 0).getClass());
     }
 
     @Test
     public void testFillView() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testMoveUp() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testMoveDown() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testMoveRight() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testMoveLeft() {
-        fail("Not yet implemented");
+        assertNotNull(this.map.getViewMap());
     }
 
 }
