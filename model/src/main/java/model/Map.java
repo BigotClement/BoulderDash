@@ -9,7 +9,6 @@ import java.util.Observer;
 import contract.IMap;
 import entity.Entity;
 import entity.IEntity;
-import entity.Permeability;
 import mobile.MobileEntityFactory;
 import motionless.MotionlessEntityFactory;
 
@@ -65,81 +64,6 @@ public class Map extends Observable implements IMap, Observer {
     @Override
     public int getHeight() {
         return this.height;
-    }
-
-    @Override
-    public boolean checkMove(IEntity mobile, int x, int y) {
-        if (mobile.getClass() == MobileEntityFactory.createCharacter().getClass()) {
-            if (this.getMap()[y][x].getPermeability() != Permeability.BLOCKING) {
-                return true;
-            }
-        } else if (mobile.getClass() == MobileEntityFactory.createRock().getClass()) {
-            if (this.getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
-                return true;
-            }
-        } else if (mobile.getClass() == MobileEntityFactory.createDiamond().getClass()) {
-            if (this.getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
-                return true;
-            }
-        } else if (mobile.getClass() == MobileEntityFactory.createEnemy().getClass()) {
-            if (this.getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public void moveDown(IEntity mobile) {
-        if (this.checkMove(mobile, mobile.getX(), mobile.getY() + 1) && ((mobile.getY() + 1) < this.getMap().length)) {
-            this.getMap()[mobile.getY() + 1][mobile.getX()] = this.getMap()[mobile.getY()][mobile.getX()];
-            this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
-            mobile.setY(mobile.getY() + 1);
-            this.fillView();
-        }
-    }
-
-    @Override
-    public void moveLeft(IEntity mobile) {
-        if (this.checkMove(mobile, mobile.getX() - 1, mobile.getY()) && ((mobile.getX() - 1) >= 0)) {
-            this.getMap()[mobile.getY()][mobile.getX() - 1] = this.getMap()[mobile.getY()][mobile.getX()];
-            this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
-            mobile.setX(mobile.getX() - 1);
-            this.fillView();
-        }
-    }
-
-    @Override
-    public void moveRight(IEntity mobile) {
-        if (this.checkMove(mobile, mobile.getX() + 1, mobile.getY())
-                && ((mobile.getX() + 1) < this.getMap()[0].length)) {
-            this.getMap()[mobile.getY()][mobile.getX() + 1] = this.getMap()[mobile.getY()][mobile.getX()];
-            this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
-            mobile.setX(mobile.getX() + 1);
-            this.fillView();
-        }
-    }
-
-    @Override
-    public void moveUp(IEntity mobile) {
-        if (this.checkMove(mobile, mobile.getX(), mobile.getY() - 1) && ((mobile.getY() - 1) >= 0)) {
-            this.getMap()[mobile.getY() - 1][mobile.getX()] = this.getMap()[mobile.getY()][mobile.getX()];
-            this.getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
-            mobile.setY(mobile.getY() - 1);
-            this.fillView();
-        }
-    }
-
-    @Override
-    public void moveLeftDown(IEntity mobile) {
-        this.moveLeft(mobile);
-        this.moveDown(mobile);
-    }
-
-    @Override
-    public void moveRightDown(IEntity mobile) {
-        this.moveRight(mobile);
-        this.moveDown(mobile);
     }
 
     @Override

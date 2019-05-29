@@ -22,19 +22,19 @@ public class ControllerCharacter extends Controller {
     public void moveSet(KeyEvent key) {
         switch (key.getKeyChar()) {
             case 'z':
-                this.getModel().getMap().moveUp(this.getModel().getMap().findCharacter());
+                this.moveUp(this.getModel().getMap().findCharacter());
                 this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Up");
                 break;
             case 'q':
-                this.getModel().getMap().moveLeft(this.getModel().getMap().findCharacter());
+                this.moveLeft(this.getModel().getMap().findCharacter());
                 this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Left");
                 break;
             case 's':
-                this.getModel().getMap().moveDown(this.getModel().getMap().findCharacter());
+                this.moveDown(this.getModel().getMap().findCharacter());
                 this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Down");
                 break;
             case 'd':
-                this.getModel().getMap().moveRight(this.getModel().getMap().findCharacter());
+                this.moveRight(this.getModel().getMap().findCharacter());
                 this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Right");
                 break;
             default:

@@ -8,6 +8,10 @@ import java.awt.event.KeyEvent;
 import contract.IControllerMain;
 import contract.IModel;
 import contract.IView;
+import entity.IEntity;
+import entity.Permeability;
+import mobile.MobileEntityFactory;
+import motionless.MotionlessEntityFactory;
 
 /**
  * The Class Controller.
@@ -74,5 +78,78 @@ public class Controller implements IControllerMain {
     public IControllerMain getControllerCharacter() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    public boolean checkMove(IEntity mobile, int x, int y) {
+        if (mobile.getClass() == MobileEntityFactory.createCharacter().getClass()) {
+            if (this.getModel().getMap().getMap()[y][x].getPermeability() != Permeability.BLOCKING) {
+                return true;
+            }
+        } else if (mobile.getClass() == MobileEntityFactory.createRock().getClass()) {
+            if (this.getModel().getMap().getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
+                return true;
+            }
+        } else if (mobile.getClass() == MobileEntityFactory.createDiamond().getClass()) {
+            if (this.getModel().getMap().getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
+                return true;
+            }
+        } else if (mobile.getClass() == MobileEntityFactory.createEnemy().getClass()) {
+            if (this.getModel().getMap().getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void moveDown(IEntity mobile) {
+        if (this.checkMove(mobile, mobile.getX(), mobile.getY() + 1)
+                && ((mobile.getY() + 1) < this.getModel().getMap().getMap().length)) {
+            this.getModel().getMap().getMap()[mobile.getY() + 1][mobile
+                    .getX()] = this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()];
+            this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
+            mobile.setY(mobile.getY() + 1);
+            this.getModel().getMap().fillView();
+        }
+    }
+
+    public void moveLeft(IEntity mobile) {
+        if (this.checkMove(mobile, mobile.getX() - 1, mobile.getY()) && ((mobile.getX() - 1) >= 0)) {
+            this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()
+                    - 1] = this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()];
+            this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
+            mobile.setX(mobile.getX() - 1);
+            this.getModel().getMap().fillView();
+        }
+    }
+
+    public void moveRight(IEntity mobile) {
+        if (this.checkMove(mobile, mobile.getX() + 1, mobile.getY())
+                && ((mobile.getX() + 1) < this.getModel().getMap().getMap()[0].length)) {
+            this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()
+                    + 1] = this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()];
+            this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
+            mobile.setX(mobile.getX() + 1);
+            this.getModel().getMap().fillView();
+        }
+    }
+
+    public void moveUp(IEntity mobile) {
+        if (this.checkMove(mobile, mobile.getX(), mobile.getY() - 1) && ((mobile.getY() - 1) >= 0)) {
+            this.getModel().getMap().getMap()[mobile.getY() - 1][mobile
+                    .getX()] = this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()];
+            this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()] = MotionlessEntityFactory.createDirt();
+            mobile.setY(mobile.getY() - 1);
+            this.getModel().getMap().fillView();
+        }
+    }
+
+    public void moveLeftDown(IEntity mobile) {
+        this.moveLeft(mobile);
+        this.moveDown(mobile);
+    }
+
+    public void moveRightDown(IEntity mobile) {
+        this.moveRight(mobile);
+        this.moveDown(mobile);
     }
 }

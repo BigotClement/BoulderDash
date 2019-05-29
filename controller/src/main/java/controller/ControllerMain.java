@@ -8,12 +8,12 @@ import java.awt.event.KeyEvent;
 import contract.IControllerMain;
 import contract.IModel;
 import contract.IView;
-import mobile.MobileEntityFactory;
-import motionless.MotionlessEntityFactory;
 
 public class ControllerMain implements IControllerMain {
 
     private ControllerCharacter controllerCharacter;
+    private ControllerRock controllerRock;
+    private ControllerDiamond controllerDiamond;
     private IView view;
     private IModel model;
 
@@ -25,6 +25,8 @@ public class ControllerMain implements IControllerMain {
         this.setModel(model);
         this.setView(view);
         this.setControllerCharacter(new ControllerCharacter(view, model));
+        this.setControllerRock(new ControllerRock(view, model));
+        this.setControllerDiamond(new ControllerDiamond(view, model));
         Thread lookMap = new Thread() {
             @Override
             public void run() {
@@ -54,41 +56,8 @@ public class ControllerMain implements IControllerMain {
         for (int y = 0; y < this.getModel().getMap().getMap().length; y++) {
             for (int x = 0; x < this.getModel().getMap().getMap()[y].length; x++) {
                 if ((!this.getModel().getMap().getMap()[y][x].isVerified())) {
-                    if ((this.getModel().getMap().getMap()[y][x].getClass() == MobileEntityFactory.createRock()
-                            .getClass())
-                            || (this.getModel().getMap().getMap()[y][x].getClass() == MobileEntityFactory
-                                    .createDiamond().getClass())) {
-                        if ((this.getModel().getMap().checkMove(this.getModel().getMap().getMap()[y][x],
-                                this.getModel().getMap().getMap()[y][x].getX(),
-                                this.getModel().getMap().getMap()[y][x].getY() + 1))) {
-                            this.getModel().getMap().getMap()[y][x].setVerified(true);
-                            this.getModel().getMap().moveDown(this.getModel().getMap().getMap()[y][x]);
-                        }
-
-                        else if (this.getModel().getMap().checkMove(this.getModel().getMap().getMap()[y][x],
-                                this.getModel().getMap().getMap()[y][x].getX() + 1,
-                                this.getModel().getMap().getMap()[y][x].getY() + 1)) {
-                            if ((this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory
-                                    .createRock().getClass())
-                                    || (this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory
-                                            .createDiamond().getClass())) {
-                                this.getModel().getMap().getMap()[y][x].setVerified(true);
-                                this.getModel().getMap().moveRightDown(this.getModel().getMap().getMap()[y][x]);
-                            }
-                        }
-
-                        else if (this.getModel().getMap().checkMove(this.getModel().getMap().getMap()[y][x],
-                                this.getModel().getMap().getMap()[y][x].getX() - 1,
-                                this.getModel().getMap().getMap()[y][x].getY() + 1)) {
-                            if ((this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory
-                                    .createRock().getClass())
-                                    || (this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory
-                                            .createDiamond().getClass())) {
-                                this.getModel().getMap().getMap()[y][x].setVerified(true);
-                                this.getModel().getMap().moveLeftDown(this.getModel().getMap().getMap()[y][x]);
-                            }
-                        }
-                    }
+                    this.getControllerRock().move(x, y);
+                    this.getControllerDiamond().move(x, y);
                 }
             }
         }
@@ -133,6 +102,22 @@ public class ControllerMain implements IControllerMain {
     public IView getView() {
         // TODO Auto-generated method stub
         return this.view;
+    }
+
+    public ControllerRock getControllerRock() {
+        return this.controllerRock;
+    }
+
+    public void setControllerRock(ControllerRock controllerRock) {
+        this.controllerRock = controllerRock;
+    }
+
+    public ControllerDiamond getControllerDiamond() {
+        return this.controllerDiamond;
+    }
+
+    public void setControllerDiamond(ControllerDiamond controllerDiamond) {
+        this.controllerDiamond = controllerDiamond;
     }
 
 }

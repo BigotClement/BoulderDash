@@ -40,20 +40,6 @@ public interface IMap {
      */
     void setWidth(int width);
 
-    void moveDown(IEntity mobile);
-
-    void moveLeft(IEntity mobile);
-
-    void moveRight(IEntity mobile);
-
-    void moveUp(IEntity mobile);
-
     IEntity findCharacter();
-
-    boolean checkMove(IEntity mobile, int x, int y);
-
-    void moveRightDown(IEntity mobile);
-
-    void moveLeftDown(IEntity mobile);
 
 }
