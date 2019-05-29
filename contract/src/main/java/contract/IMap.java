@@ -42,4 +42,10 @@ public interface IMap {
 
     IEntity findCharacter();
 
+    void setOnTheMapXY(IEntity entity, int x, int y);
+
+    IEntity getOnTheViewMapXY(int x, int y);
+
+    void setOnTheViewMapXY(IEntity entity, int x, int y);
+
 }

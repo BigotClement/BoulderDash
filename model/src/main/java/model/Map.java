@@ -40,17 +40,19 @@ public class Map extends Observable implements IMap, Observer {
             for (int x = character.getX() - (this.viewWidth / 2); x < (character.getX() + (this.viewWidth / 2)); x++) {
                 try {
                     if ((y < this.getMap().length) && (x < this.getMap()[0].length) && (y >= 0) && (x >= 0)
-                            && (this.getMap()[y][x] != null)) {
-                        this.getViewMap()[y - (character.getY() - (this.getViewHeight() / 2))][x
-                                - (character.getX() - (this.getViewWidth() / 2))] = this.getMap()[y][x];
+                            && (this.getOnTheMapXY(x, y) != null)) {
+                        this.setOnTheViewMapXY(this.getOnTheMapXY(x, y),
+                                x - (character.getX() - (this.getViewWidth() / 2)),
+                                y - (character.getY() - (this.getViewHeight() / 2)));
                     } else if ((y < this.getMap().length) && (x < this.getMap()[0].length) && (y >= 0) && (x >= 0)
-                            && (this.getMap()[y][x] != null)) {
-                        this.getViewMap()[y - (character.getY() - (this.getViewHeight() / 2))][x
-                                - (character.getX() - (this.getViewWidth() / 2))] = this.getMap()[y][x];
+                            && (this.getOnTheMapXY(x, y) != null)) {
+                        this.setOnTheViewMapXY(this.getOnTheMapXY(x, y),
+                                x - (character.getX() - (this.getViewWidth() / 2)),
+                                y - (character.getY() - (this.getViewHeight() / 2)));
                     } else {
-                        this.getViewMap()[y - (character.getY() - (this.getViewHeight() / 2))][x
-                                - (character.getX() - (this.getViewWidth() / 2))] = MotionlessEntityFactory
-                                        .createDestructibleBlock();
+                        this.setOnTheViewMapXY(MotionlessEntityFactory.createDestructibleBlock(),
+                                x - (character.getX() - (this.getViewWidth() / 2)),
+                                y - (character.getY() - (this.getViewHeight() / 2)));
                     }
                 } catch (NullPointerException e) {
                     e.printStackTrace();
@@ -82,8 +84,8 @@ public class Map extends Observable implements IMap, Observer {
         int x = 0, y = 0;
         for (y = 0; y < this.getMap().length; y++) {
             for (x = 0; x < this.getMap()[y].length; x++) {
-                if (this.getMap()[y][x].getClass() == MobileEntityFactory.createCharacter().getClass()) {
-                    return this.getMap()[y][x];
+                if (this.getOnTheMapXY(x, y).getClass() == MobileEntityFactory.createCharacter().getClass()) {
+                    return this.getOnTheMapXY(x, y);
                 }
             }
         }
@@ -97,7 +99,13 @@ public class Map extends Observable implements IMap, Observer {
     @Override
     public IEntity getOnTheMapXY(int x, int y) {
 
-        return null;
+        return this.getMap()[y][x];
+    }
+
+    @Override
+    public IEntity getOnTheViewMapXY(int x, int y) {
+
+        return this.getViewMap()[y][x];
     }
 
     public int getViewHeight() {
@@ -118,9 +126,6 @@ public class Map extends Observable implements IMap, Observer {
         return this.width;
     }
 
-    /**
-     * @param height
-     */
     @Override
     public void setHeight(int height) {
         this.height = height;
@@ -131,17 +136,27 @@ public class Map extends Observable implements IMap, Observer {
     }
 
     @Override
+    public void setOnTheMapXY(IEntity entity, int x, int y) {
+        this.getMap()[y][x] = entity;
+    }
+
+    @Override
+    public void setOnTheViewMapXY(IEntity entity, int x, int y) {
+        this.getViewMap()[y][x] = entity;
+    }
+
+    @Override
     public void setOnTheMapXY(char c, int x, int y) {
         if (MotionlessEntityFactory.createEntity(c) != null) {
-            this.getMap()[y][x] = MotionlessEntityFactory.createEntity(c);
-            this.getMap()[y][x].setY(y);
-            this.getMap()[y][x].setX(x);
-            this.getMap()[y][x].setObserver(this);
+            this.setOnTheMapXY(MotionlessEntityFactory.createEntity(c), x, y);
+            this.getOnTheMapXY(x, y).setY(y);
+            this.getOnTheMapXY(x, y).setX(x);
+            this.getOnTheMapXY(x, y).setObserver(this);
         } else if (MobileEntityFactory.createEntity(c) != null) {
-            this.getMap()[y][x] = MobileEntityFactory.createEntity(c);
-            this.getMap()[y][x].setY(y);
-            this.getMap()[y][x].setX(x);
-            this.getMap()[y][x].setObserver(this);
+            this.setOnTheMapXY(MobileEntityFactory.createEntity(c), x, y);
+            this.getOnTheMapXY(x, y).setY(y);
+            this.getOnTheMapXY(x, y).setX(x);
+            this.getOnTheMapXY(x, y).setObserver(this);
         } else {
             NullPointerException e = new NullPointerException();
             e.printStackTrace();
