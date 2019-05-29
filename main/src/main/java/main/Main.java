@@ -25,7 +25,5 @@ public abstract class Main {
         final View view = new View(model);
         final ControllerMain controller = new ControllerMain(view, model);
         view.setController(controller);
-
-        controller.control();
     }
 }

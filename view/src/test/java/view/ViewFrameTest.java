@@ -15,6 +15,7 @@ import org.junit.Test;
 import contract.IControllerMain;
 import contract.IMap;
 import contract.IModel;
+import contract.IView;
 import junit.framework.TestCase;
 
 public class ViewFrameTest extends TestCase {
@@ -152,12 +153,6 @@ public class ViewFrameTest extends TestCase {
         IControllerMain controller = new IControllerMain() {
 
             @Override
-            public void control() {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
             public void moveSet(KeyEvent key) {
                 // TODO Auto-generated method stub
 
@@ -165,6 +160,18 @@ public class ViewFrameTest extends TestCase {
 
             @Override
             public IControllerMain getControllerCharacter() {
+                // TODO Auto-generated method stub
+                return null;
+            }
+
+            @Override
+            public IModel getModel() {
+                // TODO Auto-generated method stub
+                return null;
+            }
+
+            @Override
+            public IView getView() {
                 // TODO Auto-generated method stub
                 return null;
             }

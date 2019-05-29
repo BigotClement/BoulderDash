@@ -12,13 +12,12 @@ import java.awt.event.KeyEvent;
  */
 public interface IControllerMain {
 
-    /**
-     * Control.
-     */
-    void control();
-
     void moveSet(KeyEvent key);
 
     IControllerMain getControllerCharacter();
+
+    IModel getModel();
+
+    IView getView();
 
 }

@@ -146,6 +146,40 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<developers>
+    <developer>
+        <name>Clément Bigot</name>
+        <email>clement.bigot@viacesi.fr</email>
+        <roles>
+            <role>Développeur</role>
+        </roles>
+        <timezone>1</timezone>
+    </developer>
+    <developer>
+        <name>Lisa Boespflug</name>
+        <email>lisa.boespflug@viacesi.fr</email>
+        <roles>
+            <role>Développeur</role>
+        </roles>
+        <timezone>1</timezone>
+    </developer>
+    <developer>
+        <name>Amaury Chabane</name>
+        <email>amaury.chabane@viacesi.fr</email>
+        <roles>
+            <role>Développeur</role>
+        </roles>
+        <timezone>1</timezone>
+    </developer>
+    <developer>
+        <name>Gautier Perrot</name>
+        <email>gautier.perrot@viacesi.fr</email>
+        <roles>
+            <role>Développeur</role>
+        </roles>
+        <timezone>1</timezone>
+    </developer>
+</developers>
 	<url>-</url>
   <distributionManagement>
     <site>

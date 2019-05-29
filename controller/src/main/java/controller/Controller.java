@@ -34,18 +34,13 @@ public class Controller implements IControllerMain {
 
     }
 
-    @Override
-    public void control() {
-
-    }
-
     /**
      * Sets the view.
      *
      * @param pview
      *                  the new view
      */
-    private void setView(final IView pview) {
+    void setView(final IView pview) {
         this.view = pview;
     }
 
@@ -59,8 +54,14 @@ public class Controller implements IControllerMain {
         this.model = model;
     }
 
-    protected IModel getModel() {
+    @Override
+    public IModel getModel() {
         return this.model;
+    }
+
+    @Override
+    public IView getView() {
+        return this.view;
     }
 
     @Override
