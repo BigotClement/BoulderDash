@@ -144,12 +144,6 @@ class ViewFrame extends JFrame implements IViewFrame, KeyListener {
      */
     @Override
     public void keyTyped(final KeyEvent key) {
-        try {
-            Thread.sleep(20);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         this.getController().getControllerCharacter().moveSet(key);
     }
 
@@ -167,6 +161,12 @@ class ViewFrame extends JFrame implements IViewFrame, KeyListener {
      */
     @Override
     public void keyReleased(final KeyEvent key) {
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Stand");
     }
 }
