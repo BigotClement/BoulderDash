@@ -10,14 +10,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import contract.IControllerMain;
 import contract.IModel;
-import contract.IViewFrame;
 
-/**
- * The Class ViewFrame.
- *
- * @author Jean-Aymeric Diet
- */
-class ViewFrame extends JFrame implements IViewFrame, KeyListener {
+public class ViewFrame extends JFrame implements KeyListener {
+
+    private static final int FRAMEWIDTH = 1000;
+
+    private static final int FRAMEHEIGHT = 1000;
 
     /** The model. */
     private IModel model;
@@ -98,7 +96,6 @@ class ViewFrame extends JFrame implements IViewFrame, KeyListener {
      * @param controller
      *                       the new controller
      */
-    @Override
     public void setController(final IControllerMain controller) {
         this.controller = controller;
     }
@@ -108,7 +105,7 @@ class ViewFrame extends JFrame implements IViewFrame, KeyListener {
      *
      * @return the model
      */
-    protected IModel getModel() {
+    public IModel getModel() {
         return this.model;
     }
 
@@ -134,7 +131,7 @@ class ViewFrame extends JFrame implements IViewFrame, KeyListener {
         this.setResizable(true);
         this.addKeyListener(this);
         this.setContentPane(new ViewPanel(this));
-        this.setSize(1000, 1000);
+        this.setSize(FRAMEWIDTH, FRAMEHEIGHT);
         this.setLocationRelativeTo(null);
     }
 

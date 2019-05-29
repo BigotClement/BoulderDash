@@ -7,7 +7,6 @@ import javax.swing.SwingUtilities;
 import contract.IControllerMain;
 import contract.IModel;
 import contract.IView;
-import contract.IViewFrame;
 
 /**
  * The Class View.
@@ -28,6 +27,10 @@ public final class View implements IView, Runnable {
     public View(final IModel model) {
         this.viewFrame = new ViewFrame(model);
         SwingUtilities.invokeLater(this);
+    }
+
+    public ViewFrame getViewFrame() {
+        return this.viewFrame;
     }
 
     /*
@@ -52,10 +55,5 @@ public final class View implements IView, Runnable {
 
     public Object getController() {
         return null;
-    }
-
-    @Override
-    public IViewFrame getViewFrame() {
-        return this.viewFrame;
     }
 }

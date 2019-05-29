@@ -13,7 +13,7 @@ import contract.IModel;
  */
 public final class Model implements IModel {
 
-    private int mapID = 2;
+    private int mapID;
 
     private IMap map;
 
@@ -21,8 +21,11 @@ public final class Model implements IModel {
 
     /**
      * Instantiates a new model.
+     *
+     * @param mapid
      */
-    public Model() {
+    public Model(int mapid) {
+        this.setMapID(mapid);
         // this.readFile.deleteMapID(this.getMapID());
         // this.readFile.loadFile();
         this.readFile.selectMapID(this.getMapID());
