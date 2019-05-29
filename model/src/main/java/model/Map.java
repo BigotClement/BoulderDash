@@ -41,15 +41,13 @@ public class Map extends Observable implements IMap, Observer {
             for (int x = character.getX() - (this.viewWidth / 2); x < (character.getX() + (this.viewWidth / 2)); x++) {
                 try {
                     if ((y < this.getMap().length) && (x < this.getMap()[0].length) && (y >= 0) && (x >= 0)
-                            && (MotionlessEntityFactory.createEntity(this.getMap()[y][x].getSprite()) != null)) {
+                            && (this.getMap()[y][x] != null)) {
                         this.getViewMap()[y - (character.getY() - (this.getViewHeight() / 2))][x
-                                - (character.getX() - (this.getViewWidth() / 2))] = MotionlessEntityFactory
-                                        .createEntity(this.getMap()[y][x].getSprite());
+                                - (character.getX() - (this.getViewWidth() / 2))] = this.getMap()[y][x];
                     } else if ((y < this.getMap().length) && (x < this.getMap()[0].length) && (y >= 0) && (x >= 0)
-                            && (MobileEntityFactory.createEntity(this.getMap()[y][x].getSprite()) != null)) {
+                            && (this.getMap()[y][x] != null)) {
                         this.getViewMap()[y - (character.getY() - (this.getViewHeight() / 2))][x
-                                - (character.getX() - (this.getViewWidth() / 2))] = MobileEntityFactory
-                                        .createEntity(this.getMap()[y][x].getSprite());
+                                - (character.getX() - (this.getViewWidth() / 2))] = this.getMap()[y][x];
                     } else {
                         this.getViewMap()[y - (character.getY() - (this.getViewHeight() / 2))][x
                                 - (character.getX() - (this.getViewWidth() / 2))] = MotionlessEntityFactory

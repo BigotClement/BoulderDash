@@ -5,7 +5,7 @@ package mobile;
 
 public class MobileEntityFactory {
 
-    private static Character CHARACTER = new Character();
+    private volatile static Character CHARACTER = new Character();
     private static Diamond DIAMOND = new Diamond();
     private static Enemy ENEMY = new Enemy();
     private static Rock ROCK = new Rock();
