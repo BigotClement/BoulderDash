@@ -45,17 +45,11 @@ class ViewPanel extends JPanel implements Observer {
         return this.viewFrame;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
-     */
     @Override
     protected void paintComponent(final Graphics graphics) {
         graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
         for (int y = 0; y < this.getViewFrame().getModel().getMap().getViewMap().length; y++) {
             for (int x = 0; x < this.getViewFrame().getModel().getMap().getViewMap()[y].length; x++) {
-                // (this.getViewFrame().getWidth()/this.getViewFrame().getModel().getMap().getViewMap()[y].length)
-                // (this.getViewFrame().getHeight()/this.getViewFrame().getModel().getMap().getViewMap().length)
                 Image image = null;
                 image = this.getViewFrame().getModel().getMap().getViewMap()[y][x].getImage();
                 graphics.drawImage(image,

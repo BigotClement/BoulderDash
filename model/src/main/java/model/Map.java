@@ -16,7 +16,7 @@ public class Map extends Observable implements IMap {
     private int height;
     private int viewWidth = 16, viewHeight = 16;
     private volatile IEntity[][] map;
-    private IEntity[][] viewMap = new Entity[this.getViewHeight()][this.getViewWidth()];
+    private volatile IEntity[][] viewMap = new Entity[this.getViewHeight()][this.getViewWidth()];
     private int width;
 
     /**

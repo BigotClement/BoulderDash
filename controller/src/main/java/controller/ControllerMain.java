@@ -68,9 +68,10 @@ public class ControllerMain implements IControllerMain {
                         else if (this.getModel().getMap().checkMove(this.getModel().getMap().getMap()[y][x],
                                 this.getModel().getMap().getMap()[y][x].getX() + 1,
                                 this.getModel().getMap().getMap()[y][x].getY() + 1)) {
-                            if (this.getModel().getMap().checkMove(this.getModel().getMap().getMap()[y][x],
-                                    this.getModel().getMap().getMap()[y][x].getX(),
-                                    this.getModel().getMap().getMap()[y][x].getY() + 1)) {
+                            if ((this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory
+                                    .createRock().getClass())
+                                    || (this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory
+                                            .createDiamond().getClass())) {
                                 this.getModel().getMap().getMap()[y][x].setVerified(true);
                                 this.getModel().getMap().moveRightDown(this.getModel().getMap().getMap()[y][x]);
                             }
@@ -79,9 +80,10 @@ public class ControllerMain implements IControllerMain {
                         else if (this.getModel().getMap().checkMove(this.getModel().getMap().getMap()[y][x],
                                 this.getModel().getMap().getMap()[y][x].getX() - 1,
                                 this.getModel().getMap().getMap()[y][x].getY() + 1)) {
-                            if (this.getModel().getMap().checkMove(this.getModel().getMap().getMap()[y][x],
-                                    this.getModel().getMap().getMap()[y][x].getX(),
-                                    this.getModel().getMap().getMap()[y][x].getY() + 1)) {
+                            if ((this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory
+                                    .createRock().getClass())
+                                    || (this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory
+                                            .createDiamond().getClass())) {
                                 this.getModel().getMap().getMap()[y][x].setVerified(true);
                                 this.getModel().getMap().moveLeftDown(this.getModel().getMap().getMap()[y][x]);
                             }
