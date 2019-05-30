@@ -3,6 +3,8 @@
  */
 package contract;
 
+import java.util.Observable;
+
 /**
  * The Interface IModel.
  *
@@ -17,4 +19,6 @@ public interface IModel {
     IMap getMap();
 
     void setMap(IMap map);
+
+    Observable getObservable();
 }
