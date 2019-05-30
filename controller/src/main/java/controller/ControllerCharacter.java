@@ -91,4 +91,8 @@ public class ControllerCharacter extends Controller {
         }
 
     }
+
+    public void CharacterOnExit() {
+
+    }
 }
