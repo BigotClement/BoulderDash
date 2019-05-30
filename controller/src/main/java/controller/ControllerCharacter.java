@@ -7,7 +7,6 @@ import java.awt.event.KeyEvent;
 
 import contract.IModel;
 import contract.IView;
-import entity.Entity;
 import entity.Permeability;
 import mobile.MobileEntityFactory;
 import motionless.Exit;
@@ -88,8 +87,8 @@ public class ControllerCharacter extends Controller {
 
     private void openExit() {
         if (this.getDiamondCount() >= 10) {
-            // Exit.setPermeability(Permeability.PENETRABLE);
-            // this.exit.setPermeability(Permeability.PENETRABLE);
+            this.getModel().getMap().findExit().setPermeability(Permeability.PENETRABLE);
         }
+
     }
 }

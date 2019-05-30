@@ -48,4 +48,6 @@ public interface IMap {
 
     void setOnTheViewMapXY(IEntity entity, int x, int y);
 
+    IEntity findExit();
+
 }

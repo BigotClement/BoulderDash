@@ -91,6 +91,19 @@ public class Map extends Observable implements IMap, Observer {
         return null;
     }
 
+    @Override
+    public IEntity findExit() {
+        int x = 0, y = 0;
+        for (y = 0; y < this.getMap().length; y++) {
+            for (x = 0; x < this.getMap()[y].length; x++) {
+                if (this.getOnTheMapXY(x, y).getClass() == MotionlessEntityFactory.createExit().getClass()) {
+                    return this.getOnTheMapXY(x, y);
+                }
+            }
+        }
+        return null;
+    }
+
     /**
      * @param x
      * @param y
