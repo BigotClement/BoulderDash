@@ -15,7 +15,7 @@ public class ControllerEnemy extends Controller {
         // TODO Auto-generated constructor stub
     }
 
-    public void move(int x, int y) {
+    public void move(int x, int y) throws InterruptedException {
 
         if (this.getModel().getMap().getMap()[y][x].getClass() == MobileEntityFactory.createEnemy().getClass()) {
             Random rand = new Random();
@@ -29,6 +29,7 @@ public class ControllerEnemy extends Controller {
                             this.getModel().getMap().getMap()[y][x].getY()))) {
                         this.getModel().getMap().getMap()[y][x].setVerified(true);
                         this.moveRight(this.getModel().getMap().getMap()[y][x]);
+                        Thread.sleep(300);
                     }
                     break;
                 case 1:
@@ -37,6 +38,7 @@ public class ControllerEnemy extends Controller {
                             this.getModel().getMap().getMap()[y][x].getY() - 1))) {
                         this.getModel().getMap().getMap()[y][x].setVerified(true);
                         this.moveUp(this.getModel().getMap().getMap()[y][x]);
+                        Thread.sleep(300);
                     }
                     break;
                 case 2:
@@ -45,6 +47,7 @@ public class ControllerEnemy extends Controller {
                             this.getModel().getMap().getMap()[y][x].getY()))) {
                         this.getModel().getMap().getMap()[y][x].setVerified(true);
                         this.moveLeft(this.getModel().getMap().getMap()[y][x]);
+                        Thread.sleep(300);
                     }
                     break;
                 case 3:
@@ -53,6 +56,7 @@ public class ControllerEnemy extends Controller {
                             this.getModel().getMap().getMap()[y][x].getY() + 1))) {
                         this.getModel().getMap().getMap()[y][x].setVerified(true);
                         this.moveDown(this.getModel().getMap().getMap()[y][x]);
+                        Thread.sleep(300);
                     }
                     break;
             }

@@ -60,7 +60,12 @@ public class ControllerMain implements IControllerMain {
                 if ((!this.getModel().getMap().getMap()[y][x].isVerified())) {
                     this.getControllerRock().move(x, y);
                     this.getControllerDiamond().move(x, y);
-                    this.getControllerEnemy().move(x, y);
+                    try {
+                        this.getControllerEnemy().move(x, y);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 }
             }
         }
