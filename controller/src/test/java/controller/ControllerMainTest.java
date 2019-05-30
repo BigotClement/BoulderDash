@@ -16,7 +16,6 @@ import contract.IControllerMain;
 import contract.IMap;
 import contract.IModel;
 import contract.IView;
-import contract.IViewFrame;
 
 public class ControllerMainTest {
 
@@ -94,11 +93,6 @@ public class ControllerMainTest {
 
             }
 
-            @Override
-            public IViewFrame getViewFrame() {
-                // TODO Auto-generated method stub
-                return null;
-            }
         });
         assertNotNull(this.controllerMain.getView());
     }
