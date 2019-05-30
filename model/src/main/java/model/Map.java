@@ -174,9 +174,10 @@ public class Map extends Observable implements IMap, Observer {
         this.notifyObservers();
     }
 
-    public Object getViewWidth() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    /*
+     * public Object getViewWidth() { // TODO Auto-generated method stub return
+     * null; } public void setViewWidth(int i) { // TODO Auto-generated method stub
+     * }
+     */
 
 }
