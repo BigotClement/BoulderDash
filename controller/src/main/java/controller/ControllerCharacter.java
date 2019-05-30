@@ -7,12 +7,16 @@ import java.awt.event.KeyEvent;
 
 import contract.IModel;
 import contract.IView;
+import entity.Entity;
+import entity.Permeability;
 import mobile.MobileEntityFactory;
 import motionless.Exit;
 
 public class ControllerCharacter extends Controller {
 
     private int diamondCount = 0;
+    private Entity Entity;
+    private Exit exit;
 
     public int getDiamondCount() {
         return this.diamondCount;
@@ -24,6 +28,8 @@ public class ControllerCharacter extends Controller {
 
     public ControllerCharacter(IView view, IModel model) {
         super(view, model);
+        this.exit = new Exit();
+
     }
 
     public void checkMove() {
@@ -36,8 +42,8 @@ public class ControllerCharacter extends Controller {
         switch (key.getKeyChar()) {
             case 'z':
                 if (this.getModel().getMap().getMap()[this.getModel().getMap().findCharacter().getY() - 1][this
-                        .getModel().getMap().findCharacter().getX()].getClass() == MobileEntityFactory.createDiamond()
-                                .getClass()) {
+                        .getModel().getMap().findCharacter().getX()]
+                                .getClass() == MobileEntityFactory.createDiamond().getClass()) {
                     this.incrementDiamond();
                 }
                 this.moveUp(this.getModel().getMap().findCharacter());
@@ -45,8 +51,8 @@ public class ControllerCharacter extends Controller {
                 break;
             case 'q':
                 if (this.getModel().getMap().getMap()[this.getModel().getMap().findCharacter().getY()][this.getModel()
-                        .getMap().findCharacter().getX() - 1].getClass() == MobileEntityFactory.createDiamond()
-                                .getClass()) {
+                        .getMap().findCharacter().getX() - 1]
+                                .getClass() == MobileEntityFactory.createDiamond().getClass()) {
                     this.incrementDiamond();
                 }
                 this.moveLeft(this.getModel().getMap().findCharacter());
@@ -54,8 +60,8 @@ public class ControllerCharacter extends Controller {
                 break;
             case 's':
                 if (this.getModel().getMap().getMap()[this.getModel().getMap().findCharacter().getY() + 1][this
-                        .getModel().getMap().findCharacter().getX()].getClass() == MobileEntityFactory.createDiamond()
-                                .getClass()) {
+                        .getModel().getMap().findCharacter().getX()]
+                                .getClass() == MobileEntityFactory.createDiamond().getClass()) {
                     this.incrementDiamond();
                 }
                 this.moveDown(this.getModel().getMap().findCharacter());
@@ -63,8 +69,8 @@ public class ControllerCharacter extends Controller {
                 break;
             case 'd':
                 if (this.getModel().getMap().getMap()[this.getModel().getMap().findCharacter().getY()][this.getModel()
-                        .getMap().findCharacter().getX() + 1].getClass() == MobileEntityFactory.createDiamond()
-                                .getClass()) {
+                        .getMap().findCharacter().getX() + 1]
+                                .getClass() == MobileEntityFactory.createDiamond().getClass()) {
                     this.incrementDiamond();
                 }
                 this.moveRight(this.getModel().getMap().findCharacter());
@@ -84,6 +90,7 @@ public class ControllerCharacter extends Controller {
     private void openExit() {
         if (this.getDiamondCount() >= 10) {
             // Exit.setPermeability(Permeability.PENETRABLE);
+            // this.exit.setPermeability(Permeability.PENETRABLE);
         }
     }
 }
