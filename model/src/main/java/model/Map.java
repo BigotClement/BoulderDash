@@ -46,12 +46,10 @@ public class Map extends Observable implements IMap, Observer {
         for (int y = character.getY() - (VIEWHEIGHT / 2); y < (character.getY() + (VIEWHEIGHT / 2)); y++) {
             for (int x = character.getX() - (VIEWWIDTH / 2); x < (character.getX() + (VIEWWIDTH / 2)); x++) {
                 try {
-                    if ((y < this.getMap().length) && (x < this.getMap()[0].length) && (y >= 0) && (x >= 0)
-                            && (this.getOnTheMapXY(x, y) != null)) {
-                        this.setOnTheViewMapXY(this.getOnTheMapXY(x, y), x - (character.getX() - (VIEWWIDTH / 2)),
-                                y - (character.getY() - (VIEWHEIGHT / 2)));
-                    } else if ((y < this.getMap().length) && (x < this.getMap()[0].length) && (y >= 0) && (x >= 0)
-                            && (this.getOnTheMapXY(x, y) != null)) {
+                    if (((y < this.getMap().length) && (x < this.getMap()[0].length) && (y >= 0) && (x >= 0)
+                            && (this.getOnTheMapXY(x, y) != null))
+                            || ((y < this.getMap().length) && (x < this.getMap()[0].length) && (y >= 0) && (x >= 0)
+                                    && (this.getOnTheMapXY(x, y) != null))) {
                         this.setOnTheViewMapXY(this.getOnTheMapXY(x, y), x - (character.getX() - (VIEWWIDTH / 2)),
                                 y - (character.getY() - (VIEWHEIGHT / 2)));
                     } else {
