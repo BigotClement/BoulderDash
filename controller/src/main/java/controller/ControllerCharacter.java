@@ -15,7 +15,6 @@ import motionless.Exit;
 public class ControllerCharacter extends Controller {
 
     private int diamondCount = 0;
-    private Entity Entity;
     private Exit exit;
 
     public int getDiamondCount() {

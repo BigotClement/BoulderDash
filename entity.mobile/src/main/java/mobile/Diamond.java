@@ -14,9 +14,7 @@ public class Diamond extends MobileEntity {
     private static char SPRITE = 'D';
 
     private static String FOLDER = "sprites\\Mobile\\Diamond";
-
     private static Permeability PERMEABILITY = Permeability.SEMIPENETRABLE;
-
     private AnimateGif animateGif;
 
     public Diamond() {

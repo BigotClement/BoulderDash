@@ -13,8 +13,8 @@ public class Star extends MotionlessEntity {
 
     private static String FOLDER = "sprites\\Motionless\\Star";
     private static String IMAGE = "sprites\\Motionless\\Star\\star1.png";
-    private static Permeability PERMEABILITY = Permeability.BLOCKING;
     private static char SPRITE = '*';
+    private static Permeability PERMEABILITY = Permeability.BLOCKING;
 
     private AnimateGif animateGif;
 

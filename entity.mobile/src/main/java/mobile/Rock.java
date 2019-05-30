@@ -14,9 +14,7 @@ public class Rock extends MobileEntity {
     private static char SPRITE = 'O';
 
     private static String FOLDER = "sprites\\Mobile\\Rock";
-
     private static Permeability PERMEABILITY = Permeability.BLOCKING;
-
     private AnimateGif animateGif;
 
     public Rock() {

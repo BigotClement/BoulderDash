@@ -19,8 +19,9 @@ public abstract class MobileEntity extends Entity {
 
     /**
      * @param sprite
+     * @param pERMEABILITY
      */
-    public MobileEntity(char sprite, String folder, final Permeability permeability) {
+    public MobileEntity(char sprite, String folder, Permeability permeability) {
         super(sprite, permeability);
         this.setFolder(folder);
         this.position = new Point();

@@ -14,9 +14,10 @@ public class Enemy extends MobileEntity {
 
     private static char SPRITE = 'X';
     private static String[] folderArray = { "sprites\\Mobile\\Butterfly", "sprites\\Mobile\\Blob" };
-    private static Permeability PERMEABILITY = Permeability.BLOCKING;
     private static Random ran = new Random();
     private static String s_ran = folderArray[ran.nextInt(folderArray.length)];
+
+    private static Permeability PERMEABILITY = Permeability.BLOCKING;
 
     private AnimateGif animateGif;
 
