@@ -6,6 +6,7 @@ package entity;
 import static org.junit.Assert.*;
 
 import java.awt.Image;
+import java.util.Observer;
 
 import org.junit.After;
 import org.junit.Before;
@@ -76,6 +77,24 @@ public class EntityTest {
 
             @Override
             public void setSpriteFolder(String string) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public boolean isVerified() {
+                // TODO Auto-generated method stub
+                return false;
+            }
+
+            @Override
+            public void setVerified(boolean b) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void setObserver(Observer observer) {
                 // TODO Auto-generated method stub
 
             }

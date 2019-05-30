@@ -79,28 +79,19 @@ public class MapTest {
         assertEquals(10, this.map.getHeight());
     }
 
-    @Test
-    public void testGetViewWidth() {
-        assertNotNull(this.map.getViewWidth());
-    }
+    /*
+     * @Test public void testGetViewWidth() {
+     * assertNotNull(this.map.getViewWidth()); }
+     * @Test public void testSetViewWidth() { this.map.setViewWidth(10);
+     * assertEquals(10, this.map.getViewWidth()); }
+     */
 
-    @Test
-    public void testSetViewWidth() {
-        this.map.setViewWidth(10);
-        assertEquals(10, this.map.getViewWidth());
-    }
-
-    @Test
-    public void testGetViewHeight() {
-        assertNotNull(this.map.getViewHeight());
-    }
-
-    @Test
-    public void testSetViewHeight() {
-        this.map.setViewHeight(10);
-        assertEquals(10, this.map.getViewHeight());
-    }
-
+    /*
+     * @Test public void testGetViewHeight() {
+     * assertNotNull(this.map.getViewHeight()); }
+     * @Test public void testSetViewHeight() { this.map.setViewHeight(10);
+     * assertEquals(10, this.map.getViewHeight()); }
+     */
     @Test
     public void testGetOnTheMapXY() {
         assertNotNull(this.map.getOnTheMapXY(0, 0));

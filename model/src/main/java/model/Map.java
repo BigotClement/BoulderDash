@@ -122,7 +122,7 @@ public class Map extends Observable implements IMap, Observer {
         this.height = height;
     }
 
-    private void setMap(IEntity[][] map) {
+    void setMap(IEntity[][] map) {
         this.map = map;
     }
 
@@ -172,6 +172,11 @@ public class Map extends Observable implements IMap, Observer {
         // TODO Auto-generated method stub
         this.setChanged();
         this.notifyObservers();
+    }
+
+    public Object getViewWidth() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
