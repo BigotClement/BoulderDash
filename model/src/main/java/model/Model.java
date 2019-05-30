@@ -3,6 +3,8 @@
  */
 package model;
 
+import java.util.Observable;
+
 import contract.IMap;
 import contract.IModel;
 
@@ -52,6 +54,12 @@ public final class Model implements IModel {
     @Override
     public void setMap(IMap map) {
         this.map = map;
+    }
+
+    @Override
+    public Observable getObservable() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

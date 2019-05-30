@@ -15,7 +15,7 @@ public class ModelTest {
 
     @Before
     public void setUp() throws Exception {
-        this.model = new Model();
+        this.model = new Model(0);
     }
 
     @After
@@ -24,7 +24,7 @@ public class ModelTest {
 
     @Test
     public void testModel() {
-        Model model1 = new Model();
+        Model model1 = new Model(0);
         assertEquals(Model.class, model1.getClass());
     }
 
