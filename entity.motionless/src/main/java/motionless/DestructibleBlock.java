@@ -13,7 +13,7 @@ public class DestructibleBlock extends MotionlessEntity {
 
     public DestructibleBlock() {
         super(SPRITE, IMAGE, PERMEABILITY);
-
+        this.setPermeability(this.getPermeability());
     }
 
     @Override

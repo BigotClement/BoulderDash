@@ -15,51 +15,56 @@ public class ControllerEnemy extends Controller {
         // TODO Auto-generated constructor stub
     }
 
-    public void move(int x, int y) throws InterruptedException {
+    public void move(int x, int y) {
 
-        if (this.getModel().getMap().getMap()[y][x].getClass() == MobileEntityFactory.createEnemy().getClass()) {
-            Random rand = new Random();
+        try {
+            if (this.getModel().getMap().getMap()[y][x].getClass() == MobileEntityFactory.createEnemy().getClass()) {
+                Random rand = new Random();
 
-            int RandomNumber = rand.nextInt(4);
+                int RandomNumber = rand.nextInt(4);
 
-            switch (RandomNumber) {
-                case 0:
-                    if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
-                            this.getModel().getMap().getMap()[y][x].getX() + 1,
-                            this.getModel().getMap().getMap()[y][x].getY()))) {
-                        this.getModel().getMap().getMap()[y][x].setVerified(true);
-                        this.moveRight(this.getModel().getMap().getMap()[y][x]);
-                        Thread.sleep(300);
-                    }
-                    break;
-                case 1:
-                    if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
-                            this.getModel().getMap().getMap()[y][x].getX(),
-                            this.getModel().getMap().getMap()[y][x].getY() - 1))) {
-                        this.getModel().getMap().getMap()[y][x].setVerified(true);
-                        this.moveUp(this.getModel().getMap().getMap()[y][x]);
-                        Thread.sleep(300);
-                    }
-                    break;
-                case 2:
-                    if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
-                            this.getModel().getMap().getMap()[y][x].getX() - 1,
-                            this.getModel().getMap().getMap()[y][x].getY()))) {
-                        this.getModel().getMap().getMap()[y][x].setVerified(true);
-                        this.moveLeft(this.getModel().getMap().getMap()[y][x]);
-                        Thread.sleep(300);
-                    }
-                    break;
-                case 3:
-                    if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
-                            this.getModel().getMap().getMap()[y][x].getX(),
-                            this.getModel().getMap().getMap()[y][x].getY() + 1))) {
-                        this.getModel().getMap().getMap()[y][x].setVerified(true);
-                        this.moveDown(this.getModel().getMap().getMap()[y][x]);
-                        Thread.sleep(300);
-                    }
-                    break;
+                switch (RandomNumber) {
+                    case 0:
+                        if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
+                                this.getModel().getMap().getMap()[y][x].getX() + 1,
+                                this.getModel().getMap().getMap()[y][x].getY()))) {
+                            this.getModel().getMap().getMap()[y][x].setVerified(true);
+                            this.moveRight(this.getModel().getMap().getMap()[y][x]);
+                            Thread.sleep(300);
+                        }
+                        break;
+                    case 1:
+                        if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
+                                this.getModel().getMap().getMap()[y][x].getX(),
+                                this.getModel().getMap().getMap()[y][x].getY() - 1))) {
+                            this.getModel().getMap().getMap()[y][x].setVerified(true);
+                            this.moveUp(this.getModel().getMap().getMap()[y][x]);
+                            Thread.sleep(300);
+                        }
+                        break;
+                    case 2:
+                        if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
+                                this.getModel().getMap().getMap()[y][x].getX() - 1,
+                                this.getModel().getMap().getMap()[y][x].getY()))) {
+                            this.getModel().getMap().getMap()[y][x].setVerified(true);
+                            this.moveLeft(this.getModel().getMap().getMap()[y][x]);
+                            Thread.sleep(300);
+                        }
+                        break;
+                    case 3:
+                        if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
+                                this.getModel().getMap().getMap()[y][x].getX(),
+                                this.getModel().getMap().getMap()[y][x].getY() + 1))) {
+                            this.getModel().getMap().getMap()[y][x].setVerified(true);
+                            this.moveDown(this.getModel().getMap().getMap()[y][x]);
+                            Thread.sleep(300);
+                        }
+                        break;
+                }
             }
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
 
     }

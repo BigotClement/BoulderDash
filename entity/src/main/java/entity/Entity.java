@@ -10,7 +10,7 @@ public abstract class Entity implements IEntity {
     /**
      * @param sprite
      */
-    public Entity(char sprite, final Permeability permeability) {
+    public Entity(char sprite, Permeability permeability) {
         this.setSprite(sprite);
         this.setPermeability(permeability);
     }

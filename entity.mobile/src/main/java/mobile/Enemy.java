@@ -23,6 +23,7 @@ public class Enemy extends MobileEntity {
 
     public Enemy() {
         super(SPRITE, s_ran, PERMEABILITY);
+        this.setPermeability(this.getPermeability());
         this.setImage(s_ran);
     }
 

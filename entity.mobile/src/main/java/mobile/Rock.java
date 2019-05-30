@@ -19,6 +19,7 @@ public class Rock extends MobileEntity {
 
     public Rock() {
         super(SPRITE, FOLDER, PERMEABILITY);
+        this.setPermeability(this.getPermeability());
         this.setImage(FOLDER);
     }
 

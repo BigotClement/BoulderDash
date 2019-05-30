@@ -19,6 +19,7 @@ public class Diamond extends MobileEntity {
 
     public Diamond() {
         super(SPRITE, FOLDER, PERMEABILITY);
+        this.setPermeability(this.getPermeability());
         this.setImage(FOLDER);
     }
 

@@ -20,7 +20,7 @@ public abstract class MotionlessEntity extends Entity {
     /**
      * @param sprite
      */
-    public MotionlessEntity(char sprite, String image, final Permeability permeability) {
+    public MotionlessEntity(char sprite, String image, Permeability permeability) {
         super(sprite, permeability);
         this.setImage(image);
     }

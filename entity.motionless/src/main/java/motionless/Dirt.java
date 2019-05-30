@@ -13,7 +13,7 @@ public class Dirt extends MotionlessEntity {
 
     public Dirt() {
         super(SPRITE, IMAGE, PERMEABILITY);
-
+        this.setPermeability(this.getPermeability());
     }
 
     @Override

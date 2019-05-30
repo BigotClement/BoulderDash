@@ -21,6 +21,7 @@ public class Character extends MobileEntity {
 
     public Character() {
         super(SPRITE, FOLDER, PERMEABILITY);
+        this.setPermeability(this.getPermeability());
         this.setImage(FOLDER);
     }
 

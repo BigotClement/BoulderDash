@@ -20,6 +20,7 @@ public class Exit extends MotionlessEntity {
 
     public Exit() {
         super(SPRITE, IMAGE, PERMEABILITY);
+        this.setPermeability(this.getPermeability());
         this.setImage(IMAGE);
         this.setFolder(FOLDER);
     }

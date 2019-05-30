@@ -52,20 +52,15 @@ public class ControllerMain implements IControllerMain {
     public void lookTheMap() {
         for (int y = 0; y < this.getModel().getMap().getMap().length; y++) {
             for (int x = 0; x < this.getModel().getMap().getMap()[y].length; x++) {
-                this.getModel().getMap().getMap()[y][x].setVerified(false);
+                this.getModel().getMap().getOnTheMapXY(x, y).setVerified(false);
             }
         }
         for (int y = 0; y < this.getModel().getMap().getMap().length; y++) {
             for (int x = 0; x < this.getModel().getMap().getMap()[y].length; x++) {
-                if ((!this.getModel().getMap().getMap()[y][x].isVerified())) {
+                if ((!this.getModel().getMap().getOnTheMapXY(x, y).isVerified())) {
                     this.getControllerRock().move(x, y);
                     this.getControllerDiamond().move(x, y);
-                    try {
-                        this.getControllerEnemy().move(x, y);
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+                    this.getControllerEnemy().move(x, y);
                 }
             }
         }

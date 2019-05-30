@@ -13,6 +13,7 @@ public class Border extends MotionlessEntity {
 
     public Border() {
         super(SPRITE, IMAGE, PERMEABILITY);
+        this.setPermeability(this.getPermeability());
     }
 
     @Override
