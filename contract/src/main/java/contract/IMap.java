@@ -33,8 +33,6 @@ public interface IMap {
 
     void setOnTheMapXY(char c, int x, int y);
 
-    void setViewMap(IEntity[][] viewMap);
-
     /**
      * @param width
      */

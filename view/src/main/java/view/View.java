@@ -25,7 +25,7 @@ public final class View implements IView, Runnable {
      *                  the model
      */
     public View(final IModel model) {
-        this.viewFrame = new ViewFrame(model);
+        this.viewFrame = new ViewFrame(model, "BoulderDash");
         SwingUtilities.invokeLater(this);
     }
 

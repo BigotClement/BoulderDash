@@ -4,14 +4,10 @@
 package view;
 
 import java.awt.Component;
-import java.awt.GraphicsConfiguration;
 import java.awt.event.KeyEvent;
-import java.util.Observable;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import contract.IControllerMain;
 import contract.IMap;
 import contract.IModel;
@@ -35,12 +31,6 @@ public class ViewFrameTest extends TestCase {
             }
 
             @Override
-            public Observable getObservable() {
-                // TODO Auto-generated method stub
-                return null;
-            }
-
-            @Override
             public void setMapID(int mapID) {
                 // TODO Auto-generated method stub
 
@@ -58,7 +48,7 @@ public class ViewFrameTest extends TestCase {
 
             }
         };
-        this.viewFrame = new ViewFrame(this.model);
+        this.viewFrame = new ViewFrame(this.model, "test");
     }
 
     @Override
@@ -75,12 +65,6 @@ public class ViewFrameTest extends TestCase {
     public void testSetModel() {
         // fail("Not yet implemented");
         IModel model = new IModel() {
-
-            @Override
-            public Observable getObservable() {
-                // TODO Auto-generated method stub
-                return null;
-            }
 
             @Override
             public int getMapID() {
@@ -181,23 +165,7 @@ public class ViewFrameTest extends TestCase {
     }
 
     @Test
-    public void testViewFrameIModel() {
-        assertNotNull(new ViewFrame(this.model));
-    }
-
-    @Test
-    public void testViewFrameIModelGraphicsConfiguration() {
-        assertNotNull(new ViewFrame(this.model, (GraphicsConfiguration) null));
-    }
-
-    @Test
     public void testViewFrameIModelString() {
-        assertNotNull(new ViewFrame(this.model, ""));
+        assertNotNull(new ViewFrame(this.model, "test"));
     }
-
-    @Test
-    public void testViewFrameIModelStringGraphicsConfiguration() {
-        assertNotNull(new ViewFrame(this.model, "", null));
-    }
-
 }

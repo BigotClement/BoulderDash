@@ -26,13 +26,18 @@ public class Map extends Observable implements IMap, Observer {
      * @param map
      */
     public Map(char[][] map) {
-        this.setMap(new Entity[map.length][map[0].length]);
-        for (int y = 0; y < map.length; y++) {
-            for (int x = 0; x < map[y].length; x++) {
-                this.setOnTheMapXY(map[y][x], x, y);
+        try {
+            this.setMap(new Entity[map.length][map[0].length]);
+            for (int y = 0; y < map.length; y++) {
+                for (int x = 0; x < map[y].length; x++) {
+                    this.setOnTheMapXY(map[y][x], x, y);
+                }
             }
+            this.fillView();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
-        this.fillView();
     }
 
     @Override
@@ -165,11 +170,6 @@ public class Map extends Observable implements IMap, Observer {
             NullPointerException e = new NullPointerException();
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void setViewMap(IEntity[][] viewMap) {
-        this.viewMap = viewMap;
     }
 
     /**

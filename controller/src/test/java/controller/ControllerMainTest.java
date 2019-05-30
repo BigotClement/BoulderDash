@@ -5,13 +5,9 @@ package controller;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-
-import java.util.Observable;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import contract.IControllerMain;
 import contract.IMap;
 import contract.IModel;
@@ -55,12 +51,6 @@ public class ControllerMainTest {
             public void setMap(IMap map) {
                 // TODO Auto-generated method stub
 
-            }
-
-            @Override
-            public Observable getObservable() {
-                // TODO Auto-generated method stub
-                return null;
             }
 
             @Override

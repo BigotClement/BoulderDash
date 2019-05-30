@@ -3,7 +3,6 @@
  */
 package view;
 
-import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -31,31 +30,6 @@ public class ViewFrame extends JFrame implements KeyListener {
      *
      * @param model
      *                  the model
-     * @throws HeadlessException
-     *                               the headless exception
-     */
-    public ViewFrame(final IModel model) throws HeadlessException {
-        this.buildViewFrame(model);
-    }
-
-    /**
-     * Instantiates a new view frame.
-     *
-     * @param model
-     *                  the model
-     * @param gc
-     *                  the gc
-     */
-    public ViewFrame(final IModel model, final GraphicsConfiguration gc) {
-        super(gc);
-        this.buildViewFrame(model);
-    }
-
-    /**
-     * Instantiates a new view frame.
-     *
-     * @param model
-     *                  the model
      * @param title
      *                  the title
      * @throws HeadlessException
@@ -63,21 +37,6 @@ public class ViewFrame extends JFrame implements KeyListener {
      */
     public ViewFrame(final IModel model, final String title) throws HeadlessException {
         super(title);
-        this.buildViewFrame(model);
-    }
-
-    /**
-     * Instantiates a new view frame.
-     *
-     * @param model
-     *                  the model
-     * @param title
-     *                  the title
-     * @param gc
-     *                  the gc
-     */
-    public ViewFrame(final IModel model, final String title, final GraphicsConfiguration gc) {
-        super(title, gc);
         this.buildViewFrame(model);
     }
 

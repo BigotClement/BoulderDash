@@ -30,7 +30,13 @@ public class MapTest {
 
     @Test
     public void testMap() {
-        char[][] map1 = { { 'X' } };
+        char[][] map1 = new char[16][16];
+        for (char[] c : map1) {
+            for (char cc : c) {
+                cc = 'X';
+            }
+        }
+        map1[0][0] = 'H';
         Map map = new Map(map1);
         assertEquals(Map.class, map.getClass());
     }

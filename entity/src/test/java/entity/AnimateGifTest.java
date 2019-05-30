@@ -58,8 +58,8 @@ public class AnimateGifTest {
 
     @Test
     public void testSetFolder() {
-        this.animateGif.setFolder("");
-        assertEquals("", this.animateGif.getFolder());
+        this.animateGif.setFolder("frames_gif");
+        assertEquals("frames_gif", this.animateGif.getFolder());
     }
 
     @Test
