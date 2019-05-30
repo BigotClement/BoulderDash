@@ -14,6 +14,7 @@ public class ControllerMain implements IControllerMain {
     private ControllerCharacter controllerCharacter;
     private ControllerRock controllerRock;
     private ControllerDiamond controllerDiamond;
+    private ControllerEnemy controllerEnemy;
     private IView view;
     private IModel model;
 
@@ -27,6 +28,7 @@ public class ControllerMain implements IControllerMain {
         this.setControllerCharacter(new ControllerCharacter(view, model));
         this.setControllerRock(new ControllerRock(view, model));
         this.setControllerDiamond(new ControllerDiamond(view, model));
+        this.setControllerEnemy(new ControllerEnemy(view, model));
         Thread lookMap = new Thread() {
             @Override
             public void run() {
@@ -58,6 +60,7 @@ public class ControllerMain implements IControllerMain {
                 if ((!this.getModel().getMap().getMap()[y][x].isVerified())) {
                     this.getControllerRock().move(x, y);
                     this.getControllerDiamond().move(x, y);
+                    this.getControllerEnemy().move(x, y);
                 }
             }
         }
@@ -118,6 +121,14 @@ public class ControllerMain implements IControllerMain {
 
     public void setControllerDiamond(ControllerDiamond controllerDiamond) {
         this.controllerDiamond = controllerDiamond;
+    }
+
+    public ControllerEnemy getControllerEnemy() {
+        return this.controllerEnemy;
+    }
+
+    public void setControllerEnemy(ControllerEnemy controllerEnemy) {
+        this.controllerEnemy = controllerEnemy;
     }
 
 }
