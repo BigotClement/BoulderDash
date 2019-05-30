@@ -6,6 +6,7 @@ package controller;
 import contract.IModel;
 import contract.IView;
 import mobile.MobileEntityFactory;
+import java.util.Random;
 
 public class ControllerEnemy extends Controller {
 
@@ -17,41 +18,43 @@ public class ControllerEnemy extends Controller {
     public void move(int x, int y) {
 
         if (this.getModel().getMap().getMap()[y][x].getClass() == MobileEntityFactory.createEnemy().getClass()) {
-            if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
-                    this.getModel().getMap().getMap()[y][x].getX() + 1,
-                    this.getModel().getMap().getMap()[y][x].getY()))) {
-                this.getModel().getMap().getMap()[y][x].setVerified(true);
-                this.moveRight(this.getModel().getMap().getMap()[y][x]);
-            }
+            Random rand = new Random();
 
-            else if (this.getModel().getMap().getMap()[y][x].getClass() == MobileEntityFactory.createEnemy()
-                    .getClass()) {
-                if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
-                        this.getModel().getMap().getMap()[y][x].getX(),
-                        this.getModel().getMap().getMap()[y][x].getY() - 1))) {
-                    this.getModel().getMap().getMap()[y][x].setVerified(true);
-                    this.moveUp(this.getModel().getMap().getMap()[y][x]);
-                }
-            }
+            int RandomNumber = rand.nextInt(4);
 
-            else if (this.getModel().getMap().getMap()[y][x].getClass() == MobileEntityFactory.createEnemy()
-                    .getClass()) {
-                if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
-                        this.getModel().getMap().getMap()[y][x].getX() - 1,
-                        this.getModel().getMap().getMap()[y][x].getY()))) {
-                    this.getModel().getMap().getMap()[y][x].setVerified(true);
-                    this.moveLeft(this.getModel().getMap().getMap()[y][x]);
-                }
-            }
-
-            else if (this.getModel().getMap().getMap()[y][x].getClass() == MobileEntityFactory.createEnemy()
-                    .getClass()) {
-                if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
-                        this.getModel().getMap().getMap()[y][x].getX(),
-                        this.getModel().getMap().getMap()[y][x].getY() + 1))) {
-                    this.getModel().getMap().getMap()[y][x].setVerified(true);
-                    this.moveDown(this.getModel().getMap().getMap()[y][x]);
-                }
+            switch (RandomNumber) {
+                case 0:
+                    if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
+                            this.getModel().getMap().getMap()[y][x].getX() + 1,
+                            this.getModel().getMap().getMap()[y][x].getY()))) {
+                        this.getModel().getMap().getMap()[y][x].setVerified(true);
+                        this.moveRight(this.getModel().getMap().getMap()[y][x]);
+                    }
+                    break;
+                case 1:
+                    if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
+                            this.getModel().getMap().getMap()[y][x].getX(),
+                            this.getModel().getMap().getMap()[y][x].getY() - 1))) {
+                        this.getModel().getMap().getMap()[y][x].setVerified(true);
+                        this.moveUp(this.getModel().getMap().getMap()[y][x]);
+                    }
+                    break;
+                case 2:
+                    if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
+                            this.getModel().getMap().getMap()[y][x].getX() - 1,
+                            this.getModel().getMap().getMap()[y][x].getY()))) {
+                        this.getModel().getMap().getMap()[y][x].setVerified(true);
+                        this.moveLeft(this.getModel().getMap().getMap()[y][x]);
+                    }
+                    break;
+                case 3:
+                    if ((this.checkMove(this.getModel().getMap().getMap()[y][x],
+                            this.getModel().getMap().getMap()[y][x].getX(),
+                            this.getModel().getMap().getMap()[y][x].getY() + 1))) {
+                        this.getModel().getMap().getMap()[y][x].setVerified(true);
+                        this.moveDown(this.getModel().getMap().getMap()[y][x]);
+                    }
+                    break;
             }
         }
 
