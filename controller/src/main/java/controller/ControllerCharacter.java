@@ -33,39 +33,33 @@ public class ControllerCharacter extends Controller {
 
         switch (key.getKeyChar()) {
             case 'z':
-                if (this.getModel().getMap().getOnTheMapXY(character.getX(), character.getY() - 1)
-                        .getClass() == MobileEntityFactory.createDiamond().getClass()) {
-                    this.incrementDiamond();
-                }
-                this.moveUp(this.getModel().getMap().findCharacter());
-                this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Up");
+                this.canIncrementDiamond(character, character.getX(), character.getY() - 1);
+                this.moveUp(character);
+                character.setSpriteFolder("sprites\\Mobile\\Character\\Up");
                 break;
             case 'q':
-                if (this.getModel().getMap().getOnTheMapXY(character.getX() - 1, character.getY())
-                        .getClass() == MobileEntityFactory.createDiamond().getClass()) {
-                    this.incrementDiamond();
-                }
-                this.moveLeft(this.getModel().getMap().findCharacter());
-                this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Left");
+                this.canIncrementDiamond(character, character.getX() - 1, character.getY());
+                this.moveLeft(character);
+                character.setSpriteFolder("sprites\\Mobile\\Character\\Left");
                 break;
             case 's':
-                if (this.getModel().getMap().getOnTheMapXY(character.getX(), character.getY() + 1)
-                        .getClass() == MobileEntityFactory.createDiamond().getClass()) {
-                    this.incrementDiamond();
-                }
-                this.moveDown(this.getModel().getMap().findCharacter());
-                this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Down");
+                this.canIncrementDiamond(character, character.getX(), character.getY() + 1);
+                this.moveDown(character);
+                character.setSpriteFolder("sprites\\Mobile\\Character\\Down");
                 break;
             case 'd':
-                if (this.getModel().getMap().getOnTheMapXY(character.getX() + 1, character.getY())
-                        .getClass() == MobileEntityFactory.createDiamond().getClass()) {
-                    this.incrementDiamond();
-                }
-                this.moveRight(this.getModel().getMap().findCharacter());
-                this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Right");
+                this.canIncrementDiamond(character, character.getX() + 1, character.getY());
+                this.moveRight(character);
+                character.setSpriteFolder("sprites\\Mobile\\Character\\Right");
                 break;
             default:
                 break;
+        }
+    }
+
+    private void canIncrementDiamond(IEntity character, int x, int y) {
+        if (this.getModel().getMap().getOnTheMapXY(x, y).getClass() == MobileEntityFactory.createDiamond().getClass()) {
+            this.incrementDiamond();
         }
     }
 

@@ -27,6 +27,8 @@ public class AnimateGif extends Observable implements Runnable {
     /** The milliseconds. */
     private int milliseconds;
 
+    private Thread thread;
+
     /**
      * Instantiates a new animate gif.
      *
@@ -38,9 +40,9 @@ public class AnimateGif extends Observable implements Runnable {
     public AnimateGif(String folder, int milliseconds) {
         this.setFolder(folder);// defini le dossier
         this.setMilliseconds(milliseconds);
-        Thread thread = new Thread(this);
-        thread.setDaemon(true);
-        thread.start();
+        this.thread = new Thread(this);
+        this.thread.setDaemon(true);
+        this.thread.start();
     }
 
     /**
