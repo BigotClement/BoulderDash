@@ -6,7 +6,6 @@ package controller;
 import contract.IModel;
 import contract.IView;
 import mobile.MobileEntityFactory;
-import motionless.MotionlessEntityFactory;
 
 public class ControllerRock extends Controller {
 
@@ -49,26 +48,6 @@ public class ControllerRock extends Controller {
                     this.getModel().getMap().getOnTheMapXY(x, y + 1).canKillTrue();
                     this.kill(x, y + 1);
                 }
-            }
-        }
-    }
-
-    public void kill(int x, int y) {
-        if (this.getModel().getMap().getOnTheMapXY(x, y).getCanKill() == true) {
-            if ((this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createCharacter()
-                    .getClass())
-                    || (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createEnemy()
-                            .getClass())) {
-                this.getModel().getMap().getOnTheMapXY(x, y + 1).die();
-                this.dieAnimation(x, y + 1);
-            }
-            if ((this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MobileEntityFactory.createCharacter()
-                    .getClass())
-                    && (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MobileEntityFactory.createEnemy()
-                            .getClass())
-                    && (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MotionlessEntityFactory
-                            .createDirt().getClass())) {
-                this.getModel().getMap().getOnTheMapXY(x, y).canKillFalse();
             }
         }
     }

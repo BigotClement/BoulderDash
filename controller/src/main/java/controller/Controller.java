@@ -182,6 +182,26 @@ public class Controller implements IControllerMain {
         }
     }
 
+    public void kill(int x, int y) {
+        if (this.getModel().getMap().getOnTheMapXY(x, y).getCanKill() == true) {
+            if ((this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createCharacter()
+                    .getClass())
+                    || (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createEnemy()
+                            .getClass())) {
+                this.getModel().getMap().getOnTheMapXY(x, y + 1).die();
+                this.dieAnimation(x, y + 1);
+            }
+            if ((this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MobileEntityFactory.createCharacter()
+                    .getClass())
+                    && (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MobileEntityFactory.createEnemy()
+                            .getClass())
+                    && (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MotionlessEntityFactory
+                            .createDirt().getClass())) {
+                this.getModel().getMap().getOnTheMapXY(x, y).canKillFalse();
+            }
+        }
+    }
+
     @Override
     public int getDiamondCount() {
         // TODO Auto-generated method stub
