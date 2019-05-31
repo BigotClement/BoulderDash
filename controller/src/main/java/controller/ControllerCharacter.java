@@ -9,6 +9,7 @@ import contract.IView;
 import entity.IEntity;
 import entity.Permeability;
 import mobile.MobileEntityFactory;
+import motionless.MotionlessEntityFactory;
 
 public class ControllerCharacter extends Controller {
 
@@ -31,7 +32,7 @@ public class ControllerCharacter extends Controller {
     public void moveSet(KeyEvent key) {
 
         IEntity character = this.getModel().getMap().findCharacter();
-
+        this.CharacterOnExit(character, character.getX(), character.getY());
         switch (key.getKeyChar()) {
             case 'z':
                 this.canIncrementDiamond(character, character.getX(), character.getY() - 1);
@@ -64,20 +65,25 @@ public class ControllerCharacter extends Controller {
         }
     }
 
-    private void incrementDiamond() {
+    private int incrementDiamond() {
         this.setDiamondCount(this.getDiamondCount() + 1);
-        System.out.println(this.getDiamondCount());
         this.openExit();
+        return this.getDiamondCount();
     }
 
-    private void openExit() {
+    private String openExit() {
         if (this.getDiamondCount() >= 10) {
             this.getModel().getMap().findExit().setPermeability(Permeability.PENETRABLE);
+            return "Go to EXIT !";
         }
-
+        return null;
     }
 
-    public void CharacterOnExit() {
-
+    public void CharacterOnExit(IEntity character, int x, int y) {
+        if (this.getModel().getMap().getOnTheMapXY(x, y).getClass() == MotionlessEntityFactory.createExit()
+                .getClass()) {
+            character.setSpriteFolder("sprites\\Mobile\\Character\\Victory\\Victory2");
+            System.out.println("test");
+        }
     }
 }
