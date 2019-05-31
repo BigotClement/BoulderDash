@@ -15,7 +15,7 @@ import entity.Permeability;
 
 public abstract class MotionlessEntity extends Entity {
 
-    private Image image;
+    protected Image image;
 
     /**
      * @param sprite

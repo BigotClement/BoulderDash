@@ -32,6 +32,7 @@ public class ControllerCharacter extends Controller {
     public void moveSet(KeyEvent key) {
 
         IEntity character = this.getModel().getMap().findCharacter();
+        this.checkDie(character.getX(), character.getY());
         this.CharacterOnExit(character, character.getX(), character.getY());
         switch (key.getKeyChar()) {
             case 'z':
@@ -123,17 +124,28 @@ public class ControllerCharacter extends Controller {
         if (this.getModel().getMap().getOnTheMapXY(x, y).isAlive() == false) {
             this.getModel().getMap().getOnTheMapXY(x, y)
                     .setSpriteFolder("sprites\\Mobile\\Character\\Death\\DeathHard");
-            
-            
             this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x - 1, y - 1);
-            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x - 1, y);
-            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x - 1, y + 1);
-            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x, y + 1);
-            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x + 1, y + 1);
-            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x + 1, y);
-            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x + 1, y - 1);
-            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x, y - 1);
-
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x - 1, y);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x - 1, y + 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x, y + 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x + 1, y + 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x + 1, y);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x + 1, y - 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x, y - 1);
+            Thread wait = new Thread() {
+                @Override
+                public void run() {
+                    Thread.currentThread();
+                    try {
+                        Thread.sleep(2000);
+                        System.exit(0);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            };
+            wait.start();
         }
     }
 

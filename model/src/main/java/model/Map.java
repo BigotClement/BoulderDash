@@ -145,6 +145,8 @@ public class Map extends Observable implements IMap, Observer {
     @Override
     public void setOnTheMapXY(IEntity entity, int x, int y) {
         this.getMap()[y][x] = entity;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     @Override

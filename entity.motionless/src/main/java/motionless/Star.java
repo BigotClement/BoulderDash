@@ -20,6 +20,7 @@ public class Star extends MotionlessEntity {
 
     public Star() {
         super(SPRITE, IMAGE, PERMEABILITY);
+        this.setFolder(FOLDER);
     }
 
     @Override

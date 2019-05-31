@@ -6,8 +6,10 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.geom.Rectangle2D;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JPanel;
@@ -70,23 +72,31 @@ class ViewPanel extends JPanel implements Observer {
     }
 
     protected void writeScoreExit(final Graphics graphics) {
+        String str = "Diamonds: " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount()
+                + "/10";
+        int startX = 10;
+        int startY = 50;
         int size = 30;
+        int border1 = 7;
+        int border2 = border1 / 2;
+        Color textColor = Color.WHITE;
+        Color rectColor = Color.BLACK;
+        Color border1Color = Color.BLUE;
+        Color border2Color = Color.WHITE;
+        graphics.setFont(new Font("Verdana", 0, size));
+        FontMetrics fm = graphics.getFontMetrics();
+        Rectangle2D rect = fm.getStringBounds(str, graphics);
         this.getViewFrame().getContentPane().setLayout(new BorderLayout(4, 4));
-        graphics.setFont(new Font("Verdana", 1, size));
-        graphics.setColor(Color.GREEN);
-        graphics.drawString(
-                "BoulderDash " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount() + "/10",
-                0, size);
-        /*
-         * JLabel titleDiamondExit = new JLabel("BoulderDash " +
-         * this.getViewFrame().getController().getControllerCharacter().getDiamondCount(
-         * ) + "/10"); titleDiamondExit.setFont(new Font("Verdana", 1, 30));
-         * this.getViewFrame().add(titleDiamondExit);
-         * titleDiamondExit.setForeground(Color.GREEN);
-         * titleDiamondExit.setHorizontalAlignment(JLabel.LEFT);
-         * this.getViewFrame().add(titleDiamondExit, BorderLayout.NORTH);
-         */
-
+        graphics.setColor(border1Color);
+        graphics.fillRect(startX - border1, ((size - fm.getAscent()) + startY) - border1,
+                (int) rect.getWidth() + (border1 * 2), (int) rect.getHeight() + (border1 * 2));
+        graphics.setColor(border2Color);
+        graphics.fillRect(startX - border2, ((size - fm.getAscent()) + startY) - border2,
+                (int) rect.getWidth() + (border2 * 2), (int) rect.getHeight() + (border2 * 2));
+        graphics.setColor(rectColor);
+        graphics.fillRect(startX, (size - fm.getAscent()) + startY, (int) rect.getWidth(), (int) rect.getHeight());
+        graphics.setColor(textColor);
+        graphics.drawString(str, startX, size + startY);
     }
 
     /**
