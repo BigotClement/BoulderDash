@@ -135,7 +135,7 @@ class ViewPanel extends JPanel implements Observer {
         Color border1Color = Color.BLACK;
         Color border2Color = Color.BLUE;
         Color border3Color = Color.WHITE;
-        graphics.setFont(new Font("Verdana", 0, size));
+        graphics.setFont(new Font("Verdana", 1, size));
         this.writePanel(graphics, str, startX, startY, size, border1, border2, border3, textColor, rectColor,
                 border1Color, border2Color, border3Color);
         graphics.drawImage(this.getDiamondCounterImage(), startX + 10, startY, size + 5, size + 5, this);
@@ -157,7 +157,7 @@ class ViewPanel extends JPanel implements Observer {
         Color border1Color = Color.BLACK;
         Color border2Color = Color.BLUE;
         Color border3Color = Color.WHITE;
-        graphics.setFont(new Font("Verdana", 0, size));
+        graphics.setFont(new Font("Verdana", 1, size));
         this.writePanel(graphics, str, sizeTimer, startX, startY, size, border1, border2, border3, textColor, rectColor,
                 border1Color, border2Color, border3Color);
         graphics.drawImage(this.getTimerImage(), startX + 10, startY, size + 5, size + 5, this);
