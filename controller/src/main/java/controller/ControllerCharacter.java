@@ -14,6 +14,7 @@ public class ControllerCharacter extends Controller {
 
     private int diamondCount = 0;
 
+    @Override
     public int getDiamondCount() {
         return this.diamondCount;
     }

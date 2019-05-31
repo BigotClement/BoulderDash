@@ -132,4 +132,9 @@ public class ControllerMain implements IControllerMain {
         this.controllerEnemy = controllerEnemy;
     }
 
+    @Override
+    public int getDiamondCount() {
+        return 0;
+    }
+
 }

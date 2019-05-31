@@ -152,4 +152,10 @@ public class Controller implements IControllerMain {
         this.moveRight(mobile);
         this.moveDown(mobile);
     }
+
+    @Override
+    public int getDiamondCount() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 }

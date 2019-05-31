@@ -20,4 +20,6 @@ public interface IControllerMain {
 
     IView getView();
 
+    int getDiamondCount();
+
 }

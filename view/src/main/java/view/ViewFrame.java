@@ -16,6 +16,8 @@ public class ViewFrame extends JFrame implements KeyListener {
 
     private static final int FRAMEHEIGHT = 1000;
 
+    private int diamondCount = 0;
+
     /** The model. */
     private IModel model;
 
@@ -120,9 +122,16 @@ public class ViewFrame extends JFrame implements KeyListener {
         try {
             Thread.sleep(20);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Stand");
+    }
+
+    public int getDiamondCount() {
+        return this.diamondCount;
+    }
+
+    public void setDiamondCount(int diamondCount) {
+        this.diamondCount = diamondCount;
     }
 }

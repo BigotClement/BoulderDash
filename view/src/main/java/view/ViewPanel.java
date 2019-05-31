@@ -10,11 +10,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Observable;
 import java.util.Observer;
-
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import view.View;
 
 /**
  * The Class ViewPanel.
@@ -59,7 +55,7 @@ class ViewPanel extends JPanel implements Observer {
         for (int y = 0; y < this.getViewFrame().getModel().getMap().getViewMap().length; y++) {
             for (int x = 0; x < this.getViewFrame().getModel().getMap().getViewMap()[y].length; x++) {
                 Image image = null;
-                image = this.getViewFrame().getModel().getMap().getViewMap()[y][x].getImage();
+                image = this.getViewFrame().getModel().getMap().getOnTheViewMapXY(x, y).getImage();
                 graphics.drawImage(image,
                         x * (this.getViewFrame().getWidth()
                                 / this.getViewFrame().getModel().getMap().getViewMap()[y].length),
@@ -74,18 +70,22 @@ class ViewPanel extends JPanel implements Observer {
     }
 
     protected void writeScoreExit(final Graphics graphics) {
-        this.viewFrame.getContentPane().setLayout(new BorderLayout(4, 4));
-        JLabel titleDiamondExit = new JLabel("BoulderDash\n" /*
-                                                              * + this.getViewFrame().getController().
-                                                              * getControllerCharacter().getDiamondCount() + "/10\n" +
-                                                              * this.getViewFrame().getController().
-                                                              * getControllerCharacter().openExit()
-                                                              */);
-        titleDiamondExit.setFont(new Font("Verdana", 1, 30));
-        this.viewFrame.add(titleDiamondExit);
-        titleDiamondExit.setForeground(Color.GREEN);
-        titleDiamondExit.setHorizontalAlignment(JLabel.LEFT);
-        this.viewFrame.add(titleDiamondExit, BorderLayout.NORTH);
+        int size = 30;
+        this.getViewFrame().getContentPane().setLayout(new BorderLayout(4, 4));
+        graphics.setFont(new Font("Verdana", 1, size));
+        graphics.setColor(Color.GREEN);
+        graphics.drawString(
+                "BoulderDash " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount() + "/10",
+                0, size);
+        /*
+         * JLabel titleDiamondExit = new JLabel("BoulderDash " +
+         * this.getViewFrame().getController().getControllerCharacter().getDiamondCount(
+         * ) + "/10"); titleDiamondExit.setFont(new Font("Verdana", 1, 30));
+         * this.getViewFrame().add(titleDiamondExit);
+         * titleDiamondExit.setForeground(Color.GREEN);
+         * titleDiamondExit.setHorizontalAlignment(JLabel.LEFT);
+         * this.getViewFrame().add(titleDiamondExit, BorderLayout.NORTH);
+         */
 
     }
 
