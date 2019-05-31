@@ -3,7 +3,6 @@
  */
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -13,6 +12,8 @@ import java.awt.geom.Rectangle2D;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JPanel;
+
+import mobile.MobileEntityFactory;
 
 /**
  * The Class ViewPanel.
@@ -68,35 +69,88 @@ class ViewPanel extends JPanel implements Observer {
                         this);
             }
         }
-        this.writeScoreExit(graphics);
+        this.writeTimerExit(graphics, this.writeScoreExit(graphics));
     }
 
-    protected void writeScoreExit(final Graphics graphics) {
-        String str = "Diamonds: " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount()
-                + "/10";
-        int startX = 10;
-        int startY = 50;
-        int size = 30;
-        int border1 = 7;
-        int border2 = border1 / 2;
-        Color textColor = Color.WHITE;
-        Color rectColor = Color.BLACK;
-        Color border1Color = Color.BLUE;
-        Color border2Color = Color.WHITE;
-        graphics.setFont(new Font("Verdana", 0, size));
+    public void writePanel(final Graphics graphics, String str, int startX, int startY, int size, int border1,
+            int border2, int border3, Color textColor, Color rectColor, Color border1Color, Color border2Color,
+            Color border3Color) {
         FontMetrics fm = graphics.getFontMetrics();
         Rectangle2D rect = fm.getStringBounds(str, graphics);
-        this.getViewFrame().getContentPane().setLayout(new BorderLayout(4, 4));
         graphics.setColor(border1Color);
         graphics.fillRect(startX - border1, ((size - fm.getAscent()) + startY) - border1,
                 (int) rect.getWidth() + (border1 * 2), (int) rect.getHeight() + (border1 * 2));
         graphics.setColor(border2Color);
         graphics.fillRect(startX - border2, ((size - fm.getAscent()) + startY) - border2,
                 (int) rect.getWidth() + (border2 * 2), (int) rect.getHeight() + (border2 * 2));
+        graphics.setColor(border3Color);
+        graphics.fillRect(startX - border3, ((size - fm.getAscent()) + startY) - border3,
+                (int) rect.getWidth() + (border3 * 2), (int) rect.getHeight() + (border3 * 2));
         graphics.setColor(rectColor);
         graphics.fillRect(startX, (size - fm.getAscent()) + startY, (int) rect.getWidth(), (int) rect.getHeight());
         graphics.setColor(textColor);
         graphics.drawString(str, startX, size + startY);
+    }
+
+    public void writePanel(final Graphics graphics, String str, String str2, int startX, int startY, int size,
+            int border1, int border2, int border3, Color textColor, Color rectColor, Color border1Color,
+            Color border2Color, Color border3Color) {
+        FontMetrics fm = graphics.getFontMetrics();
+        Rectangle2D rect = fm.getStringBounds(str2, graphics);
+        graphics.setColor(border1Color);
+        graphics.fillRect(startX - border1, ((size - fm.getAscent()) + startY) - border1,
+                (int) rect.getWidth() + (border1 * 2), (int) rect.getHeight() + (border1 * 2));
+        graphics.setColor(border2Color);
+        graphics.fillRect(startX - border2, ((size - fm.getAscent()) + startY) - border2,
+                (int) rect.getWidth() + (border2 * 2), (int) rect.getHeight() + (border2 * 2));
+        graphics.setColor(border3Color);
+        graphics.fillRect(startX - border3, ((size - fm.getAscent()) + startY) - border3,
+                (int) rect.getWidth() + (border3 * 2), (int) rect.getHeight() + (border3 * 2));
+        graphics.setColor(rectColor);
+        graphics.fillRect(startX, (size - fm.getAscent()) + startY, (int) rect.getWidth(), (int) rect.getHeight());
+        graphics.setColor(textColor);
+        graphics.drawString(str, startX, size + startY);
+    }
+
+    protected int writeScoreExit(final Graphics graphics) {
+        Image image = MobileEntityFactory.createDiamond().getImage();
+        String str = "     " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount() + "/10";
+        int size = 30;
+        int startX = 10;
+        int startY = 50;
+        int border1 = 10;
+        int border2 = (border1 / 3) * 2;
+        int border3 = (border1 / 3);
+        Color textColor = Color.WHITE;
+        Color rectColor = Color.BLACK;
+        Color border1Color = Color.BLACK;
+        Color border2Color = Color.BLUE;
+        Color border3Color = Color.WHITE;
+        graphics.setFont(new Font("Verdana", 0, size));
+        this.writePanel(graphics, str, startX, startY, size, border1, border2, border3, textColor, rectColor,
+                border1Color, border2Color, border3Color);
+        graphics.drawImage(image, startX + 10, startY, size, size, this);
+        return startY;
+    }
+
+    protected void writeTimerExit(final Graphics graphics, int exit) {
+        String str = "      " + this.getViewFrame().getController().getTimeLeft();
+        String sizeTimer = "     " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount()
+                + "/10";
+        int size = 30;
+        int border1 = 10;
+        int border2 = (border1 / 3) * 2;
+        int border3 = (border1 / 3);
+        int startX = 10;
+        int startY = exit + size + border1 + border1 + border3;
+        Color textColor = Color.WHITE;
+        Color rectColor = Color.BLACK;
+        Color border1Color = Color.BLACK;
+        Color border2Color = Color.BLUE;
+        Color border3Color = Color.WHITE;
+        graphics.setFont(new Font("Verdana", 0, size));
+        this.writePanel(graphics, str, sizeTimer, startX, startY, size, border1, border2, border3, textColor, rectColor,
+                border1Color, border2Color, border3Color);
     }
 
     /**

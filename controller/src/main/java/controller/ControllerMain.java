@@ -17,6 +17,7 @@ public class ControllerMain implements IControllerMain {
     private ControllerEnemy controllerEnemy;
     private IView view;
     private IModel model;
+    private int timeLeft = 120;
 
     /**
      * @param view
@@ -46,8 +47,27 @@ public class ControllerMain implements IControllerMain {
                 }
             }
         };
+        Thread timeRunning = new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        ControllerMain.this.setTimeLeft(ControllerMain.this.getTimeLeft() - 1);
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        };
         lookMap.setDaemon(true);
         lookMap.start();
+        timeRunning.setDaemon(true);
+        timeRunning.start();
     }
 
     public void lookTheMap() {
@@ -136,6 +156,15 @@ public class ControllerMain implements IControllerMain {
     @Override
     public int getDiamondCount() {
         return 0;
+    }
+
+    @Override
+    public int getTimeLeft() {
+        return this.timeLeft;
+    }
+
+    public void setTimeLeft(int timeLeft) {
+        this.timeLeft = timeLeft;
     }
 
 }
