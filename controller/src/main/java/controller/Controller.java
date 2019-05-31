@@ -153,7 +153,7 @@ public class Controller implements IControllerMain {
         this.moveDown(mobile);
     }
 
-    public void dieAnimation(int x, int y) {
+    public void dieAnimationCharacter(int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).isAlive() == false) {
             this.getModel().getMap().getOnTheMapXY(x, y)
                     .setSpriteFolder("sprites\\Mobile\\Character\\Death\\DeathHard");
@@ -182,14 +182,42 @@ public class Controller implements IControllerMain {
         }
     }
 
+    public void dieAnimationEnemy(int x, int y) {
+        if (this.getModel().getMap().getOnTheMapXY(x, y).isAlive() == false) {
+            /*
+             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(),
+             * x, y);
+             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
+             * - 1, y - 1);
+             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
+             * - 1, y);
+             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
+             * - 1, y + 1);
+             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(),
+             * x, y + 1);
+             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
+             * + 1, y + 1);
+             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
+             * + 1, y);
+             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
+             * + 1, y - 1);
+             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(),
+             * x, y - 1);
+             */
+            System.out.println("meurt!");
+        }
+    }
+
     public void kill(int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).getCanKill() == true) {
-            if ((this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createCharacter()
-                    .getClass())
-                    || (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createEnemy()
-                            .getClass())) {
+            if (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createCharacter()
+                    .getClass()) {
                 this.getModel().getMap().getOnTheMapXY(x, y + 1).die();
-                this.dieAnimation(x, y + 1);
+                this.dieAnimationCharacter(x, y + 1);
+            } else if (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createEnemy()
+                    .getClass()) {
+                this.getModel().getMap().getOnTheMapXY(x, y + 1).die();
+                this.dieAnimationEnemy(x, y + 1);
             }
             if ((this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MobileEntityFactory.createCharacter()
                     .getClass())

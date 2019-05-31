@@ -118,7 +118,7 @@ public class ControllerCharacter extends Controller {
                     || (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createEnemy()
                             .getClass())) {
                 this.getModel().getMap().getOnTheMapXY(x, y).die();
-                this.dieAnimation(x, y);
+                this.dieAnimationCharacter(x, y);
             }
         }
     }
