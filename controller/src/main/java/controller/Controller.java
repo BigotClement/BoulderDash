@@ -193,7 +193,6 @@ public class Controller implements IControllerMain {
                     this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond().getSprite(), j, i);
                 }
             }
-            System.out.println("meurt!");
         }
     }
 
