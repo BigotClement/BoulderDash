@@ -45,4 +45,8 @@ public interface IEntity {
 
     void setObserver(Observer observer);
 
+    void die();
+
+    boolean isAlive();
+
 }

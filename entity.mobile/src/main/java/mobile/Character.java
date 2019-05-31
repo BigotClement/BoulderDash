@@ -19,6 +19,8 @@ public class Character extends MobileEntity {
 
     private AnimateGif animateGif;
 
+    private boolean alive = true;
+
     public Character() {
         super(SPRITE, FOLDER, PERMEABILITY);
         this.setPermeability(this.getPermeability());
@@ -49,6 +51,16 @@ public class Character extends MobileEntity {
     @Override
     public void setSpriteFolder(String folder) {
         this.animateGif.setFolder(folder);
+    }
+
+    @Override
+    public void die() {
+        this.alive = false;
+
+    }
+
+    public boolean isAlive() {
+        return this.alive;
     }
 
 }

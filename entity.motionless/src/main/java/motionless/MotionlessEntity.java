@@ -67,4 +67,15 @@ public abstract class MotionlessEntity extends Entity {
 
     }
 
+    @Override
+    public void die() {
+
+    }
+
+    @Override
+    public boolean isAlive() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 }

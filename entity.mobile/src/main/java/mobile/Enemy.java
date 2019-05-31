@@ -21,6 +21,8 @@ public class Enemy extends MobileEntity {
 
     private AnimateGif animateGif;
 
+    private boolean alive = true;
+
     public Enemy() {
         super(SPRITE, s_ran, PERMEABILITY);
         this.setPermeability(this.getPermeability());
@@ -52,6 +54,16 @@ public class Enemy extends MobileEntity {
     @Override
     public void setObserver(Observer observer) {
         this.animateGif.addObserver(observer);
+    }
+
+    @Override
+    public void die() {
+        this.alive = false;
+
+    }
+
+    public boolean isAlive() {
+        return this.alive;
     }
 
 }

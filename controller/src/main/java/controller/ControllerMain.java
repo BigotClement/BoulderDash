@@ -62,6 +62,7 @@ public class ControllerMain implements IControllerMain {
                     this.getControllerRock().move(x, y);
                     this.getControllerDiamond().move(x, y);
                     this.getControllerEnemy().move(x, y);
+                    this.getControllerCharacter().checkDie(x, y);
                 }
             }
         }

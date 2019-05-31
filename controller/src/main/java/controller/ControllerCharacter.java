@@ -100,4 +100,41 @@ public class ControllerCharacter extends Controller {
             System.out.println("test");
         }
     }
+
+    public void checkDie(int x, int y) {
+
+        if (this.getModel().getMap().getOnTheMapXY(x, y).getClass() == MobileEntityFactory.createCharacter()
+                .getClass()) {
+            if ((this.getModel().getMap().getOnTheMapXY(x - 1, y).getClass() == MobileEntityFactory.createEnemy()
+                    .getClass())
+                    || (this.getModel().getMap().getOnTheMapXY(x + 1, y).getClass() == MobileEntityFactory.createEnemy()
+                            .getClass())
+                    || (this.getModel().getMap().getOnTheMapXY(x, y - 1).getClass() == MobileEntityFactory.createEnemy()
+                            .getClass())
+                    || (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createEnemy()
+                            .getClass())) {
+                this.getModel().getMap().getOnTheMapXY(x, y).die();
+                this.dieAnimation(x, y);
+            }
+        }
+    }
+
+    public void dieAnimation(int x, int y) {
+        if (this.getModel().getMap().getOnTheMapXY(x, y).isAlive() == false) {
+            this.getModel().getMap().getOnTheMapXY(x, y)
+                    .setSpriteFolder("sprites\\Mobile\\Character\\Death\\DeathHard");
+            
+            
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x - 1, y - 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x - 1, y);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x - 1, y + 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x, y + 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x + 1, y + 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x + 1, y);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x + 1, y - 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(),x, y - 1);
+
+        }
+    }
+
 }

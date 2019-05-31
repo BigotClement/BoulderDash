@@ -9,7 +9,7 @@ import view.View;
 
 public abstract class Main {
 
-    private static final int MAPID = 2;
+    private static final int MAPID = 5;
 
     /**
      * The main method.

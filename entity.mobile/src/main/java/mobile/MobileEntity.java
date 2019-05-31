@@ -91,4 +91,16 @@ public abstract class MobileEntity extends Entity {
         this.verified = b;
     }
 
+    @Override
+    public void die() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public boolean isAlive() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 }
