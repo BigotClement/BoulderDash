@@ -41,6 +41,13 @@ public class ControllerCharacter extends Controller {
                 break;
             case 'q':
                 this.canIncrementDiamond(character, character.getX() - 1, character.getY());
+                if ((this.getModel().getMap().getMap()[character.getY()][character.getX() - 1]
+                        .getClass() == MobileEntityFactory.createRock().getClass())
+                        && (this.getModel().getMap().getMap()[character.getY()][character.getX() - 2]
+                                .getClass() == MotionlessEntityFactory.createDirt().getClass())) {
+                    this.moveLeft(this.getModel().getMap().getMap()[character.getY()][character.getX() - 1]);
+                    this.moveLeft(character);
+                }
                 this.moveLeft(character);
                 character.setSpriteFolder("sprites\\Mobile\\Character\\Left");
                 break;
@@ -51,6 +58,13 @@ public class ControllerCharacter extends Controller {
                 break;
             case 'd':
                 this.canIncrementDiamond(character, character.getX() + 1, character.getY());
+                if ((this.getModel().getMap().getMap()[character.getY()][character.getX() + 1]
+                        .getClass() == MobileEntityFactory.createRock().getClass())
+                        && (this.getModel().getMap().getMap()[character.getY()][character.getX() + 2]
+                                .getClass() == MotionlessEntityFactory.createDirt().getClass())) {
+                    this.moveRight(this.getModel().getMap().getMap()[character.getY()][character.getX() + 1]);
+                    this.moveRight(character);
+                }
                 this.moveRight(character);
                 character.setSpriteFolder("sprites\\Mobile\\Character\\Right");
                 break;
