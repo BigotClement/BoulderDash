@@ -22,8 +22,8 @@ public class ControllerRock extends Controller {
                     this.getModel().getMap().getMap()[y][x].getY() + 1))) {
                 this.getModel().getMap().getMap()[y][x].setVerified(true);
                 this.moveDown(this.getModel().getMap().getMap()[y][x]);
-                this.getModel().getMap().getOnTheMapXY(x, y).canKillTrue();
-                this.kill(x, y);
+                this.getModel().getMap().getOnTheMapXY(x, y + 1).canKillTrue();
+                this.kill(x, y + 1);
 
             }
 
@@ -34,8 +34,8 @@ public class ControllerRock extends Controller {
                         .getClass()) {
                     this.getModel().getMap().getMap()[y][x].setVerified(true);
                     this.moveRightDown(this.getModel().getMap().getMap()[y][x]);
-                    this.getModel().getMap().getOnTheMapXY(x, y).canKillTrue();
-                    this.kill(x, y);
+                    this.getModel().getMap().getOnTheMapXY(x, y + 1).canKillTrue();
+                    this.kill(x, y + 1);
                 }
             }
 
@@ -46,8 +46,8 @@ public class ControllerRock extends Controller {
                         .getClass()) {
                     this.getModel().getMap().getMap()[y][x].setVerified(true);
                     this.moveLeftDown(this.getModel().getMap().getMap()[y][x]);
-                    this.getModel().getMap().getOnTheMapXY(x, y).canKillTrue();
-                    this.kill(x, y);
+                    this.getModel().getMap().getOnTheMapXY(x, y + 1).canKillTrue();
+                    this.kill(x, y + 1);
                 }
             }
         }
@@ -55,18 +55,18 @@ public class ControllerRock extends Controller {
 
     public void kill(int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).getCanKill() == true) {
-            if ((this.getModel().getMap().getOnTheMapXY(x + 1, y).getClass() == MobileEntityFactory.createCharacter()
+            if ((this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createCharacter()
                     .getClass())
-                    || (this.getModel().getMap().getOnTheMapXY(x + 1, y).getClass() == MobileEntityFactory.createEnemy()
+                    || (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createEnemy()
                             .getClass())) {
-                this.getModel().getMap().getOnTheMapXY(x + 1, y).die();
-                this.dieAnimation(x + 1, y);
+                this.getModel().getMap().getOnTheMapXY(x, y + 1).die();
+                this.dieAnimation(x, y + 1);
             }
-            if ((this.getModel().getMap().getOnTheMapXY(x + 1, y).getClass() != MobileEntityFactory.createCharacter()
+            if ((this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MobileEntityFactory.createCharacter()
                     .getClass())
-                    && (this.getModel().getMap().getOnTheMapXY(x + 1, y).getClass() != MobileEntityFactory.createEnemy()
+                    && (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MobileEntityFactory.createEnemy()
                             .getClass())
-                    && (this.getModel().getMap().getOnTheMapXY(x + 1, y).getClass() != MotionlessEntityFactory
+                    && (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MotionlessEntityFactory
                             .createDirt().getClass())) {
                 this.getModel().getMap().getOnTheMapXY(x, y).canKillFalse();
             }
