@@ -62,8 +62,21 @@ public class Enemy extends MobileEntity {
 
     }
 
+    @Override
     public boolean isAlive() {
         return this.alive;
+    }
+
+    @Override
+    public void canKillTrue() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void canKillFalse() {
+        // TODO Auto-generated method stub
+
     }
 
 }

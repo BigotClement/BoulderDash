@@ -59,6 +59,7 @@ public class Character extends MobileEntity {
 
     }
 
+    @Override
     public boolean isAlive() {
         return this.alive;
     }

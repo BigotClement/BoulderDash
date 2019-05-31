@@ -103,4 +103,22 @@ public abstract class MobileEntity extends Entity {
         return false;
     }
 
+    @Override
+    public boolean getCanKill() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void canKillTrue() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void canKillFalse() {
+        // TODO Auto-generated method stub
+
+    }
+
 }

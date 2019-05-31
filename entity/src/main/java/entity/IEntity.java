@@ -49,4 +49,10 @@ public interface IEntity {
 
     boolean isAlive();
 
+    boolean getCanKill();
+
+    void canKillTrue();
+
+    void canKillFalse();
+
 }
