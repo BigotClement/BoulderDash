@@ -3,11 +3,18 @@
  */
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Observable;
 import java.util.Observer;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import view.View;
 
 /**
  * The Class ViewPanel.
@@ -47,6 +54,7 @@ class ViewPanel extends JPanel implements Observer {
 
     @Override
     protected void paintComponent(final Graphics graphics) {
+
         graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
         for (int y = 0; y < this.getViewFrame().getModel().getMap().getViewMap().length; y++) {
             for (int x = 0; x < this.getViewFrame().getModel().getMap().getViewMap()[y].length; x++) {
@@ -62,6 +70,22 @@ class ViewPanel extends JPanel implements Observer {
                         this);
             }
         }
+        this.writeScoreExit(graphics);
+    }
+
+    protected void writeScoreExit(final Graphics graphics) {
+        this.viewFrame.getContentPane().setLayout(new BorderLayout(4, 4));
+        JLabel titleDiamondExit = new JLabel("BoulderDash\n" /*
+                                                              * + this.getViewFrame().getController().
+                                                              * getControllerCharacter().getDiamondCount() + "/10\n" +
+                                                              * this.getViewFrame().getController().
+                                                              * getControllerCharacter().openExit()
+                                                              */);
+        titleDiamondExit.setFont(new Font("Verdana", 1, 30));
+        this.viewFrame.add(titleDiamondExit);
+        titleDiamondExit.setForeground(Color.GREEN);
+        titleDiamondExit.setHorizontalAlignment(JLabel.LEFT);
+        this.viewFrame.add(titleDiamondExit, BorderLayout.NORTH);
 
     }
 

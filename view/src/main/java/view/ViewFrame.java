@@ -20,7 +20,7 @@ public class ViewFrame extends JFrame implements KeyListener {
     private IModel model;
 
     /** The controller. */
-    private IControllerMain controller;
+    IControllerMain controller;
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -697358409737458175L;
