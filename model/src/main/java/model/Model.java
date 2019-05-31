@@ -17,7 +17,7 @@ public final class Model implements IModel {
 
     private IMap map;
 
-    private ReadFile readFile = new ReadFile(this.getMapID());
+    private ReadFile readFile;
 
     /**
      * Instantiates a new model.
@@ -26,6 +26,7 @@ public final class Model implements IModel {
      */
     public Model(int mapid) {
         this.setMapID(mapid);
+        this.readFile = new ReadFile(this.getMapID());
         // this.readFile.deleteMapID(this.getMapID());
         // this.readFile.loadFile();
         this.readFile.selectMapID(this.getMapID());
