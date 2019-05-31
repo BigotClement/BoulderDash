@@ -33,12 +33,12 @@ public class ControllerCharacter extends Controller {
 
         IEntity character = this.getModel().getMap().findCharacter();
         this.checkDie(character.getX(), character.getY());
-        this.CharacterOnExit(character, character.getX(), character.getY());
         switch (key.getKeyChar()) {
             case 'z':
                 this.canIncrementDiamond(character, character.getX(), character.getY() - 1);
                 this.moveUp(character);
                 character.setSpriteFolder("sprites\\Mobile\\Character\\Up");
+                this.CharacterOnExit(character, character.getX(), character.getY());
                 break;
             case 'q':
                 this.canIncrementDiamond(character, character.getX() - 1, character.getY());
@@ -51,11 +51,13 @@ public class ControllerCharacter extends Controller {
                 }
                 this.moveLeft(character);
                 character.setSpriteFolder("sprites\\Mobile\\Character\\Left");
+                this.CharacterOnExit(character, character.getX(), character.getY());
                 break;
             case 's':
                 this.canIncrementDiamond(character, character.getX(), character.getY() + 1);
                 this.moveDown(character);
                 character.setSpriteFolder("sprites\\Mobile\\Character\\Down");
+                this.CharacterOnExit(character, character.getX(), character.getY());
                 break;
             case 'd':
                 this.canIncrementDiamond(character, character.getX() + 1, character.getY());
@@ -68,6 +70,7 @@ public class ControllerCharacter extends Controller {
                 }
                 this.moveRight(character);
                 character.setSpriteFolder("sprites\\Mobile\\Character\\Right");
+                this.CharacterOnExit(character, character.getX(), character.getY());
                 break;
             default:
                 break;
@@ -95,8 +98,8 @@ public class ControllerCharacter extends Controller {
     }
 
     public void CharacterOnExit(IEntity character, int x, int y) {
-        if (this.getModel().getMap().getOnTheMapXY(x, y).getClass() == MotionlessEntityFactory.createExit()
-                .getClass()) {
+        if ((this.getModel().getMap().findExit().getPermeability() == Permeability.PENETRABLE) && (this.getModel()
+                .getMap().getOnTheMapXY(x, y).getClass() == MotionlessEntityFactory.createExit().getClass())) {
             character.setSpriteFolder("sprites\\Mobile\\Character\\Victory\\Victory2");
             System.out.println("test");
         }

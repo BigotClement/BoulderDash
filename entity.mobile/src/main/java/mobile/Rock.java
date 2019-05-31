@@ -51,13 +51,11 @@ public class Rock extends MobileEntity {
 
     @Override
     public void canKillTrue() {
-        System.out.println("yes");
         this.canKill = true;
     }
 
     @Override
     public void canKillFalse() {
-        System.out.println("no");
         this.canKill = false;
     }
 

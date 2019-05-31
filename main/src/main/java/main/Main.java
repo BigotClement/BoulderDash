@@ -9,10 +9,10 @@ import view.View;
 
 public abstract class Main {
 
-    private static final int MAPID = 4;
+    private static final int MAPID = 2;
 
     /**
-     * The main method.
+     * The main method.ddddddddddddd
      *
      * @param args
      *                 the arguments

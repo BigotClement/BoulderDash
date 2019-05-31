@@ -55,14 +55,12 @@ public class ControllerRock extends Controller {
 
     public void kill(int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).getCanKill() == true) {
-            System.out.println("cc");
             if ((this.getModel().getMap().getOnTheMapXY(x + 1, y).getClass() == MobileEntityFactory.createCharacter()
                     .getClass())
                     || (this.getModel().getMap().getOnTheMapXY(x + 1, y).getClass() == MobileEntityFactory.createEnemy()
                             .getClass())) {
                 this.getModel().getMap().getOnTheMapXY(x + 1, y).die();
                 this.dieAnimation(x + 1, y);
-                System.out.println("cc1");
             }
             if ((this.getModel().getMap().getOnTheMapXY(x + 1, y).getClass() != MobileEntityFactory.createCharacter()
                     .getClass())
@@ -70,7 +68,6 @@ public class ControllerRock extends Controller {
                             .getClass())
                     && (this.getModel().getMap().getOnTheMapXY(x + 1, y).getClass() != MotionlessEntityFactory
                             .createDirt().getClass())) {
-                System.out.println("cc2");
                 this.getModel().getMap().getOnTheMapXY(x, y).canKillFalse();
             }
         }
