@@ -81,21 +81,24 @@ public class Controller implements IControllerMain {
     }
 
     public boolean checkMove(IEntity mobile, int x, int y) {
-        if (mobile.getClass() == MobileEntityFactory.createCharacter().getClass()) {
-            if (this.getModel().getMap().getMap()[y][x].getPermeability() != Permeability.BLOCKING) {
-                return true;
-            }
-        } else if (mobile.getClass() == MobileEntityFactory.createRock().getClass()) {
-            if (this.getModel().getMap().getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
-                return true;
-            }
-        } else if (mobile.getClass() == MobileEntityFactory.createDiamond().getClass()) {
-            if (this.getModel().getMap().getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
-                return true;
-            }
-        } else if (mobile.getClass() == MobileEntityFactory.createEnemy().getClass()) {
-            if (this.getModel().getMap().getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
-                return true;
+        if ((y >= 0) && (y < this.getModel().getMap().getMap().length) && (x >= 0)
+                && (x < this.getModel().getMap().getMap()[y].length)) {
+            if (mobile.getClass() == MobileEntityFactory.createCharacter().getClass()) {
+                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() != Permeability.BLOCKING) {
+                    return true;
+                }
+            } else if (mobile.getClass() == MobileEntityFactory.createRock().getClass()) {
+                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
+                    return true;
+                }
+            } else if (mobile.getClass() == MobileEntityFactory.createDiamond().getClass()) {
+                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
+                    return true;
+                }
+            } else if (mobile.getClass() == MobileEntityFactory.createEnemy().getClass()) {
+                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
+                    return true;
+                }
             }
         }
         return false;
@@ -184,26 +187,12 @@ public class Controller implements IControllerMain {
 
     public void dieAnimationEnemy(int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).isAlive() == false) {
-            /*
-             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(),
-             * x, y);
-             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
-             * - 1, y - 1);
-             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
-             * - 1, y);
-             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
-             * - 1, y + 1);
-             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(),
-             * x, y + 1);
-             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
-             * + 1, y + 1);
-             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
-             * + 1, y);
-             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(), x
-             * + 1, y - 1);
-             * this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond(),
-             * x, y - 1);
-             */
+
+            for (int i = y - 1; i <= (y + 1); i++) {
+                for (int j = x - 1; j <= (x + 1); j++) {
+                    this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond().getSprite(), j, i);
+                }
+            }
             System.out.println("meurt!");
         }
     }
