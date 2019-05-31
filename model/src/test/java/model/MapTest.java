@@ -28,6 +28,7 @@ public class MapTest {
     public void tearDown() throws Exception {
     }
 
+    @SuppressWarnings("unused")
     @Test
     public void testMap() {
         char[][] map1 = new char[16][16];

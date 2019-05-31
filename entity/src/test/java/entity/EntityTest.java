@@ -98,6 +98,18 @@ public class EntityTest {
                 // TODO Auto-generated method stub
 
             }
+
+            @Override
+            public void die() {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public boolean isAlive() {
+                // TODO Auto-generated method stub
+                return false;
+            }
         };
     }
 
