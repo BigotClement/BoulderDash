@@ -6,6 +6,13 @@ package view;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 import contract.IControllerMain;
 import contract.IModel;
@@ -40,6 +47,22 @@ public class ViewFrame extends JFrame implements KeyListener {
     public ViewFrame(final IModel model, final String title) throws HeadlessException {
         super(title);
         this.buildViewFrame(model);
+        this.playMusic();
+    }
+
+    public void playMusic() {
+        String filePath = "sounds\\OST Boulder Dash - Boulder World.wav";
+        AudioInputStream audioInputStream;
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 
     /**
