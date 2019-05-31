@@ -165,6 +165,12 @@ public class ViewFrameTest extends TestCase {
                 // TODO Auto-generated method stub
                 return 0;
             }
+
+            @Override
+            public int getTimeLeft() {
+                // TODO Auto-generated method stub
+                return 0;
+            }
         };
         this.viewFrame.setController(controller);
         assertEquals(controller.getClass(), this.viewFrame.getController().getClass());
