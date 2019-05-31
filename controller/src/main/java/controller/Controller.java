@@ -153,8 +153,43 @@ public class Controller implements IControllerMain {
         this.moveDown(mobile);
     }
 
+    public void dieAnimation(int x, int y) {
+        if (this.getModel().getMap().getOnTheMapXY(x, y).isAlive() == false) {
+            this.getModel().getMap().getOnTheMapXY(x, y)
+                    .setSpriteFolder("sprites\\Mobile\\Character\\Death\\DeathHard");
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x - 1, y - 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x - 1, y);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x - 1, y + 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x, y + 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x + 1, y + 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x + 1, y);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x + 1, y - 1);
+            this.getModel().getMap().setOnTheMapXY(MotionlessEntityFactory.createStar(), x, y - 1);
+            Thread wait = new Thread() {
+                @Override
+                public void run() {
+                    Thread.currentThread();
+                    try {
+                        Thread.sleep(2000);
+                        System.exit(0);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            };
+            wait.start();
+        }
+    }
+
     @Override
     public int getDiamondCount() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int getTimeLeft() {
         // TODO Auto-generated method stub
         return 0;
     }
