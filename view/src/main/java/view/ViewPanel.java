@@ -9,11 +9,13 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JPanel;
 
-import mobile.MobileEntityFactory;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 /**
  * The Class ViewPanel.
@@ -27,6 +29,9 @@ class ViewPanel extends JPanel implements Observer {
     /** The view frame. */
     private ViewFrame viewFrame;
 
+    private Image diamondCounterImage = null;
+    private Image timerImage = null;
+
     /**
      * Instantiates a new view panel.
      *
@@ -37,7 +42,12 @@ class ViewPanel extends JPanel implements Observer {
         this.setViewFrame(viewFrame);
         try {
             viewFrame.getModel().getMap().getObservable().addObserver(this);
+            this.setDiamondCounterImage(ImageIO.read(new File("sprites\\diamondcounter.png")));
+            this.setTimerImage(ImageIO.read(new File("sprites\\timer.png")));
         } catch (NullPointerException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -113,7 +123,6 @@ class ViewPanel extends JPanel implements Observer {
     }
 
     protected int writeScoreExit(final Graphics graphics) {
-        Image image = MobileEntityFactory.createDiamond().getImage();
         String str = "     " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount() + "/10";
         int size = 30;
         int startX = 10;
@@ -129,7 +138,7 @@ class ViewPanel extends JPanel implements Observer {
         graphics.setFont(new Font("Verdana", 0, size));
         this.writePanel(graphics, str, startX, startY, size, border1, border2, border3, textColor, rectColor,
                 border1Color, border2Color, border3Color);
-        graphics.drawImage(image, startX + 10, startY, size, size, this);
+        graphics.drawImage(this.getDiamondCounterImage(), startX + 10, startY, size + 5, size + 5, this);
         return startY;
     }
 
@@ -151,6 +160,7 @@ class ViewPanel extends JPanel implements Observer {
         graphics.setFont(new Font("Verdana", 0, size));
         this.writePanel(graphics, str, sizeTimer, startX, startY, size, border1, border2, border3, textColor, rectColor,
                 border1Color, border2Color, border3Color);
+        graphics.drawImage(this.getTimerImage(), startX + 10, startY, size + 5, size + 5, this);
     }
 
     /**
@@ -170,5 +180,21 @@ class ViewPanel extends JPanel implements Observer {
     @Override
     public void update(final Observable arg0, final Object arg1) {
         this.repaint();
+    }
+
+    public Image getDiamondCounterImage() {
+        return this.diamondCounterImage;
+    }
+
+    public void setDiamondCounterImage(Image diamondCounterImage) {
+        this.diamondCounterImage = diamondCounterImage;
+    }
+
+    public Image getTimerImage() {
+        return this.timerImage;
+    }
+
+    public void setTimerImage(Image timerImage) {
+        this.timerImage = timerImage;
     }
 }
