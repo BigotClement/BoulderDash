@@ -134,6 +134,9 @@ public class ReadFile {
                     this.getMap()[resultSet.getInt("posY")][resultSet.getInt("posX")] = resultSet.getString("Sprite")
                             .charAt(0);
                 }
+            } else {
+                System.out.println("Map not found ! Program is closing....");
+                System.exit(0);
             }
         } catch (final SQLException e) {
             e.printStackTrace();
