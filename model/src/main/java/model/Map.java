@@ -159,8 +159,10 @@ public class Map extends Observable implements IMap, Observer {
         if (MotionlessEntityFactory.createEntity(c) != null) {
             this.setOnTheMapXY(MotionlessEntityFactory.createEntity(c), x, y);
             this.getOnTheMapXY(x, y).setY(y);
+            System.out.println(this.getOnTheMapXY(x, y).getY());
             this.getOnTheMapXY(x, y).setX(x);
             this.getOnTheMapXY(x, y).setObserver(this);
+            System.out.println(this.getOnTheMapXY(x, y).getClass());
         } else if (MobileEntityFactory.createEntity(c) != null) {
             this.setOnTheMapXY(MobileEntityFactory.createEntity(c), x, y);
             this.getOnTheMapXY(x, y).setY(y);
