@@ -25,4 +25,15 @@ public class CharacterTest {
     public void testCharacter() {
         assertEquals(Character.class, this.character.getClass());
     }
+
+    @Test
+    public void testDie() {
+        assertFalse(false);
+    }
+
+    @Test
+    public void testIsAlive() {
+        assertTrue(this.character.isAlive());
+    }
+
 }

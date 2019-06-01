@@ -29,6 +29,7 @@ public class MapTest {
     }
 
     @SuppressWarnings("unused")
+
     @Test
     public void testMap() {
         char[][] map1 = new char[16][16];
@@ -60,11 +61,6 @@ public class MapTest {
     }
 
     @Test
-    public void testSetViewMap() {
-        assertNotNull(this.map.getViewMap());
-    }
-
-    @Test
     public void testGetWidth() {
         assertNotNull(this.map.getWidth());
     }
@@ -86,19 +82,6 @@ public class MapTest {
         assertEquals(10, this.map.getHeight());
     }
 
-    /*
-     * @Test public void testGetViewWidth() {
-     * assertNotNull(this.map.getViewWidth()); }
-     * @Test public void testSetViewWidth() { this.map.setViewWidth(10);
-     * assertEquals(10, this.map.getViewWidth()); }
-     */
-
-    /*
-     * @Test public void testGetViewHeight() {
-     * assertNotNull(this.map.getViewHeight()); }
-     * @Test public void testSetViewHeight() { this.map.setViewHeight(10);
-     * assertEquals(10, this.map.getViewHeight()); }
-     */
     @Test
     public void testGetOnTheMapXY() {
         assertNotNull(this.map.getOnTheMapXY(0, 0));
@@ -114,6 +97,33 @@ public class MapTest {
     @Test
     public void testFillView() {
         assertNotNull(this.map.getViewMap());
+    }
+
+    @Test
+    public void testFindCharcter() {
+        assertNotNull(this.map.findCharacter());
+    }
+
+    @Test
+    public void testFindExit() {
+        assertNull(this.map.findExit());
+    }
+
+    @Test
+    public void testGetOnTheViewMapXY() {
+        assertNotNull(this.map.getOnTheViewMapXY(0, 0));
+    }
+
+    @Test
+    public void testSetOnTheViewMapXY() {
+        this.map.setOnTheViewMapXY(null, 0, 0);
+        assertNull(this.map.getOnTheViewMapXY(0, 0));
+    }
+
+    @Test
+    public void testSetOnTheMapXY() {
+        this.map.setOnTheMapXY(null, 0, 0);
+        assertNotNull(this.map.getMap());
     }
 
 }

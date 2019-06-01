@@ -58,19 +58,16 @@ public abstract class MobileEntity extends Entity {
 
     @Override
     public void die() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public boolean isAlive() {
-        // TODO Auto-generated method stub
         return false;
     }
 
     @Override
     public boolean getCanKill() {
-        // TODO Auto-generated method stub
         return this.canKill;
     }
 

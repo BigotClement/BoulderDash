@@ -67,4 +67,35 @@ public class MobileEntityTest {
 
     }
 
+    @Test
+    public void testDie() {
+        assertFalse(false);
+    }
+
+    @Test
+    public void testIsAlive() {
+        assertFalse(this.mobileEntity.isAlive());
+    }
+
+    @Test
+    public void testGetCanKill() {
+        assertFalse(this.mobileEntity.getCanKill());
+    }
+
+    @Test
+    public void testSetCanKill() {
+        this.mobileEntity.setCanKill(false);
+        assertFalse(this.mobileEntity.getCanKill());
+    }
+
+    @Test
+    public void testIsVerified() {
+        assertFalse(this.mobileEntity.isVerified());
+    }
+
+    @Test
+    public void testSetVerified() {
+        this.mobileEntity.setVerified(false);
+        assertFalse(this.mobileEntity.isVerified());
+    }
 }

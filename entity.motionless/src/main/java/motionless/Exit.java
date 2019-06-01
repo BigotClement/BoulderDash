@@ -37,7 +37,6 @@ public class Exit extends MotionlessEntity {
 
     @Override
     public String getFolder() {
-        // TODO Auto-generated method stub
         return null;
     }
 
