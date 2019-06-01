@@ -170,6 +170,8 @@ public class Map extends Observable implements IMap, Observer {
             NullPointerException e = new NullPointerException();
             e.printStackTrace();
         }
+        this.setChanged();
+        this.notifyObservers();
     }
 
     /**
