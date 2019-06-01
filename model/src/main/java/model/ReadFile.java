@@ -138,9 +138,6 @@ public class ReadFile {
                 System.out.println("Map not found ! Program is closing....");
                 // System.exit(0);
             }
-            resultSet.close();
-            call.close();
-            DBConnection.getInstance().getConnection().close();
         } catch (final SQLException e) {
             e.printStackTrace();
         }
