@@ -15,6 +15,10 @@ public class ControllerCharacter extends Controller {
 
     private int diamondCount = 0;
 
+    final private int exitX = this.getModel().getMap().findExit().getX();
+
+    final private int exitY = this.getModel().getMap().findExit().getY();
+
     @Override
     public int getDiamondCount() {
         return this.diamondCount;
@@ -38,39 +42,40 @@ public class ControllerCharacter extends Controller {
                 this.canIncrementDiamond(character, character.getX(), character.getY() - 1);
                 this.moveUp(character);
                 character.setSpriteFolder("sprites\\Mobile\\Character\\Up");
-                this.CharacterOnExit(character, character.getX(), character.getY());
+                this.victoryAnimationCharacter(character.getX(), character.getY());
+
                 break;
             case 'q':
                 this.canIncrementDiamond(character, character.getX() - 1, character.getY());
-                if ((this.getModel().getMap().getMap()[character.getY()][character.getX() - 1]
+                if ((this.getModel().getMap().getOnTheMapXY(character.getX() - 1, character.getY())
                         .getClass() == MobileEntityFactory.createRock().getClass())
-                        && (this.getModel().getMap().getMap()[character.getY()][character.getX() - 2]
+                        && (this.getModel().getMap().getOnTheMapXY(character.getX() - 2, character.getY())
                                 .getClass() == MotionlessEntityFactory.createDirt().getClass())) {
                     this.moveLeft(this.getModel().getMap().getMap()[character.getY()][character.getX() - 1]);
                     this.moveLeft(character);
                 }
                 this.moveLeft(character);
                 character.setSpriteFolder("sprites\\Mobile\\Character\\Left");
-                this.CharacterOnExit(character, character.getX(), character.getY());
+                this.victoryAnimationCharacter(character.getX(), character.getY());
                 break;
             case 's':
                 this.canIncrementDiamond(character, character.getX(), character.getY() + 1);
                 this.moveDown(character);
                 character.setSpriteFolder("sprites\\Mobile\\Character\\Down");
-                this.CharacterOnExit(character, character.getX(), character.getY());
+                this.victoryAnimationCharacter(character.getX(), character.getY());
                 break;
             case 'd':
                 this.canIncrementDiamond(character, character.getX() + 1, character.getY());
-                if ((this.getModel().getMap().getMap()[character.getY()][character.getX() + 1]
+                if ((this.getModel().getMap().getOnTheMapXY(character.getX() + 1, character.getY())
                         .getClass() == MobileEntityFactory.createRock().getClass())
-                        && (this.getModel().getMap().getMap()[character.getY()][character.getX() + 2]
+                        && (this.getModel().getMap().getOnTheMapXY(character.getX() + 2, character.getY())
                                 .getClass() == MotionlessEntityFactory.createDirt().getClass())) {
                     this.moveRight(this.getModel().getMap().getMap()[character.getY()][character.getX() + 1]);
                     this.moveRight(character);
                 }
                 this.moveRight(character);
                 character.setSpriteFolder("sprites\\Mobile\\Character\\Right");
-                this.CharacterOnExit(character, character.getX(), character.getY());
+                this.victoryAnimationCharacter(character.getX(), character.getY());
                 break;
             default:
                 break;
@@ -89,19 +94,42 @@ public class ControllerCharacter extends Controller {
         return this.getDiamondCount();
     }
 
-    private String openExit() {
-        if (this.getDiamondCount() >= 10) {
-            this.getModel().getMap().findExit().setPermeability(Permeability.PENETRABLE);
-            return "Go to EXIT !";
+    private void openExit() {
+        if (this.getDiamondCount() >= 1) {
+            this.getModel().getMap().findExit().setPermeability(Permeability.SEMIPENETRABLE);
         }
-        return null;
     }
 
-    public void CharacterOnExit(IEntity character, int x, int y) {
-        if ((this.getModel().getMap().findExit().getPermeability() == Permeability.PENETRABLE) && (this.getModel()
-                .getMap().getOnTheMapXY(x, y).getClass() == MotionlessEntityFactory.createExit().getClass())) {
-            character.setSpriteFolder("sprites\\Mobile\\Character\\Victory\\Victory2");
-            System.out.println("test");
+    public boolean canWin() {
+        if ((this.getModel().getMap().findCharacter().getY() == this.exitY)
+                && (this.getModel().getMap().findCharacter().getX() == this.exitX)) {
+            return true;
+        }
+        return false;
+    }
+
+    public void victoryAnimationCharacter(int x, int y) {
+        // System.out.println(this.getModel().getMap().findExit().getX() + "" +
+        // this.getModel().getMap().findExit().getY());
+
+        if (this.canWin()) {
+            this.getModel().getMap().getOnTheMapXY(x, y)
+                    .setSpriteFolder("sprites\\Mobile\\Character\\Victory\\VictoryHey");
+            Thread wait = new Thread() {
+                @Override
+                public void run() {
+                    Thread.currentThread();
+                    try {
+                        Thread.sleep(2000);
+                        System.exit(0);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            };
+
+            wait.start();
         }
     }
 
