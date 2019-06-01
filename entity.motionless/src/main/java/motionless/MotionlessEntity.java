@@ -48,7 +48,6 @@ public abstract class MotionlessEntity extends Entity {
 
     @Override
     public boolean isVerified() {
-        // TODO Auto-generated method stub
         return false;
     }
 
@@ -69,13 +68,11 @@ public abstract class MotionlessEntity extends Entity {
 
     @Override
     public boolean isAlive() {
-        // TODO Auto-generated method stub
         return false;
     }
 
     @Override
     public boolean getCanKill() {
-        // TODO Auto-generated method stub
         return this.canKill;
     }
 

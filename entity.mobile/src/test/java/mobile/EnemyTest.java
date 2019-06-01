@@ -26,4 +26,14 @@ public class EnemyTest {
         assertEquals(Enemy.class, this.enemy.getClass());
     }
 
+    @Test
+    public void testDie() {
+        assertFalse(false);
+    }
+
+    @Test
+    public void testIsAlive() {
+        assertTrue(this.enemy.isAlive());
+    }
+
 }

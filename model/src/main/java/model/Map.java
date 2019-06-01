@@ -77,7 +77,6 @@ public class Map extends Observable implements IMap, Observer {
 
     @Override
     public Observable getObservable() {
-
         return this;
     }
 
@@ -184,15 +183,8 @@ public class Map extends Observable implements IMap, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        // TODO Auto-generated method stub
         this.setChanged();
         this.notifyObservers();
     }
-
-    /*
-     * public Object getViewWidth() { // TODO Auto-generated method stub return
-     * null; } public void setViewWidth(int i) { // TODO Auto-generated method stub
-     * }
-     */
 
 }
