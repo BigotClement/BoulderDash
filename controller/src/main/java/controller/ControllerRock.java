@@ -30,7 +30,7 @@ public class ControllerRock extends Controller {
             else if (this.checkMove(this.getModel().getMap().getOnTheMapXY(x, y),
                     this.getModel().getMap().getOnTheMapXY(x, y).getX() + 1,
                     this.getModel().getMap().getOnTheMapXY(x, y).getY() + 1)) {
-                if (this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory.createRock()
+                if (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createRock()
                         .getClass()) {
                     this.getModel().getMap().getOnTheMapXY(x, y).setVerified(true);
                     this.moveRightDown(this.getModel().getMap().getOnTheMapXY(x, y));
@@ -42,7 +42,7 @@ public class ControllerRock extends Controller {
             else if (this.checkMove(this.getModel().getMap().getOnTheMapXY(x, y),
                     this.getModel().getMap().getOnTheMapXY(x, y).getX() - 1,
                     this.getModel().getMap().getOnTheMapXY(x, y).getY() + 1)) {
-                if (this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory.createRock()
+                if (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createRock()
                         .getClass()) {
                     this.getModel().getMap().getOnTheMapXY(x, y).setVerified(true);
                     this.moveLeftDown(this.getModel().getMap().getOnTheMapXY(x, y));
