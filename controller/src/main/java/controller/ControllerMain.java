@@ -35,7 +35,7 @@ public class ControllerMain implements IControllerMain {
                 while (true) {
                     try {
                         ControllerMain.this.lookTheMap();
-                        Thread.sleep(150);
+                        Thread.sleep(200);
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
