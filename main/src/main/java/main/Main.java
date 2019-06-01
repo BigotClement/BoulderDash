@@ -3,6 +3,8 @@
  */
 package main;
 
+import java.awt.HeadlessException;
+
 import javax.swing.JOptionPane;
 
 import controller.ControllerMain;
@@ -22,8 +24,13 @@ public abstract class Main {
      *                 the arguments
      */
     public static void main(final String[] args) {
-        final Model model = new Model(
-                Integer.parseInt(JOptionPane.showInputDialog("Choose a mapID (currently implemented : 1,2,3,4,5)")));
+        int mapID = 0;
+        try {
+            mapID = Integer.parseInt(JOptionPane.showInputDialog("Choose a mapID (currently implemented : 1,2,3,4,5)"));
+        } catch (NumberFormatException e) {
+        } catch (HeadlessException e) {
+        }
+        final Model model = new Model(mapID);
         final View view = new View(model);
         final ControllerMain controller = new ControllerMain(view, model);
         controller.getControllerCharacter().setDiamondLimit(DIAMONDLIMIT);
