@@ -45,4 +45,37 @@ public class MotionlessEntityTest {
         this.motionlessEntity.setImage("gif-nyan.gif");
         assertNotNull(this.motionlessEntity.getImage());
     }
+
+    @Test
+    public void testIsVerified() {
+        assertFalse(this.motionlessEntity.isVerified());
+    }
+
+    @Test
+    public void testSetVerified() {
+        this.motionlessEntity.setVerified(false);
+        assertFalse(this.motionlessEntity.isVerified());
+    }
+
+    @Test
+    public void testDie() {
+
+    }
+
+    @Test
+    public void testIsAlive() {
+        assertFalse(this.motionlessEntity.isAlive());
+    }
+
+    @Test
+    public void testGetCanKill() {
+        assertFalse(this.motionlessEntity.getCanKill());
+    }
+
+    @Test
+    public void testSetCanKill() {
+        this.motionlessEntity.setCanKill(false);
+        assertFalse(this.motionlessEntity.getCanKill());
+    }
+
 }
