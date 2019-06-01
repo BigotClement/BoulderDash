@@ -38,7 +38,7 @@ public class AnimateGif extends Observable implements Runnable {
      *                         the milliseconds
      */
     public AnimateGif(String folder, int milliseconds) {
-        this.setFolder(folder);// defini le dossier
+        this.setFolder(folder);
         this.setMilliseconds(milliseconds);
         this.thread = new Thread(this);
         this.thread.setDaemon(true);
@@ -49,13 +49,12 @@ public class AnimateGif extends Observable implements Runnable {
      * Load sprites.
      */
     public void loadSprites() {
-        File[] f = new File(this.getFolder()).listFiles();// charge le contenu du dossier voulu sans avoir besoin du
-                                                          // nombre de fichiers
-        this.setGif(new Image[f.length]);// cree le tableau gif en fonction du nombre de fichiers dans le dossier
+        File[] f = new File(this.getFolder()).listFiles();
+        this.setGif(new Image[f.length]);
 
         for (int j = 0; j < f.length; j++) {
             try {
-                this.getGif()[j] = ImageIO.read(f[j]);// rempli le tableau gif avec des images
+                this.getGif()[j] = ImageIO.read(f[j]);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -66,15 +65,15 @@ public class AnimateGif extends Observable implements Runnable {
      * Run.
      */
     @Override
-    public void run() {// boucle pour afficher le gif anime
+    public void run() {
         while (true) {
-            for (Image element : this.getGif()) {// for en fonction de la taille du tableau gif
-                this.setImage(element);// defini l'image pour l'image suivante
+            for (Image element : this.getGif()) {
+                this.setImage(element);
                 this.setChanged();
                 this.notifyObservers();
                 try {
                     Thread.currentThread();
-                    Thread.sleep(this.getMilliseconds());// attente de x millisecondes
+                    Thread.sleep(this.getMilliseconds());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -85,7 +84,7 @@ public class AnimateGif extends Observable implements Runnable {
                 this.notifyObservers();
                 try {
                     Thread.currentThread();
-                    Thread.sleep(this.getMilliseconds());// attente de x millisecondes
+                    Thread.sleep(this.getMilliseconds());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
