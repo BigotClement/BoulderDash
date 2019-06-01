@@ -9,6 +9,9 @@
 	<name>Master POM</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- skip errors for javadoc generation -->
+		<additionalparam>-Xdoclint:none</additionalparam>
+		<!--  -->
 	</properties>
 	<modules>
 		<module>view</module>
@@ -86,6 +89,11 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changes-plugin</artifactId>
+				<version>2.12.1</version>
 			</plugin>
 		</plugins>
 	</build>
