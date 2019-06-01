@@ -135,8 +135,7 @@ public class ReadFile {
                             .charAt(0);
                 }
             } else {
-                System.out.println("Map not found ! Program is closing....");
-                // System.exit(0);
+                System.out.println("Map not found !");
             }
         } catch (final SQLException e) {
             e.printStackTrace();
