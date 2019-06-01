@@ -201,7 +201,7 @@ public class Controller implements IController {
                             .getClass())
                     && (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MotionlessEntityFactory
                             .createDirt().getClass())) {
-                this.getModel().getMap().getOnTheMapXY(x, y).canKillFalse();
+                this.getModel().getMap().getOnTheMapXY(x, y).setCanKill(false);
             }
         }
     }

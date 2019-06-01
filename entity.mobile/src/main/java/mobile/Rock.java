@@ -16,7 +16,6 @@ public class Rock extends MobileEntity {
     private static String FOLDER = "sprites\\Mobile\\Rock";
     private static Permeability PERMEABILITY = Permeability.BLOCKING;
     private AnimateGif animateGif;
-    private boolean canKill = false;
 
     public Rock() {
         super(SPRITE, FOLDER, PERMEABILITY);
@@ -42,21 +41,6 @@ public class Rock extends MobileEntity {
     @Override
     public void setObserver(Observer observer) {
         this.animateGif.addObserver(observer);
-    }
-
-    @Override
-    public boolean getCanKill() {
-        return this.canKill;
-    }
-
-    @Override
-    public void canKillTrue() {
-        this.canKill = true;
-    }
-
-    @Override
-    public void canKillFalse() {
-        this.canKill = false;
     }
 
 }

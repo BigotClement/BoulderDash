@@ -21,7 +21,7 @@ public class ControllerDiamond extends Controller {
                     this.getModel().getMap().getOnTheMapXY(x, y).getY() + 1))) {
                 this.getModel().getMap().getOnTheMapXY(x, y).setVerified(true);
                 this.moveDown(this.getModel().getMap().getOnTheMapXY(x, y));
-                this.getModel().getMap().getOnTheMapXY(x, y + 1).canKillTrue();
+                this.getModel().getMap().getOnTheMapXY(x, y + 1).setCanKill(true);
                 this.kill(x, y + 1);
             }
 
@@ -32,7 +32,7 @@ public class ControllerDiamond extends Controller {
                         .getClass()) {
                     this.getModel().getMap().getOnTheMapXY(x, y).setVerified(true);
                     this.moveRightDown(this.getModel().getMap().getOnTheMapXY(x, y));
-                    this.getModel().getMap().getOnTheMapXY(x, y + 1).canKillTrue();
+                    this.getModel().getMap().getOnTheMapXY(x, y + 1).setCanKill(true);
                     this.kill(x, y + 1);
                 }
             }
@@ -44,7 +44,7 @@ public class ControllerDiamond extends Controller {
                         .getClass()) {
                     this.getModel().getMap().getOnTheMapXY(x, y).setVerified(true);
                     this.moveLeftDown(this.getModel().getMap().getOnTheMapXY(x, y));
-                    this.getModel().getMap().getOnTheMapXY(x, y + 1).canKillTrue();
+                    this.getModel().getMap().getOnTheMapXY(x, y + 1).setCanKill(true);
                     this.kill(x, y + 1);
                 }
             }

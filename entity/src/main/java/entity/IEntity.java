@@ -51,8 +51,6 @@ public interface IEntity {
 
     boolean getCanKill();
 
-    void canKillTrue();
-
-    void canKillFalse();
+    void setCanKill(boolean b);
 
 }

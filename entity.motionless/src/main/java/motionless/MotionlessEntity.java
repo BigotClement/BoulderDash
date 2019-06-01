@@ -16,6 +16,7 @@ import entity.Permeability;
 public abstract class MotionlessEntity extends Entity {
 
     protected Image image;
+    private boolean canKill = false;
 
     /**
      * @param sprite
@@ -81,19 +82,12 @@ public abstract class MotionlessEntity extends Entity {
     @Override
     public boolean getCanKill() {
         // TODO Auto-generated method stub
-        return false;
+        return this.canKill;
     }
 
     @Override
-    public void canKillTrue() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void canKillFalse() {
-        // TODO Auto-generated method stub
-
+    public void setCanKill(boolean b) {
+        this.canKill = b;
     }
 
 }
