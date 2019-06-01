@@ -26,7 +26,7 @@ public class Controller implements IController {
     /** The model. */
     protected IModel model;
 
-    private int diamondLimit;
+    private int diamondLimit = 0;
 
     /**
      * Instantiates a new controller.
@@ -73,25 +73,30 @@ public class Controller implements IController {
     }
 
     public boolean checkMove(IEntity mobile, int x, int y) {
-        if ((y >= 0) && (y < this.getModel().getMap().getMap().length) && (x >= 0)
-                && (x < this.getModel().getMap().getMap()[y].length)) {
-            if (mobile.getClass() == MobileEntityFactory.createCharacter().getClass()) {
-                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() != Permeability.BLOCKING) {
-                    return true;
-                }
-            } else if (mobile.getClass() == MobileEntityFactory.createRock().getClass()) {
-                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
-                    return true;
-                }
-            } else if (mobile.getClass() == MobileEntityFactory.createDiamond().getClass()) {
-                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
-                    return true;
-                }
-            } else if (mobile.getClass() == MobileEntityFactory.createEnemy().getClass()) {
-                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
-                    return true;
+        try {
+            if ((y >= 0) && (y < this.getModel().getMap().getMap().length) && (x >= 0)
+                    && (x < this.getModel().getMap().getMap()[y].length)) {
+                if (mobile.getClass() == MobileEntityFactory.createCharacter().getClass()) {
+                    if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() != Permeability.BLOCKING) {
+                        return true;
+                    }
+                } else if (mobile.getClass() == MobileEntityFactory.createRock().getClass()) {
+                    if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
+                        return true;
+                    }
+                } else if (mobile.getClass() == MobileEntityFactory.createDiamond().getClass()) {
+                    if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
+                        return true;
+                    }
+                } else if (mobile.getClass() == MobileEntityFactory.createEnemy().getClass()) {
+                    if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
+                        return true;
+                    }
                 }
             }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
         return false;
     }

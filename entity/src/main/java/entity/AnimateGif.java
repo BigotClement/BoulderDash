@@ -49,15 +49,20 @@ public class AnimateGif extends Observable implements Runnable {
      * Load sprites.
      */
     public void loadSprites() {
-        File[] f = new File(this.getFolder()).listFiles();
-        this.setGif(new Image[f.length]);
+        try {
+            File[] f = new File(this.getFolder()).listFiles();
+            this.setGif(new Image[f.length]);
 
-        for (int j = 0; j < f.length; j++) {
-            try {
-                this.getGif()[j] = ImageIO.read(f[j]);
-            } catch (IOException e) {
-                e.printStackTrace();
+            for (int j = 0; j < f.length; j++) {
+                try {
+                    this.getGif()[j] = ImageIO.read(f[j]);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
 

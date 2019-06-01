@@ -18,9 +18,9 @@ public class ControllerCharacter extends Controller {
 
     private int diamondCount = 0;
 
-    final private int exitX = this.getModel().getMap().findExit().getX();
+    private int exitX = 0;
 
-    final private int exitY = this.getModel().getMap().findExit().getY();
+    private int exitY = 0;
 
     @Override
     public int getDiamondCount() {
@@ -34,6 +34,13 @@ public class ControllerCharacter extends Controller {
     public ControllerCharacter(IView view, IModel model) {
         super(view, model);
         this.setDiamondLimit(10);
+        try {
+            this.exitX = this.getModel().getMap().findExit().getX();
+            this.exitY = this.getModel().getMap().findExit().getY();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -107,9 +114,14 @@ public class ControllerCharacter extends Controller {
     }
 
     public boolean canWin() {
-        if ((this.getModel().getMap().findCharacter().getY() == this.exitY)
-                && (this.getModel().getMap().findCharacter().getX() == this.exitX)) {
-            return true;
+        try {
+            if ((this.getModel().getMap().findCharacter().getY() == this.exitY)
+                    && (this.getModel().getMap().findCharacter().getX() == this.exitX)) {
+                return true;
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
         return false;
     }
