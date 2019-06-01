@@ -46,31 +46,7 @@ public class EntityTest {
             }
 
             @Override
-            public int getY() {
-                // TODO Auto-generated method stub
-                return 0;
-            }
-
-            @Override
-            public void setY(int i) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
             public void setHasMoved() {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public int getX() {
-                // TODO Auto-generated method stub
-                return 0;
-            }
-
-            @Override
-            public void setX(int x) {
                 // TODO Auto-generated method stub
 
             }
@@ -118,13 +94,7 @@ public class EntityTest {
             }
 
             @Override
-            public void canKillTrue() {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void canKillFalse() {
+            public void setCanKill(boolean b) {
                 // TODO Auto-generated method stub
 
             }

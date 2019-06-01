@@ -119,11 +119,13 @@ class ViewPanel extends JPanel implements Observer {
         graphics.setColor(rectColor);
         graphics.fillRect(startX, (size - fm.getAscent()) + startY, (int) rect.getWidth(), (int) rect.getHeight());
         graphics.setColor(textColor);
-        graphics.drawString(str, startX, size + startY);
+        Rectangle2D rect2 = fm.getStringBounds(str, graphics);
+        graphics.drawString(str, (startX + (int) rect.getWidth()) - (int) rect2.getWidth(), size + startY);
     }
 
     protected int writeScoreExit(final Graphics graphics) {
-        String str = "     " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount() + "/10";
+        String str = "     " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount() + "/"
+                + this.getViewFrame().getController().getControllerCharacter().getDiamondLimit();
         int size = 30;
         int startX = 10;
         int startY = 50;
@@ -143,9 +145,9 @@ class ViewPanel extends JPanel implements Observer {
     }
 
     protected void writeTimerExit(final Graphics graphics, int exit) {
-        String str = "      " + this.getViewFrame().getController().getTimeLeft();
+        String str = "" + this.getViewFrame().getController().getTimeLeft();
         String sizeTimer = "     " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount()
-                + "/10";
+                + "/" + this.getViewFrame().getController().getControllerCharacter().getDiamondLimit();
         int size = 30;
         int border1 = 10;
         int border2 = (border1 / 3) * 2;

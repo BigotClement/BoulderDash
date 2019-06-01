@@ -30,6 +30,7 @@ public class ControllerCharacter extends Controller {
 
     public ControllerCharacter(IView view, IModel model) {
         super(view, model);
+        this.setDiamondLimit(10);
     }
 
     @Override

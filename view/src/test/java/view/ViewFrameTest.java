@@ -8,6 +8,8 @@ import java.awt.event.KeyEvent;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import contract.IController;
 import contract.IControllerMain;
 import contract.IMap;
 import contract.IModel;
@@ -137,13 +139,7 @@ public class ViewFrameTest extends TestCase {
         IControllerMain controller = new IControllerMain() {
 
             @Override
-            public void moveSet(KeyEvent key) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public IControllerMain getControllerCharacter() {
+            public IController getControllerCharacter() {
                 // TODO Auto-generated method stub
                 return null;
             }
@@ -158,12 +154,6 @@ public class ViewFrameTest extends TestCase {
             public IView getView() {
                 // TODO Auto-generated method stub
                 return null;
-            }
-
-            @Override
-            public int getDiamondCount() {
-                // TODO Auto-generated method stub
-                return 0;
             }
 
             @Override

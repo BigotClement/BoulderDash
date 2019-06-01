@@ -19,4 +19,8 @@ public interface IController {
     void moveSet(KeyEvent key);
 
     int getDiamondCount();
+
+    int getDiamondLimit();
+
+    void setDiamondLimit(int diamondLimit);
 }

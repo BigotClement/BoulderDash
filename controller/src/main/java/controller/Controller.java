@@ -24,6 +24,8 @@ public class Controller implements IController {
     /** The model. */
     protected IModel model;
 
+    private int diamondLimit;
+
     /**
      * Instantiates a new controller.
      *
@@ -216,5 +218,15 @@ public class Controller implements IController {
     public int getDiamondCount() {
         // TODO Auto-generated method stub
         return 0;
+    }
+
+    @Override
+    public int getDiamondLimit() {
+        return this.diamondLimit;
+    }
+
+    @Override
+    public void setDiamondLimit(int diamondLimit) {
+        this.diamondLimit = diamondLimit;
     }
 }
