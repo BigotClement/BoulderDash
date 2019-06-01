@@ -41,7 +41,8 @@ public class ControllerCharacter extends Controller {
     /**
      * Sets the diamond count.
      *
-     * @param diamondCount the new diamond count
+     * @param diamondCount
+     *                         the new diamond count
      */
     public void setDiamondCount(int diamondCount) {
         this.diamondCount = diamondCount;
@@ -50,8 +51,10 @@ public class ControllerCharacter extends Controller {
     /**
      * Instantiates a new controller character.
      *
-     * @param view the view
-     * @param model the model
+     * @param view
+     *                  the view
+     * @param model
+     *                  the model
      */
     public ControllerCharacter(IView view, IModel model) {
         super(view, model);
@@ -68,7 +71,8 @@ public class ControllerCharacter extends Controller {
     /**
      * Move set.
      *
-     * @param key the key
+     * @param key
+     *                the key
      */
     @Override
     public void moveSet(KeyEvent key) {
@@ -125,9 +129,12 @@ public class ControllerCharacter extends Controller {
     /**
      * Can increment diamond.
      *
-     * @param character the character
-     * @param x the x
-     * @param y the y
+     * @param character
+     *                      the character
+     * @param x
+     *                      the x
+     * @param y
+     *                      the y
      */
     private void canIncrementDiamond(IEntity character, int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).getClass() == MobileEntityFactory.createDiamond().getClass()) {
@@ -150,7 +157,7 @@ public class ControllerCharacter extends Controller {
      * Open exit.
      */
     private void openExit() {
-        if (this.getDiamondCount() >= 1) {
+        if (this.getDiamondCount() >= this.getDiamondLimit()) {
             this.getModel().getMap().findExit().setPermeability(Permeability.SEMIPENETRABLE);
         }
     }
@@ -176,8 +183,10 @@ public class ControllerCharacter extends Controller {
     /**
      * Victory animation character.
      *
-     * @param x the x
-     * @param y the y
+     * @param x
+     *              the x
+     * @param y
+     *              the y
      */
     public void victoryAnimationCharacter(int x, int y) {
         if (this.canWin()) {
@@ -206,8 +215,10 @@ public class ControllerCharacter extends Controller {
     /**
      * Check die.
      *
-     * @param x the x
-     * @param y the y
+     * @param x
+     *              the x
+     * @param y
+     *              the y
      */
     public void checkDie(int x, int y) {
 
