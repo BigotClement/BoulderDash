@@ -74,12 +74,6 @@ public abstract class MotionlessEntity extends Entity {
     }
 
     @Override
-    public void setHasMoved() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
     public boolean getCanKill() {
         // TODO Auto-generated method stub
         return this.canKill;

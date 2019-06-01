@@ -42,12 +42,6 @@ public abstract class MobileEntity extends Entity {
     }
 
     @Override
-    public void setHasMoved() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
     public void setObserver(Observer observer) {
 
     }

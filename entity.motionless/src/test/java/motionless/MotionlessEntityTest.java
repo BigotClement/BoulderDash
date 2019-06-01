@@ -28,12 +28,6 @@ public class MotionlessEntityTest {
                 // TODO Auto-generated method stub
 
             }
-
-            @Override
-            public void setHasMoved() {
-                // TODO Auto-generated method stub
-
-            }
         };
     }
 

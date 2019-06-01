@@ -34,11 +34,6 @@ public class Rock extends MobileEntity {
     }
 
     @Override
-    public void setHasMoved() {
-
-    }
-
-    @Override
     public void setObserver(Observer observer) {
         this.animateGif.addObserver(observer);
     }

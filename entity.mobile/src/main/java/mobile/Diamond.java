@@ -34,12 +34,6 @@ public class Diamond extends MobileEntity {
     }
 
     @Override
-    public void setHasMoved() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
     public void setObserver(Observer observer) {
         this.animateGif.addObserver(observer);
     }
