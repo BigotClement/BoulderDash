@@ -166,8 +166,7 @@ public class Controller implements IController {
                     Thread.currentThread();
                     try {
                         Thread.sleep(2000);
-                        JOptionPane.showMessageDialog(null, "You die ! ", "Game Over...",
-                                JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "You die ! ", "Game Over...", JOptionPane.ERROR_MESSAGE);
                         System.exit(0);
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
