@@ -37,48 +37,50 @@ public class ControllerCharacter extends Controller {
 
         IEntity character = this.getModel().getMap().findCharacter();
         this.checkDie(character.getX(), character.getY());
-        switch (key.getKeyChar()) {
-            case 'z':
-                this.canIncrementDiamond(character, character.getX(), character.getY() - 1);
-                this.moveUp(character);
-                character.setSpriteFolder("sprites\\Mobile\\Character\\Up");
-                this.victoryAnimationCharacter(character.getX(), character.getY());
+        if (character.isAlive()) {
+            switch (key.getKeyChar()) {
+                case 'z':
+                    this.canIncrementDiamond(character, character.getX(), character.getY() - 1);
+                    this.moveUp(character);
+                    character.setSpriteFolder("sprites\\Mobile\\Character\\Up");
+                    this.victoryAnimationCharacter(character.getX(), character.getY());
 
-                break;
-            case 'q':
-                this.canIncrementDiamond(character, character.getX() - 1, character.getY());
-                if ((this.getModel().getMap().getOnTheMapXY(character.getX() - 1, character.getY())
-                        .getClass() == MobileEntityFactory.createRock().getClass())
-                        && (this.getModel().getMap().getOnTheMapXY(character.getX() - 2, character.getY())
-                                .getClass() == MotionlessEntityFactory.createDirt().getClass())) {
-                    this.moveLeft(this.getModel().getMap().getMap()[character.getY()][character.getX() - 1]);
+                    break;
+                case 'q':
+                    this.canIncrementDiamond(character, character.getX() - 1, character.getY());
+                    if ((this.getModel().getMap().getOnTheMapXY(character.getX() - 1, character.getY())
+                            .getClass() == MobileEntityFactory.createRock().getClass())
+                            && (this.getModel().getMap().getOnTheMapXY(character.getX() - 2, character.getY())
+                                    .getClass() == MotionlessEntityFactory.createDirt().getClass())) {
+                        this.moveLeft(this.getModel().getMap().getMap()[character.getY()][character.getX() - 1]);
+                        this.moveLeft(character);
+                    }
                     this.moveLeft(character);
-                }
-                this.moveLeft(character);
-                character.setSpriteFolder("sprites\\Mobile\\Character\\Left");
-                this.victoryAnimationCharacter(character.getX(), character.getY());
-                break;
-            case 's':
-                this.canIncrementDiamond(character, character.getX(), character.getY() + 1);
-                this.moveDown(character);
-                character.setSpriteFolder("sprites\\Mobile\\Character\\Down");
-                this.victoryAnimationCharacter(character.getX(), character.getY());
-                break;
-            case 'd':
-                this.canIncrementDiamond(character, character.getX() + 1, character.getY());
-                if ((this.getModel().getMap().getOnTheMapXY(character.getX() + 1, character.getY())
-                        .getClass() == MobileEntityFactory.createRock().getClass())
-                        && (this.getModel().getMap().getOnTheMapXY(character.getX() + 2, character.getY())
-                                .getClass() == MotionlessEntityFactory.createDirt().getClass())) {
-                    this.moveRight(this.getModel().getMap().getMap()[character.getY()][character.getX() + 1]);
+                    character.setSpriteFolder("sprites\\Mobile\\Character\\Left");
+                    this.victoryAnimationCharacter(character.getX(), character.getY());
+                    break;
+                case 's':
+                    this.canIncrementDiamond(character, character.getX(), character.getY() + 1);
+                    this.moveDown(character);
+                    character.setSpriteFolder("sprites\\Mobile\\Character\\Down");
+                    this.victoryAnimationCharacter(character.getX(), character.getY());
+                    break;
+                case 'd':
+                    this.canIncrementDiamond(character, character.getX() + 1, character.getY());
+                    if ((this.getModel().getMap().getOnTheMapXY(character.getX() + 1, character.getY())
+                            .getClass() == MobileEntityFactory.createRock().getClass())
+                            && (this.getModel().getMap().getOnTheMapXY(character.getX() + 2, character.getY())
+                                    .getClass() == MotionlessEntityFactory.createDirt().getClass())) {
+                        this.moveRight(this.getModel().getMap().getMap()[character.getY()][character.getX() + 1]);
+                        this.moveRight(character);
+                    }
                     this.moveRight(character);
-                }
-                this.moveRight(character);
-                character.setSpriteFolder("sprites\\Mobile\\Character\\Right");
-                this.victoryAnimationCharacter(character.getX(), character.getY());
-                break;
-            default:
-                break;
+                    character.setSpriteFolder("sprites\\Mobile\\Character\\Right");
+                    this.victoryAnimationCharacter(character.getX(), character.getY());
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -109,10 +111,8 @@ public class ControllerCharacter extends Controller {
     }
 
     public void victoryAnimationCharacter(int x, int y) {
-        // System.out.println(this.getModel().getMap().findExit().getX() + "" +
-        // this.getModel().getMap().findExit().getY());
-
         if (this.canWin()) {
+            this.getModel().getMap().getOnTheMapXY(x, y).die();
             this.getModel().getMap().getOnTheMapXY(x, y)
                     .setSpriteFolder("sprites\\Mobile\\Character\\Victory\\VictoryHey");
             Thread wait = new Thread() {
