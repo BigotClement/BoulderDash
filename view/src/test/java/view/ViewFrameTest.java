@@ -170,4 +170,16 @@ public class ViewFrameTest extends TestCase {
     public void testViewFrameIModelString() {
         assertNotNull(new ViewFrame(this.model, "test"));
     }
+
+    @Test
+    public void testGetDiamondCount() {
+        assertNotNull(this.viewFrame.getDiamondCount());
+    }
+
+    @Test
+    public void testSetDiamondCount() {
+        this.viewFrame.getDiamondCount();
+        assertNotNull(this.viewFrame.getDiamondCount());
+    }
+
 }
