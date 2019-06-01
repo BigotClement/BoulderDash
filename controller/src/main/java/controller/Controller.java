@@ -5,7 +5,7 @@ package controller;
 
 import java.awt.event.KeyEvent;
 
-import contract.IControllerMain;
+import contract.IController;
 import contract.IModel;
 import contract.IView;
 import entity.IEntity;
@@ -16,7 +16,7 @@ import motionless.MotionlessEntityFactory;
 /**
  * The Class Controller.
  */
-public class Controller implements IControllerMain {
+public class Controller implements IController {
 
     /** The view. */
     protected IView view;
@@ -68,34 +68,25 @@ public class Controller implements IControllerMain {
         return this.view;
     }
 
-    @Override
-    public void moveSet(KeyEvent key) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public IControllerMain getControllerCharacter() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     public boolean checkMove(IEntity mobile, int x, int y) {
-        if (mobile.getClass() == MobileEntityFactory.createCharacter().getClass()) {
-            if (this.getModel().getMap().getMap()[y][x].getPermeability() != Permeability.BLOCKING) {
-                return true;
-            }
-        } else if (mobile.getClass() == MobileEntityFactory.createRock().getClass()) {
-            if (this.getModel().getMap().getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
-                return true;
-            }
-        } else if (mobile.getClass() == MobileEntityFactory.createDiamond().getClass()) {
-            if (this.getModel().getMap().getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
-                return true;
-            }
-        } else if (mobile.getClass() == MobileEntityFactory.createEnemy().getClass()) {
-            if (this.getModel().getMap().getMap()[y][x].getPermeability() == Permeability.PENETRABLE) {
-                return true;
+        if ((y >= 0) && (y < this.getModel().getMap().getMap().length) && (x >= 0)
+                && (x < this.getModel().getMap().getMap()[y].length)) {
+            if (mobile.getClass() == MobileEntityFactory.createCharacter().getClass()) {
+                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() != Permeability.BLOCKING) {
+                    return true;
+                }
+            } else if (mobile.getClass() == MobileEntityFactory.createRock().getClass()) {
+                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
+                    return true;
+                }
+            } else if (mobile.getClass() == MobileEntityFactory.createDiamond().getClass()) {
+                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
+                    return true;
+                }
+            } else if (mobile.getClass() == MobileEntityFactory.createEnemy().getClass()) {
+                if (this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == Permeability.PENETRABLE) {
+                    return true;
+                }
             }
         }
         return false;
@@ -153,7 +144,7 @@ public class Controller implements IControllerMain {
         this.moveDown(mobile);
     }
 
-    public void dieAnimation(int x, int y) {
+    public void dieAnimationCharacter(int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).isAlive() == false) {
             this.getModel().getMap().getOnTheMapXY(x, y)
                     .setSpriteFolder("sprites\\Mobile\\Character\\Death\\DeathHard");
@@ -182,14 +173,27 @@ public class Controller implements IControllerMain {
         }
     }
 
+    public void dieAnimationEnemy(int x, int y) {
+        if (this.getModel().getMap().getOnTheMapXY(x, y).isAlive() == false) {
+
+            for (int i = y - 1; i <= (y + 1); i++) {
+                for (int j = x - 1; j <= (x + 1); j++) {
+                    this.getModel().getMap().setOnTheMapXY(MobileEntityFactory.createDiamond().getSprite(), j, i);
+                }
+            }
+        }
+    }
+
     public void kill(int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).getCanKill() == true) {
-            if ((this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createCharacter()
-                    .getClass())
-                    || (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createEnemy()
-                            .getClass())) {
+            if (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createCharacter()
+                    .getClass()) {
                 this.getModel().getMap().getOnTheMapXY(x, y + 1).die();
-                this.dieAnimation(x, y + 1);
+                this.dieAnimationCharacter(x, y + 1);
+            } else if (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createEnemy()
+                    .getClass()) {
+                this.getModel().getMap().getOnTheMapXY(x, y + 1).die();
+                this.dieAnimationEnemy(x, y + 1);
             }
             if ((this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() != MobileEntityFactory.createCharacter()
                     .getClass())
@@ -203,13 +207,13 @@ public class Controller implements IControllerMain {
     }
 
     @Override
-    public int getDiamondCount() {
+    public void moveSet(KeyEvent key) {
         // TODO Auto-generated method stub
-        return 0;
+
     }
 
     @Override
-    public int getTimeLeft() {
+    public int getDiamondCount() {
         // TODO Auto-generated method stub
         return 0;
     }

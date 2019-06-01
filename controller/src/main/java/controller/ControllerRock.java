@@ -16,35 +16,36 @@ public class ControllerRock extends Controller {
 
     public void move(int x, int y) {
 
-        if (this.getModel().getMap().getMap()[y][x].getClass() == MobileEntityFactory.createRock().getClass()) {
-            if ((this.checkMove(this.getModel().getMap().getMap()[y][x], this.getModel().getMap().getMap()[y][x].getX(),
-                    this.getModel().getMap().getMap()[y][x].getY() + 1))) {
-                this.getModel().getMap().getMap()[y][x].setVerified(true);
-                this.moveDown(this.getModel().getMap().getMap()[y][x]);
+        if (this.getModel().getMap().getOnTheMapXY(x, y).getClass() == MobileEntityFactory.createRock().getClass()) {
+            if ((this.checkMove(this.getModel().getMap().getOnTheMapXY(x, y),
+                    this.getModel().getMap().getOnTheMapXY(x, y).getX(),
+                    this.getModel().getMap().getOnTheMapXY(x, y).getY() + 1))) {
+                this.getModel().getMap().getOnTheMapXY(x, y).setVerified(true);
+                this.moveDown(this.getModel().getMap().getOnTheMapXY(x, y));
                 this.getModel().getMap().getOnTheMapXY(x, y + 1).canKillTrue();
                 this.kill(x, y + 1);
 
             }
 
-            else if (this.checkMove(this.getModel().getMap().getMap()[y][x],
-                    this.getModel().getMap().getMap()[y][x].getX() + 1,
-                    this.getModel().getMap().getMap()[y][x].getY() + 1)) {
-                if (this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory.createRock()
+            else if (this.checkMove(this.getModel().getMap().getOnTheMapXY(x, y),
+                    this.getModel().getMap().getOnTheMapXY(x, y).getX() + 1,
+                    this.getModel().getMap().getOnTheMapXY(x, y).getY() + 1)) {
+                if (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createRock()
                         .getClass()) {
-                    this.getModel().getMap().getMap()[y][x].setVerified(true);
-                    this.moveRightDown(this.getModel().getMap().getMap()[y][x]);
+                    this.getModel().getMap().getOnTheMapXY(x, y).setVerified(true);
+                    this.moveRightDown(this.getModel().getMap().getOnTheMapXY(x, y));
                     this.getModel().getMap().getOnTheMapXY(x, y + 1).canKillTrue();
                     this.kill(x, y + 1);
                 }
             }
 
-            else if (this.checkMove(this.getModel().getMap().getMap()[y][x],
-                    this.getModel().getMap().getMap()[y][x].getX() - 1,
-                    this.getModel().getMap().getMap()[y][x].getY() + 1)) {
-                if (this.getModel().getMap().getMap()[y + 1][x].getClass() == MobileEntityFactory.createRock()
+            else if (this.checkMove(this.getModel().getMap().getOnTheMapXY(x, y),
+                    this.getModel().getMap().getOnTheMapXY(x, y).getX() - 1,
+                    this.getModel().getMap().getOnTheMapXY(x, y).getY() + 1)) {
+                if (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createRock()
                         .getClass()) {
-                    this.getModel().getMap().getMap()[y][x].setVerified(true);
-                    this.moveLeftDown(this.getModel().getMap().getMap()[y][x]);
+                    this.getModel().getMap().getOnTheMapXY(x, y).setVerified(true);
+                    this.moveLeftDown(this.getModel().getMap().getOnTheMapXY(x, y));
                     this.getModel().getMap().getOnTheMapXY(x, y + 1).canKillTrue();
                     this.kill(x, y + 1);
                 }

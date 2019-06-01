@@ -3,8 +3,6 @@
  */
 package contract;
 
-import java.awt.event.KeyEvent;
-
 /**
  * The Interface IController.
  *
@@ -12,15 +10,11 @@ import java.awt.event.KeyEvent;
  */
 public interface IControllerMain {
 
-    void moveSet(KeyEvent key);
-
-    IControllerMain getControllerCharacter();
+    IController getControllerCharacter();
 
     IModel getModel();
 
     IView getView();
-
-    int getDiamondCount();
 
     int getTimeLeft();
 
