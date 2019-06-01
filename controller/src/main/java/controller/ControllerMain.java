@@ -6,6 +6,7 @@ package controller;
 import contract.IControllerMain;
 import contract.IModel;
 import contract.IView;
+import entity.IEntity;
 
 public class ControllerMain implements IControllerMain {
 
@@ -52,8 +53,11 @@ public class ControllerMain implements IControllerMain {
                         ControllerMain.this.setTimeLeft(ControllerMain.this.getTimeLeft() - 1);
                         Thread.sleep(1000);
                         if (ControllerMain.this.getTimeLeft() == 0) {
+                            IEntity character = ControllerMain.this.getModel().getMap().findCharacter();
                             canRun = false;
-                            ControllerMain.this.getModel().getMap().findCharacter().die();
+                            character.die();
+                            ControllerMain.this.getControllerCharacter().dieAnimationCharacter(character.getX(),
+                                    character.getY());
                         }
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
