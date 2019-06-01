@@ -4,6 +4,9 @@
 package controller;
 
 import java.awt.event.KeyEvent;
+
+import javax.swing.JOptionPane;
+
 import contract.IModel;
 import contract.IView;
 import entity.IEntity;
@@ -122,6 +125,7 @@ public class ControllerCharacter extends Controller {
                     Thread.currentThread();
                     try {
                         Thread.sleep(2000);
+                        JOptionPane.showMessageDialog(null, "You win ! ", "Victory !", JOptionPane.INFORMATION_MESSAGE);
                         System.exit(0);
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
