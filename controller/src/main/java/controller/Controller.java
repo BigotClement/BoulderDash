@@ -26,15 +26,14 @@ public class Controller implements IController {
     /** The model. */
     protected IModel model;
 
+    /** The diamond limit. */
     private int diamondLimit = 0;
 
     /**
      * Instantiates a new controller.
      *
-     * @param view
-     *                  the view
-     * @param model
-     *                  the model
+     * @param view the view
+     * @param model the model
      */
     public Controller(final IView view, final IModel model) {
         this.setView(view);
@@ -45,8 +44,7 @@ public class Controller implements IController {
     /**
      * Sets the view.
      *
-     * @param pview
-     *                  the new view
+     * @param pview the new view
      */
     void setView(final IView pview) {
         this.view = pview;
@@ -55,23 +53,40 @@ public class Controller implements IController {
     /**
      * Sets the model.
      *
-     * @param model
-     *                  the new model
+     * @param model the new model
      */
     private void setModel(final IModel model) {
         this.model = model;
     }
 
+    /**
+     * Gets the model.
+     *
+     * @return the model
+     */
     @Override
     public IModel getModel() {
         return this.model;
     }
 
+    /**
+     * Gets the view.
+     *
+     * @return the view
+     */
     @Override
     public IView getView() {
         return this.view;
     }
 
+    /**
+     * Check move.
+     *
+     * @param mobile the mobile
+     * @param x the x
+     * @param y the y
+     * @return true, if successful
+     */
     public boolean checkMove(IEntity mobile, int x, int y) {
         try {
             if ((y >= 0) && (y < this.getModel().getMap().getMap().length) && (x >= 0)
@@ -101,6 +116,11 @@ public class Controller implements IController {
         return false;
     }
 
+    /**
+     * Move down.
+     *
+     * @param mobile the mobile
+     */
     public void moveDown(IEntity mobile) {
         if (this.checkMove(mobile, mobile.getX(), mobile.getY() + 1)
                 && ((mobile.getY() + 1) < this.getModel().getMap().getMap().length)) {
@@ -112,6 +132,11 @@ public class Controller implements IController {
         }
     }
 
+    /**
+     * Move left.
+     *
+     * @param mobile the mobile
+     */
     public void moveLeft(IEntity mobile) {
         if (this.checkMove(mobile, mobile.getX() - 1, mobile.getY()) && ((mobile.getX() - 1) >= 0)) {
             this.getModel().getMap().getMap()[mobile.getY()][mobile.getX()
@@ -122,6 +147,11 @@ public class Controller implements IController {
         }
     }
 
+    /**
+     * Move right.
+     *
+     * @param mobile the mobile
+     */
     public void moveRight(IEntity mobile) {
         if (this.checkMove(mobile, mobile.getX() + 1, mobile.getY())
                 && ((mobile.getX() + 1) < this.getModel().getMap().getMap()[0].length)) {
@@ -133,6 +163,11 @@ public class Controller implements IController {
         }
     }
 
+    /**
+     * Move up.
+     *
+     * @param mobile the mobile
+     */
     public void moveUp(IEntity mobile) {
         if (this.checkMove(mobile, mobile.getX(), mobile.getY() - 1) && ((mobile.getY() - 1) >= 0)) {
             this.getModel().getMap().getMap()[mobile.getY() - 1][mobile
@@ -143,16 +178,32 @@ public class Controller implements IController {
         }
     }
 
+    /**
+     * Move left down.
+     *
+     * @param mobile the mobile
+     */
     public void moveLeftDown(IEntity mobile) {
         this.moveLeft(mobile);
         this.moveDown(mobile);
     }
 
+    /**
+     * Move right down.
+     *
+     * @param mobile the mobile
+     */
     public void moveRightDown(IEntity mobile) {
         this.moveRight(mobile);
         this.moveDown(mobile);
     }
 
+    /**
+     * Die animation character.
+     *
+     * @param x the x
+     * @param y the y
+     */
     public void dieAnimationCharacter(int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).isAlive() == false) {
             this.getModel().getMap().getOnTheMapXY(x, y)
@@ -183,6 +234,12 @@ public class Controller implements IController {
         }
     }
 
+    /**
+     * Die animation enemy.
+     *
+     * @param x the x
+     * @param y the y
+     */
     public void dieAnimationEnemy(int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).isAlive() == false) {
 
@@ -194,6 +251,12 @@ public class Controller implements IController {
         }
     }
 
+    /**
+     * Kill.
+     *
+     * @param x the x
+     * @param y the y
+     */
     public void kill(int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).getCanKill() == true) {
             if (this.getModel().getMap().getOnTheMapXY(x, y + 1).getClass() == MobileEntityFactory.createCharacter()
@@ -216,23 +279,43 @@ public class Controller implements IController {
         }
     }
 
+    /**
+     * Move set.
+     *
+     * @param key the key
+     */
     @Override
     public void moveSet(KeyEvent key) {
         // TODO Auto-generated method stub
 
     }
 
+    /**
+     * Gets the diamond count.
+     *
+     * @return the diamond count
+     */
     @Override
     public int getDiamondCount() {
         // TODO Auto-generated method stub
         return 0;
     }
 
+    /**
+     * Gets the diamond limit.
+     *
+     * @return the diamond limit
+     */
     @Override
     public int getDiamondLimit() {
         return this.diamondLimit;
     }
 
+    /**
+     * Sets the diamond limit.
+     *
+     * @param diamondLimit the new diamond limit
+     */
     @Override
     public void setDiamondLimit(int diamondLimit) {
         this.diamondLimit = diamondLimit;

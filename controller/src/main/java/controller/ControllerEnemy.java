@@ -8,13 +8,28 @@ import contract.IView;
 import mobile.MobileEntityFactory;
 import java.util.Random;
 
+/**
+ * The Class ControllerEnemy.
+ */
 public class ControllerEnemy extends Controller {
 
+    /**
+     * Instantiates a new controller enemy.
+     *
+     * @param view the view
+     * @param model the model
+     */
     public ControllerEnemy(IView view, IModel model) {
         super(view, model);
         // TODO Auto-generated constructor stub
     }
 
+    /**
+     * Move.
+     *
+     * @param x the x
+     * @param y the y
+     */
     public void move(int x, int y) {
 
         try {

@@ -14,23 +14,45 @@ import entity.Permeability;
 import mobile.MobileEntityFactory;
 import motionless.MotionlessEntityFactory;
 
+/**
+ * The Class ControllerCharacter.
+ */
 public class ControllerCharacter extends Controller {
 
+    /** The diamond count. */
     private int diamondCount = 0;
 
+    /** The exit X. */
     private int exitX = 0;
 
+    /** The exit Y. */
     private int exitY = 0;
 
+    /**
+     * Gets the diamond count.
+     *
+     * @return the diamond count
+     */
     @Override
     public int getDiamondCount() {
         return this.diamondCount;
     }
 
+    /**
+     * Sets the diamond count.
+     *
+     * @param diamondCount the new diamond count
+     */
     public void setDiamondCount(int diamondCount) {
         this.diamondCount = diamondCount;
     }
 
+    /**
+     * Instantiates a new controller character.
+     *
+     * @param view the view
+     * @param model the model
+     */
     public ControllerCharacter(IView view, IModel model) {
         super(view, model);
         this.setDiamondLimit(10);
@@ -43,6 +65,11 @@ public class ControllerCharacter extends Controller {
         }
     }
 
+    /**
+     * Move set.
+     *
+     * @param key the key
+     */
     @Override
     public void moveSet(KeyEvent key) {
 
@@ -95,24 +122,44 @@ public class ControllerCharacter extends Controller {
         }
     }
 
+    /**
+     * Can increment diamond.
+     *
+     * @param character the character
+     * @param x the x
+     * @param y the y
+     */
     private void canIncrementDiamond(IEntity character, int x, int y) {
         if (this.getModel().getMap().getOnTheMapXY(x, y).getClass() == MobileEntityFactory.createDiamond().getClass()) {
             this.incrementDiamond();
         }
     }
 
+    /**
+     * Increment diamond.
+     *
+     * @return the int
+     */
     private int incrementDiamond() {
         this.setDiamondCount(this.getDiamondCount() + 1);
         this.openExit();
         return this.getDiamondCount();
     }
 
+    /**
+     * Open exit.
+     */
     private void openExit() {
         if (this.getDiamondCount() >= 1) {
             this.getModel().getMap().findExit().setPermeability(Permeability.SEMIPENETRABLE);
         }
     }
 
+    /**
+     * Can win.
+     *
+     * @return true, if successful
+     */
     public boolean canWin() {
         try {
             if ((this.getModel().getMap().findCharacter().getY() == this.exitY)
@@ -126,6 +173,12 @@ public class ControllerCharacter extends Controller {
         return false;
     }
 
+    /**
+     * Victory animation character.
+     *
+     * @param x the x
+     * @param y the y
+     */
     public void victoryAnimationCharacter(int x, int y) {
         if (this.canWin()) {
             this.getModel().getMap().getOnTheMapXY(x, y).die();
@@ -150,6 +203,12 @@ public class ControllerCharacter extends Controller {
         }
     }
 
+    /**
+     * Check die.
+     *
+     * @param x the x
+     * @param y the y
+     */
     public void checkDie(int x, int y) {
 
         if (this.getModel().getMap().getOnTheMapXY(x, y).getClass() == MobileEntityFactory.createCharacter()

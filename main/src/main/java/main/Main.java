@@ -11,10 +11,15 @@ import controller.ControllerMain;
 import model.Model;
 import view.View;
 
+/**
+ * The Class Main.
+ */
 public abstract class Main {
 
+    /** The Constant DIAMONDLIMIT. */
     private static final int DIAMONDLIMIT = 10;
 
+    /** The Constant TIMELIMIT. */
     private static final int TIMELIMIT = 120;
 
     /**

@@ -27,15 +27,14 @@ public class AnimateGif extends Observable implements Runnable {
     /** The milliseconds. */
     private int milliseconds;
 
+    /** The thread. */
     private Thread thread;
 
     /**
      * Instantiates a new animate gif.
      *
-     * @param folder
-     *                         the folder
-     * @param milliseconds
-     *                         the milliseconds
+     * @param folder the folder
+     * @param milliseconds the milliseconds
      */
     public AnimateGif(String folder, int milliseconds) {
         this.setFolder(folder);
@@ -109,8 +108,7 @@ public class AnimateGif extends Observable implements Runnable {
     /**
      * Sets the gif.
      *
-     * @param gif
-     *                the new gif
+     * @param gif the new gif
      */
     public void setGif(Image[] gif) {
         this.gif = gif;
@@ -128,8 +126,7 @@ public class AnimateGif extends Observable implements Runnable {
     /**
      * Sets the image.
      *
-     * @param image
-     *                  the new image
+     * @param image the new image
      */
     public void setImage(Image image) {
         this.image = image;
@@ -147,8 +144,7 @@ public class AnimateGif extends Observable implements Runnable {
     /**
      * Sets the folder.
      *
-     * @param folder
-     *                   the new folder
+     * @param folder the new folder
      */
     public void setFolder(String folder) {
         this.folder = folder;
@@ -167,8 +163,7 @@ public class AnimateGif extends Observable implements Runnable {
     /**
      * Sets the milliseconds.
      *
-     * @param milliseconds
-     *                         the new milliseconds
+     * @param milliseconds the new milliseconds
      */
     public void setMilliseconds(int milliseconds) {
         this.milliseconds = milliseconds;

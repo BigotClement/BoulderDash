@@ -19,12 +19,18 @@ import contract.IControllerMain;
 import contract.IModel;
 import entity.IEntity;
 
+/**
+ * The Class ViewFrame.
+ */
 public class ViewFrame extends JFrame implements KeyListener {
 
+    /** The Constant FRAMEWIDTH. */
     private static final int FRAMEWIDTH = 1000;
 
+    /** The Constant FRAMEHEIGHT. */
     private static final int FRAMEHEIGHT = 1000;
 
+    /** The diamond count. */
     private int diamondCount = 0;
 
     /** The model. */
@@ -39,12 +45,9 @@ public class ViewFrame extends JFrame implements KeyListener {
     /**
      * Instantiates a new view frame.
      *
-     * @param model
-     *                  the model
-     * @param title
-     *                  the title
-     * @throws HeadlessException
-     *                               the headless exception
+     * @param model the model
+     * @param title the title
+     * @throws HeadlessException the headless exception
      */
     public ViewFrame(final IModel model, final String title) throws HeadlessException {
         super(title);
@@ -52,6 +55,9 @@ public class ViewFrame extends JFrame implements KeyListener {
         this.playMusic();
     }
 
+    /**
+     * Play music.
+     */
     public void playMusic() {
         String filePath = "sounds\\OST Boulder Dash - Boulder World.wav";
         AudioInputStream audioInputStream;
@@ -83,8 +89,7 @@ public class ViewFrame extends JFrame implements KeyListener {
     /**
      * Sets the controller.
      *
-     * @param controller
-     *                       the new controller
+     * @param controller the new controller
      */
     public void setController(final IControllerMain controller) {
         this.controller = controller;
@@ -102,8 +107,7 @@ public class ViewFrame extends JFrame implements KeyListener {
     /**
      * Sets the model.
      *
-     * @param model
-     *                  the new model
+     * @param model the new model
      */
     void setModel(final IModel model) {
         this.model = model;
@@ -112,8 +116,7 @@ public class ViewFrame extends JFrame implements KeyListener {
     /**
      * Builds the view frame.
      *
-     * @param model
-     *                  the model
+     * @param model the model
      */
     private void buildViewFrame(final IModel model) {
         this.setModel(model);
@@ -125,6 +128,11 @@ public class ViewFrame extends JFrame implements KeyListener {
         this.setLocationRelativeTo(null);
     }
 
+    /**
+     * Key typed.
+     *
+     * @param key the key
+     */
     /*
      * (non-Javadoc)
      * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
@@ -134,6 +142,11 @@ public class ViewFrame extends JFrame implements KeyListener {
         this.getController().getControllerCharacter().moveSet(key);
     }
 
+    /**
+     * Key pressed.
+     *
+     * @param key the key
+     */
     /*
      * (non-Javadoc)
      * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
@@ -142,6 +155,11 @@ public class ViewFrame extends JFrame implements KeyListener {
     public void keyPressed(final KeyEvent key) {
     }
 
+    /**
+     * Key released.
+     *
+     * @param key the key
+     */
     /*
      * (non-Javadoc)
      * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
@@ -159,10 +177,20 @@ public class ViewFrame extends JFrame implements KeyListener {
         }
     }
 
+    /**
+     * Gets the diamond count.
+     *
+     * @return the diamond count
+     */
     public int getDiamondCount() {
         return this.diamondCount;
     }
 
+    /**
+     * Sets the diamond count.
+     *
+     * @param diamondCount the new diamond count
+     */
     public void setDiamondCount(int diamondCount) {
         this.diamondCount = diamondCount;
     }

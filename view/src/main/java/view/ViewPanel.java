@@ -19,24 +19,25 @@ import javax.swing.JPanel;
 
 /**
  * The Class ViewPanel.
- *
- * @author Jean-Aymeric Diet
  */
 class ViewPanel extends JPanel implements Observer {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -998294702363713521L;
+    
     /** The view frame. */
     private ViewFrame viewFrame;
 
+    /** The diamond counter image. */
     private Image diamondCounterImage = null;
+    
+    /** The timer image. */
     private Image timerImage = null;
 
     /**
      * Instantiates a new view panel.
      *
-     * @param viewFrame
-     *                      the view frame
+     * @param viewFrame the view frame
      */
     public ViewPanel(final ViewFrame viewFrame) {
         this.setViewFrame(viewFrame);
@@ -61,6 +62,11 @@ class ViewPanel extends JPanel implements Observer {
         return this.viewFrame;
     }
 
+    /**
+     * Paint component.
+     *
+     * @param graphics the graphics
+     */
     @Override
     protected void paintComponent(final Graphics graphics) {
 
@@ -82,6 +88,23 @@ class ViewPanel extends JPanel implements Observer {
         this.writeTimerExit(graphics, this.writeScoreExit(graphics));
     }
 
+    /**
+     * Write panel.
+     *
+     * @param graphics the graphics
+     * @param str the str
+     * @param startX the start X
+     * @param startY the start Y
+     * @param size the size
+     * @param border1 the border 1
+     * @param border2 the border 2
+     * @param border3 the border 3
+     * @param textColor the text color
+     * @param rectColor the rect color
+     * @param border1Color the border 1 color
+     * @param border2Color the border 2 color
+     * @param border3Color the border 3 color
+     */
     public void writePanel(final Graphics graphics, String str, int startX, int startY, int size, int border1,
             int border2, int border3, Color textColor, Color rectColor, Color border1Color, Color border2Color,
             Color border3Color) {
@@ -102,6 +125,24 @@ class ViewPanel extends JPanel implements Observer {
         graphics.drawString(str, startX, size + startY);
     }
 
+    /**
+     * Write panel.
+     *
+     * @param graphics the graphics
+     * @param str the str
+     * @param str2 the str 2
+     * @param startX the start X
+     * @param startY the start Y
+     * @param size the size
+     * @param border1 the border 1
+     * @param border2 the border 2
+     * @param border3 the border 3
+     * @param textColor the text color
+     * @param rectColor the rect color
+     * @param border1Color the border 1 color
+     * @param border2Color the border 2 color
+     * @param border3Color the border 3 color
+     */
     public void writePanel(final Graphics graphics, String str, String str2, int startX, int startY, int size,
             int border1, int border2, int border3, Color textColor, Color rectColor, Color border1Color,
             Color border2Color, Color border3Color) {
@@ -123,6 +164,12 @@ class ViewPanel extends JPanel implements Observer {
         graphics.drawString(str, (startX + (int) rect.getWidth()) - (int) rect2.getWidth(), size + startY);
     }
 
+    /**
+     * Write score exit.
+     *
+     * @param graphics the graphics
+     * @return the int
+     */
     protected int writeScoreExit(final Graphics graphics) {
         String str = "     " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount() + "/"
                 + this.getViewFrame().getController().getControllerCharacter().getDiamondLimit();
@@ -144,6 +191,12 @@ class ViewPanel extends JPanel implements Observer {
         return startY;
     }
 
+    /**
+     * Write timer exit.
+     *
+     * @param graphics the graphics
+     * @param exit the exit
+     */
     protected void writeTimerExit(final Graphics graphics, int exit) {
         String str = "" + this.getViewFrame().getController().getTimeLeft();
         String sizeTimer = "     " + this.getViewFrame().getController().getControllerCharacter().getDiamondCount()
@@ -168,13 +221,18 @@ class ViewPanel extends JPanel implements Observer {
     /**
      * Sets the view frame.
      *
-     * @param viewFrame
-     *                      the new view frame
+     * @param viewFrame the new view frame
      */
     void setViewFrame(final ViewFrame viewFrame) {
         this.viewFrame = viewFrame;
     }
 
+    /**
+     * Update.
+     *
+     * @param arg0 the arg 0
+     * @param arg1 the arg 1
+     */
     /*
      * (non-Javadoc)
      * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
@@ -184,18 +242,38 @@ class ViewPanel extends JPanel implements Observer {
         this.repaint();
     }
 
+    /**
+     * Gets the diamond counter image.
+     *
+     * @return the diamond counter image
+     */
     public Image getDiamondCounterImage() {
         return this.diamondCounterImage;
     }
 
+    /**
+     * Sets the diamond counter image.
+     *
+     * @param diamondCounterImage the new diamond counter image
+     */
     public void setDiamondCounterImage(Image diamondCounterImage) {
         this.diamondCounterImage = diamondCounterImage;
     }
 
+    /**
+     * Gets the timer image.
+     *
+     * @return the timer image
+     */
     public Image getTimerImage() {
         return this.timerImage;
     }
 
+    /**
+     * Sets the timer image.
+     *
+     * @param timerImage the new timer image
+     */
     public void setTimerImage(Image timerImage) {
         this.timerImage = timerImage;
     }

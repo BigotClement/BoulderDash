@@ -8,19 +8,37 @@ import contract.IModel;
 import contract.IView;
 import entity.IEntity;
 
+/**
+ * The Class ControllerMain.
+ */
 public class ControllerMain implements IControllerMain {
 
+    /** The controller character. */
     private ControllerCharacter controllerCharacter;
+    
+    /** The controller rock. */
     private ControllerRock controllerRock;
+    
+    /** The controller diamond. */
     private ControllerDiamond controllerDiamond;
+    
+    /** The controller enemy. */
     private ControllerEnemy controllerEnemy;
+    
+    /** The view. */
     private IView view;
+    
+    /** The model. */
     private IModel model;
+    
+    /** The time left. */
     private int timeLeft = 120;
 
     /**
-     * @param view
-     * @param model
+     * Instantiates a new controller main.
+     *
+     * @param view the view
+     * @param model the model
      */
     public ControllerMain(IView view, IModel model) {
         this.setModel(model);
@@ -73,6 +91,9 @@ public class ControllerMain implements IControllerMain {
         timeRunning.start();
     }
 
+    /**
+     * Look the map.
+     */
     public void lookTheMap() {
         for (int y = 0; y < this.getModel().getMap().getMap().length; y++) {
             for (int x = 0; x < this.getModel().getMap().getMap()[y].length; x++) {
@@ -92,69 +113,133 @@ public class ControllerMain implements IControllerMain {
     }
 
     /**
-     * @param view
+     * Sets the view.
+     *
+     * @param view the new view
      */
     public void setView(IView view) {
         this.view = view;
     }
 
     /**
-     * @param model
+     * Sets the model.
+     *
+     * @param model the new model
      */
     public void setModel(IModel model) {
         this.model = model;
     }
 
+    /**
+     * Gets the controller character.
+     *
+     * @return the controller character
+     */
     @Override
     public ControllerCharacter getControllerCharacter() {
         return this.controllerCharacter;
     }
 
+    /**
+     * Sets the controller character.
+     *
+     * @param controllerCharacter the new controller character
+     */
     public void setControllerCharacter(ControllerCharacter controllerCharacter) {
         this.controllerCharacter = controllerCharacter;
     }
 
+    /**
+     * Gets the model.
+     *
+     * @return the model
+     */
     @Override
     public IModel getModel() {
         // TODO Auto-generated method stub
         return this.model;
     }
 
+    /**
+     * Gets the view.
+     *
+     * @return the view
+     */
     @Override
     public IView getView() {
         // TODO Auto-generated method stub
         return this.view;
     }
 
+    /**
+     * Gets the controller rock.
+     *
+     * @return the controller rock
+     */
     public ControllerRock getControllerRock() {
         return this.controllerRock;
     }
 
+    /**
+     * Sets the controller rock.
+     *
+     * @param controllerRock the new controller rock
+     */
     public void setControllerRock(ControllerRock controllerRock) {
         this.controllerRock = controllerRock;
     }
 
+    /**
+     * Gets the controller diamond.
+     *
+     * @return the controller diamond
+     */
     public ControllerDiamond getControllerDiamond() {
         return this.controllerDiamond;
     }
 
+    /**
+     * Sets the controller diamond.
+     *
+     * @param controllerDiamond the new controller diamond
+     */
     public void setControllerDiamond(ControllerDiamond controllerDiamond) {
         this.controllerDiamond = controllerDiamond;
     }
 
+    /**
+     * Gets the controller enemy.
+     *
+     * @return the controller enemy
+     */
     public ControllerEnemy getControllerEnemy() {
         return this.controllerEnemy;
     }
 
+    /**
+     * Sets the controller enemy.
+     *
+     * @param controllerEnemy the new controller enemy
+     */
     public void setControllerEnemy(ControllerEnemy controllerEnemy) {
         this.controllerEnemy = controllerEnemy;
     }
 
+    /**
+     * Gets the time left.
+     *
+     * @return the time left
+     */
     @Override
     public int getTimeLeft() {
         return this.timeLeft;
     }
 
+    /**
+     * Sets the time left.
+     *
+     * @param timeLeft the new time left
+     */
     public void setTimeLeft(int timeLeft) {
         this.timeLeft = timeLeft;
     }
