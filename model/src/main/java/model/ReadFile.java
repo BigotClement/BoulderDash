@@ -124,7 +124,7 @@ public class ReadFile {
             call.setInt(1, p_MapID);
             call.execute();
             final ResultSet resultSet = call.getResultSet();
-            if (!resultSet.first()) {
+            if (resultSet.first()) {
                 this.setWidth(resultSet.getInt("MapWidth"));
                 this.setHeight(resultSet.getInt("MapHeight"));
                 this.setMap(new char[this.getHeight()][this.getWidth()]);
