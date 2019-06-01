@@ -3,8 +3,6 @@
  */
 package controller;
 
-import java.awt.event.KeyEvent;
-
 import contract.IControllerMain;
 import contract.IModel;
 import contract.IView;
@@ -36,7 +34,7 @@ public class ControllerMain implements IControllerMain {
                 while (true) {
                     try {
                         ControllerMain.this.lookTheMap();
-                        Thread.sleep(300);
+                        Thread.sleep(150);
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -48,10 +46,15 @@ public class ControllerMain implements IControllerMain {
         Thread timeRunning = new Thread() {
             @Override
             public void run() {
-                while (true) {
+                boolean canRun = true;
+                while (canRun) {
                     try {
                         ControllerMain.this.setTimeLeft(ControllerMain.this.getTimeLeft() - 1);
                         Thread.sleep(1000);
+                        if (ControllerMain.this.getTimeLeft() == 0) {
+                            canRun = false;
+                            ControllerMain.this.getModel().getMap().findCharacter().die();
+                        }
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -99,12 +102,6 @@ public class ControllerMain implements IControllerMain {
     }
 
     @Override
-    public void moveSet(KeyEvent key) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
     public ControllerCharacter getControllerCharacter() {
         return this.controllerCharacter;
     }
@@ -147,11 +144,6 @@ public class ControllerMain implements IControllerMain {
 
     public void setControllerEnemy(ControllerEnemy controllerEnemy) {
         this.controllerEnemy = controllerEnemy;
-    }
-
-    @Override
-    public int getDiamondCount() {
-        return 0;
     }
 
     @Override

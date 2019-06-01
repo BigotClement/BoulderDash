@@ -5,7 +5,7 @@ package controller;
 
 import java.awt.event.KeyEvent;
 
-import contract.IControllerMain;
+import contract.IController;
 import contract.IModel;
 import contract.IView;
 import entity.IEntity;
@@ -16,7 +16,7 @@ import motionless.MotionlessEntityFactory;
 /**
  * The Class Controller.
  */
-public class Controller implements IControllerMain {
+public class Controller implements IController {
 
     /** The view. */
     protected IView view;
@@ -66,18 +66,6 @@ public class Controller implements IControllerMain {
     @Override
     public IView getView() {
         return this.view;
-    }
-
-    @Override
-    public void moveSet(KeyEvent key) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public IControllerMain getControllerCharacter() {
-        // TODO Auto-generated method stub
-        return null;
     }
 
     public boolean checkMove(IEntity mobile, int x, int y) {
@@ -219,13 +207,13 @@ public class Controller implements IControllerMain {
     }
 
     @Override
-    public int getDiamondCount() {
+    public void moveSet(KeyEvent key) {
         // TODO Auto-generated method stub
-        return 0;
+
     }
 
     @Override
-    public int getTimeLeft() {
+    public int getDiamondCount() {
         // TODO Auto-generated method stub
         return 0;
     }

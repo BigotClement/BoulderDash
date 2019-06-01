@@ -3,19 +3,20 @@
  */
 package contract;
 
+import java.awt.event.KeyEvent;
+
 /**
  * The Interface IController.
  *
  * @author Jean-Aymeric Diet
  */
-public interface IControllerMain {
-
-    IController getControllerCharacter();
+public interface IController {
 
     IModel getModel();
 
     IView getView();
 
-    int getTimeLeft();
+    void moveSet(KeyEvent key);
 
+    int getDiamondCount();
 }

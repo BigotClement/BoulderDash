@@ -16,6 +16,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 import contract.IControllerMain;
 import contract.IModel;
+import entity.IEntity;
 
 public class ViewFrame extends JFrame implements KeyListener {
 
@@ -142,12 +143,15 @@ public class ViewFrame extends JFrame implements KeyListener {
      */
     @Override
     public void keyReleased(final KeyEvent key) {
-        try {
-            Thread.sleep(20);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        IEntity character = this.getModel().getMap().findCharacter();
+        if (character.isAlive()) {
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            character.setSpriteFolder("sprites\\Mobile\\Character\\Stand");
         }
-        this.getModel().getMap().findCharacter().setSpriteFolder("sprites\\Mobile\\Character\\Stand");
     }
 
     public int getDiamondCount() {
