@@ -3,12 +3,9 @@
  */
 package main;
 
-import java.awt.HeadlessException;
-
-import javax.swing.JOptionPane;
-
 import controller.ControllerMain;
 import model.Model;
+import view.Menu;
 import view.View;
 
 /**
@@ -29,17 +26,28 @@ public abstract class Main {
      *                 the arguments
      */
     public static void main(final String[] args) {
-        int mapID = 0;
-        try {
-            mapID = Integer.parseInt(JOptionPane.showInputDialog("Choose a mapID (currently implemented : 1,2,3,4,5)"));
-        } catch (NumberFormatException e) {
-        } catch (HeadlessException e) {
+
+        Menu frame = new Menu();
+        frame.setVisible(true);
+
+        while (frame.getMapID() == 0) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
         }
-        final Model model = new Model(mapID);
-        final View view = new View(model);
-        final ControllerMain controller = new ControllerMain(view, model);
-        controller.getControllerCharacter().setDiamondLimit(DIAMONDLIMIT);
-        controller.setTimeLeft(TIMELIMIT);
-        view.setController(controller);
+
+        if (frame.getMapID() != 0) {
+            final Model model = new Model(frame.getMapID());
+            frame.dispose();
+            final View view = new View(model);
+            final ControllerMain controller = new ControllerMain(view, model);
+            controller.getControllerCharacter().setDiamondLimit(DIAMONDLIMIT);
+            controller.setTimeLeft(TIMELIMIT);
+            view.setController(controller);
+        }
     }
 }
