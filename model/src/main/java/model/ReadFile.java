@@ -174,10 +174,13 @@ public class ReadFile {
             call.setInt(1, p_MapID);
             call.execute();
             final ResultSet resultSet = call.getResultSet();
-            this.setWidth(resultSet.getInt("MapWidth"));
-            this.setHeight(resultSet.getInt("MapHeight"));
-            this.setMap(new char[this.getHeight()][this.getWidth()]);
-            this.getMap()[resultSet.getInt("posY")][resultSet.getInt("posX")] = resultSet.getString("Sprite").charAt(0);
+            if (resultSet.first()) {
+                this.setWidth(resultSet.getInt("MapWidth"));
+                this.setHeight(resultSet.getInt("MapHeight"));
+                this.setMap(new char[this.getHeight()][this.getWidth()]);
+                this.getMap()[resultSet.getInt("posY")][resultSet.getInt("posX")] = resultSet.getString("Sprite")
+                        .charAt(0);
+            }
             while (resultSet.next()) {
                 this.getMap()[resultSet.getInt("posY")][resultSet.getInt("posX")] = resultSet.getString("Sprite")
                         .charAt(0);
