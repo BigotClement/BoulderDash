@@ -94,14 +94,6 @@
 	</build>
 	<reporting>
 		<plugins>
-		<plugin>
-                 <groupId>com.github.danielflower.mavenplugins</groupId>
-                 <artifactId>gitlog-maven-plugin</artifactId>
-                 <version>1.13.17</version>
-                 <configuration>
-                      <simpleHTMLChangeLogFilename>gitlog.html</simpleHTMLChangeLogFilename>
-                 </configuration>
-               </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
