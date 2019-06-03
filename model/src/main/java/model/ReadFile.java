@@ -39,7 +39,8 @@ public class ReadFile {
     /**
      * Instantiates a new read file.
      *
-     * @param mapID the map ID
+     * @param mapID
+     *                  the map ID
      */
     public ReadFile(int mapID) {
         this.setFilename("Map" + mapID + ".txt");
@@ -74,12 +75,18 @@ public class ReadFile {
     /**
      * Insert into DB.
      *
-     * @param p_MapID the p map ID
-     * @param p_Sprite the p sprite
-     * @param p_posY the p pos Y
-     * @param p_posX the p pos X
-     * @param p_MapWidth the p map width
-     * @param p_MapHeight the p map height
+     * @param p_MapID
+     *                        the p map ID
+     * @param p_Sprite
+     *                        the p sprite
+     * @param p_posY
+     *                        the p pos Y
+     * @param p_posX
+     *                        the p pos X
+     * @param p_MapWidth
+     *                        the p map width
+     * @param p_MapHeight
+     *                        the p map height
      */
     public void insertIntoDB(int p_MapID, String p_Sprite, int p_posY, int p_posX, int p_MapWidth, int p_MapHeight) {
         try {
@@ -109,7 +116,8 @@ public class ReadFile {
     /**
      * Sets the map ID.
      *
-     * @param mapID the new map ID
+     * @param mapID
+     *                  the new map ID
      */
     public void setMapID(int mapID) {
         this.mapID = mapID;
@@ -118,7 +126,8 @@ public class ReadFile {
     /**
      * Sets the width.
      *
-     * @param width the new width
+     * @param width
+     *                  the new width
      */
     private void setWidth(int width) {
         this.width = width;
@@ -127,7 +136,8 @@ public class ReadFile {
     /**
      * Sets the height.
      *
-     * @param height the new height
+     * @param height
+     *                   the new height
      */
     private void setHeight(int height) {
         this.height = height;
@@ -154,7 +164,8 @@ public class ReadFile {
     /**
      * Select map ID.
      *
-     * @param p_MapID the p map ID
+     * @param p_MapID
+     *                    the p map ID
      */
     public void selectMapID(int p_MapID) {
         try {
@@ -163,19 +174,13 @@ public class ReadFile {
             call.setInt(1, p_MapID);
             call.execute();
             final ResultSet resultSet = call.getResultSet();
-            if (resultSet.first()) {
-                this.setWidth(resultSet.getInt("MapWidth"));
-                this.setHeight(resultSet.getInt("MapHeight"));
-                this.setMap(new char[this.getHeight()][this.getWidth()]);
+            this.setWidth(resultSet.getInt("MapWidth"));
+            this.setHeight(resultSet.getInt("MapHeight"));
+            this.setMap(new char[this.getHeight()][this.getWidth()]);
+            this.getMap()[resultSet.getInt("posY")][resultSet.getInt("posX")] = resultSet.getString("Sprite").charAt(0);
+            while (resultSet.next()) {
                 this.getMap()[resultSet.getInt("posY")][resultSet.getInt("posX")] = resultSet.getString("Sprite")
                         .charAt(0);
-                while (resultSet.next()) {
-                    this.getMap()[resultSet.getInt("posY")][resultSet.getInt("posX")] = resultSet.getString("Sprite")
-                            .charAt(0);
-                }
-            } else {
-                System.out.println("Map not found ! Program is closing...");
-                // System.exit(0);
             }
         } catch (final SQLException e) {
             e.printStackTrace();
@@ -185,7 +190,8 @@ public class ReadFile {
     /**
      * Delete map ID.
      *
-     * @param p_MapID the p map ID
+     * @param p_MapID
+     *                    the p map ID
      */
     public void deleteMapID(int p_MapID) {
         try {
@@ -210,7 +216,8 @@ public class ReadFile {
     /**
      * Sets the filename.
      *
-     * @param filename the new filename
+     * @param filename
+     *                     the new filename
      */
     public void setFilename(String filename) {
         this.filename = filename;
@@ -228,7 +235,8 @@ public class ReadFile {
     /**
      * Sets the map.
      *
-     * @param map the new map
+     * @param map
+     *                the new map
      */
     public void setMap(char[][] map) {
         this.map = map;
