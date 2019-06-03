@@ -23,10 +23,18 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 
+/**
+ * The Class Menu.
+ */
 public class Menu extends JFrame {
 
+    /** The content pane. */
     private JPanel contentPane;
+    
+    /** The Map ID. */
     private int MapID = 0;
+    
+    /** The clip. */
     private Clip clip;
 
     /**
@@ -116,14 +124,27 @@ public class Menu extends JFrame {
         this.playMusic();
     }
 
+    /**
+     * Gets the map ID.
+     *
+     * @return the map ID
+     */
     public int getMapID() {
         return this.MapID;
     }
 
+    /**
+     * Sets the map ID.
+     *
+     * @param mapID the new map ID
+     */
     public void setMapID(int mapID) {
         this.MapID = mapID;
     }
 
+    /**
+     * Play music.
+     */
     public void playMusic() {
         String filePath = "sounds\\Boulder Dash (NES) - Map Music.wav";
         AudioInputStream audioInputStream;
@@ -143,6 +164,9 @@ public class Menu extends JFrame {
 
     }
 
+    /**
+     * Stop music.
+     */
     public void stopMusic() {
         this.clip.close();
     }
