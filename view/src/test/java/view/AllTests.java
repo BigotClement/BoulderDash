@@ -11,7 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * The Class AllTests.
  */
 @RunWith(Suite.class)
-@SuiteClasses({ ViewPanelTest.class, ViewTest.class, ViewFrameTest.class })
+@SuiteClasses({ MenuTest.class, ViewPanelTest.class, ViewTest.class, ViewFrameTest.class })
 public class AllTests {
 
 }
